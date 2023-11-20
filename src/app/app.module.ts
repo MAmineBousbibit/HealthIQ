@@ -9,6 +9,8 @@ import { HomePageFirstCreatComponent } from './view/home/home-page-first-creat/h
 import { HomePageParentComponent } from './view/home/home-page-parent/home-page-parent.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { DoctorComponent } from './view/doctor/doctor.component';
+import { NavbarComponent } from './Shared/navbar/navbar.component';
+import { ServiceComponent } from './Shared/Service/service/service.component';
 =======
 import { MapsComponent } from './Views/maps/maps.component';
 import { BlogsComponent } from './Views/blogs/blogs.component';
@@ -25,6 +27,8 @@ import { BannerComponent } from './Views/banner/banner.component';
     HomePageFirstCreatComponent,
     HomePageParentComponent,
     DoctorComponent,
+    NavbarComponent,
+    ServiceComponent,
 
 =======
     MapsComponent,

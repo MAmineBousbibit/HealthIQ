@@ -1,0 +1,214 @@
+<div class="departments-area bg-gray default-padding">
+    <div class="container">
+        <div class="departments-tabs">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="center-tabs">
+                        <ul id="tabs" class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a href="#tab1" (click)="setActiveTab('tab1')" [class.active]="activeTab === 'tab1'" data-target="#tab1"  class="active nav-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-clipboard2-pulse" viewBox="0 0 16 16">
+                                        <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5h3Z"/>
+                                        <path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-12Z"/>
+                                        <path d="M9.979 5.356a.5.5 0 0 0-.968.04L7.92 10.49l-.94-3.135a.5.5 0 0 0-.926-.08L4.69 10H4.5a.5.5 0 0 0 0 1H5a.5.5 0 0 0 .447-.276l.936-1.873 1.138 3.793a.5.5 0 0 0 .968-.04L9.58 7.51l.94 3.135A.5.5 0 0 0 11 11h.5a.5.5 0 0 0 0-1h-.128L9.979 5.356Z"/>
+                                      </svg>
+                                    Medical Checkup
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#tab2" (click)="setActiveTab('tab2')" [class.active]="activeTab === 'tab2'" data-target="#tab2" data-toggle="tab" class="nav-link">
+                                    <i class="flaticon-heart"></i>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart-pulse" viewBox="0 0 16 16">
+                                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053.918 3.995.78 5.323 1.508 7H.43c-2.128-5.697 4.165-8.83 7.394-5.857.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17c3.23-2.974 9.522.159 7.394 5.856h-1.078c.728-1.677.59-3.005.108-3.947C13.486.878 10.4.28 8.717 2.01L8 2.748ZM2.212 10h1.315C4.593 11.183 6.05 12.458 8 13.795c1.949-1.337 3.407-2.612 4.473-3.795h1.315c-1.265 1.566-3.14 3.25-5.788 5-2.648-1.75-4.523-3.434-5.788-5Z"/>
+                                        <path d="M10.464 3.314a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.5a.5.5 0 0 0 0 1H4a.5.5 0 0 0 .416-.223l1.473-2.209 1.647 4.118a.5.5 0 0 0 .945-.049l1.598-5.593 1.457 3.642A.5.5 0 0 0 12 9h3.5a.5.5 0 0 0 0-1h-3.162l-1.874-4.686Z"/>
+                                      </svg>
+                                    Cardiology
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#tab3" (click)="setActiveTab('tab3')" [class.active]="activeTab === 'tab3'" data-target="#tab3" data-toggle="tab" class="nav-link">
+                                    <i class="flaticon-dental-checkup"></i>
+                                    <img src="assets/img/tooth-whitening.png" alt="tooth" width="20" height="20">
+                                    Dental care
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#tab4" (click)="setActiveTab('tab4')" [class.active]="activeTab === 'tab4'" data-target="#tab4" data-toggle="tab" class="nav-link">
+                                    <i class="flaticon-neurology-1"></i>
+                                    <img src="assets/img/human-brain.png" alt="brain" width="25" height="25">
+                                    Neurology
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#tab5" (click)="setActiveTab('tab5')" [class.active]="activeTab === 'tab5'" data-target="#tab5" data-toggle="tab" class="nav-link">
+                                    <i class="flaticon-coronavirus"></i>
+                                    <img src="assets/img/corona.png" alt="corona" width="20" height="20">
+                                    Corona Checkup
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#tab6" (click)="setActiveTab('tab6')" [class.active]="activeTab === 'tab6'" data-target="#tab6" data-toggle="tab" class="nav-link">
+                                    <i class="flaticon-kidney"></i>
+                                    <img src="assets/img/kidney.png" alt="kidney" width="20" height="20" >
+                                    Kidney Solution
+                                </a>
+                            </li> 
+                        </ul>
+                        <div id="tabsContent" class="tab-content wow fadeInUp" data-wow-delay="0.5s">
+                            <div id="tab1" *ngIf="activeTab === 'tab1'" >
+                                <div class="row align-center">
+                                    <div class="col-lg-5 col-md-12 thumb">
+                                        <img src="assets/img/checkup.jpg" alt="Thumb" width="450" height="380">
+                                    </div>
+                                    <div class="col-lg-7 col-md-12 info">
+                                        <h4>Welcome to our <br> Medical Checkup Department</h4>
+                                        <p>
+                                            Delightful unreserved impossible few estimating men favourable see entreaties. She propriety immediate was improving. He or entrance humoured likewise moderate. Much nor game son say feel. 
+                                        </p>
+                                        <h5>Opening Hours</h5>
+                                        <ul>
+                                            <li> <span> Mon - Tue :  </span>
+                                              <div class="float-right"> 8:00 - 17:30 </div>
+                                            </li>
+                                            <li> <span> Wed - Thu :</span>
+                                              <div class="float-right"> 9:00 - 16:45 </div>
+                                            </li>
+                                            <li> <span> Sun : </span>
+                                              <div class="float-right closed"> Closed </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab2" *ngIf="activeTab === 'tab2'" >
+                                <div class="row align-center">
+                                    <div class="col-lg-5 col-md-12 thumb">
+                                        <img src="assets/img/cardio.png" alt="cardio" width="450" height="350">
+                                    </div>
+                                    <div class="col-lg-7 col-md-12 info">
+                                        <h4>Welcome to our <br> Cardiology Department</h4>
+                                        <p>
+                                            Delightful unreserved impossible few estimating men favourable see entreaties. She propriety immediate was improving. He or entrance humoured likewise moderate. Much nor game son say feel. 
+                                        </p>
+                                        <h5>Opening Hours</h5>
+                                        <ul>
+                                            <li> <span> Mon - Tue :  </span>
+                                              <div class="float-right"> 8:00 - 17:30 </div>
+                                            </li>
+                                            <li> <span> Wed - Thu :</span>
+                                              <div class="float-right"> 9:00 - 16:45 </div>
+                                            </li>
+                                            <li> <span> Sun : </span>
+                                              <div class="float-right closed"> Closed </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab3" *ngIf="activeTab === 'tab3'">
+                                <div class="row align-center">
+                                    <div class="col-lg-5 col-md-12 thumb">
+                                        <img src="assets/img/dentist.jpg" alt="dentist" width="450" height="400">
+                                    </div>
+                                    <div class="col-lg-7 col-md-12 info">
+                                        <h4>Welcome to our <br> Dental care Department</h4>
+                                        <p>
+                                            Delightful unreserved impossible few estimating men favourable see entreaties. She propriety immediate was improving. He or entrance humoured likewise moderate. Much nor game son say feel. 
+                                        </p>
+                                        <h5>Opening Hours</h5>
+                                        <ul>
+                                            <li> <span> Mon - Tue :  </span>
+                                              <div class="float-right"> 8:00 - 17:30 </div>
+                                            </li>
+                                            <li> <span> Wed - Thu :</span>
+                                              <div class="float-right"> 9:00 - 16:45 </div>
+                                            </li>
+                                            <li> <span> Sun : </span>
+                                              <div class="float-right closed"> Closed </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab4" *ngIf="activeTab === 'tab4'" >
+                                <div class="row align-center">
+                                    <div class="col-lg-5 col-md-12 thumb">
+                                        <img src="assets/img/800x800.png" alt="Thumb">
+                                    </div>
+                                    <div class="col-lg-7 col-md-12 info">
+                                        <h4>Welcome to our <br> Neurology Department</h4>
+                                        <p>
+                                            Delightful unreserved impossible few estimating men favourable see entreaties. She propriety immediate was improving. He or entrance humoured likewise moderate. Much nor game son say feel. 
+                                        </p>
+                                        <h5>Opening Hours</h5>
+                                        <ul>
+                                            <li> <span> Mon - Tue :  </span>
+                                              <div class="float-right"> 8:00 - 17:30 </div>
+                                            </li>
+                                            <li> <span> Wed - Thu :</span>
+                                              <div class="float-right"> 9:00 - 16:45 </div>
+                                            </li>
+                                            <li> <span> Sun : </span>
+                                              <div class="float-right closed"> Closed </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab5" *ngIf="activeTab === 'tab5'" >
+                                <div class="row align-center">
+                                    <div class="col-lg-5 col-md-12 thumb">
+                                        <img src="assets/img/800x800.png" alt="Thumb" style="margin-top: 20px;">
+                                    </div>
+                                    <div class="col-lg-7 col-md-12 info">
+                                        <h4>Welcome to our <br> Corona Checkup Department</h4>
+                                        <p>
+                                            Delightful unreserved impossible few estimating men favourable see entreaties. She propriety immediate was improving. He or entrance humoured likewise moderate. Much nor game son say feel. 
+                                        </p>
+                                        <h5>Opening Hours</h5>
+                                        <ul>
+                                            <li> <span> Mon - Tue :  </span>
+                                              <div class="float-right"> 8:00 - 17:30 </div>
+                                            </li>
+                                            <li> <span> Wed - Thu :</span>
+                                              <div class="float-right"> 9:00 - 16:45 </div>
+                                            </li>
+                                            <li> <span> Sun : </span>
+                                              <div class="float-right closed"> Closed </div>
+                                            </li> 
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab6" *ngIf="activeTab === 'tab6'">
+                                <div class="row align-center">
+                                    <div class="col-lg-5 col-md-12 thumb">
+                                        <img src="assets/img/800x800.png" alt="Thumb" style="margin-top: 20px;">
+                                    </div>
+                                    <div class="col-lg-7 col-md-12 info">
+                                        <h4>Welcome to our <br> Kidney Solution Department</h4>
+                                        <p>
+                                            Delightful unreserved impossible few estimating men favourable see entreaties. She propriety immediate was improving. He or entrance humoured likewise moderate. Much nor game son say feel. 
+                                        </p>
+                                        <h5>Opening Hours</h5>
+                                        <ul>
+                                            <li> <span> Mon - Tue :  </span>
+                                              <div class="float-right"> 8:00 - 17:30 </div>
+                                            </li>
+                                            <li> <span> Wed - Thu :</span>
+                                              <div class="float-right"> 9:00 - 16:45 </div>
+                                            </li>
+                                            <li> <span> Sun : </span>
+                                              <div class="float-right closed"> Closed </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
