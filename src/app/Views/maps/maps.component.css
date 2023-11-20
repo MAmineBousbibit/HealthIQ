@@ -1,0 +1,13 @@
+/* Google Maps */
+
+.google-maps iframe {
+    border: medium none;
+    height: 550px;
+    margin-bottom: -10px;
+    width: 100%;
+  }
+  
+  .maps-area {
+    overflow: hidden;
+  }
+  
