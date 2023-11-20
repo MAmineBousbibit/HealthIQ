@@ -1,0 +1,293 @@
+/* Limiter la largeur de la carte Google Maps */
+.google-maps {
+  max-width: 1100px; /* Remplacez 1000px par la largeur souhaitée */
+  margin: 0 auto; /* Centrer horizontalement la carte sur la page */
+  padding-top: 20px; /* Ajouter un espace blanc de 10px en haut de la carte */
+}
+
+.google-maps iframe {
+  border: medium none;
+  height: 550px;
+  width: 100%; /* Utiliser la largeur maximale possible */
+}
+
+
+/* ============================================================== 
+     # Footer  
+=================================================================== */
+
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+footer::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: "";
+  height: 100%;
+  width: 100%;
+  /* background: url(assets/img/footer-bg.png); */
+  background-repeat: no-repeat;
+  background-position: left top;
+  z-index: -1;
+  opacity: 0.2;
+}
+
+footer.bg-dark::after {
+  opacity: 0.5;
+}
+
+footer .widget-title {
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 22px;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 20px;
+}
+
+footer .widget-title::before {
+  position: absolute;
+  left: 8px;
+  bottom: 0;
+  content: "";
+  height: 2px;
+  width: 40px;
+  background: #0cb8b6;
+}
+
+footer .widget-title::after {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  content: "";
+  height: 4px;
+  width: 4px;
+  background: #0cb8b6;
+  border-radius: 50%;
+}
+
+footer .social li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+footer .social {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+}
+
+footer .social h5 {
+  margin-bottom: 0;
+  margin-right: 15px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+footer .f-item > a {
+  margin-top: 10px;
+}
+
+footer .branches li {
+  margin-bottom: 15px;
+}
+
+footer.bg-dark .branches li {
+  color: #cccccc;
+}
+
+footer .branches li:last-child {
+  margin-bottom: 0;
+}
+
+footer .branches li strong {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: underline;
+  color: #232323;
+}
+
+footer.bg-dark .branches li strong {
+  color: #ffffff;
+}
+
+footer .f-item.link li {
+  margin-bottom: 15px;
+}
+
+footer .f-item.link li a {
+  display: inline-block;
+  color: #666666;
+  position: relative;
+  z-index: 1;
+}
+
+footer.bg-dark .f-item.link li a {
+  color: #cccccc;
+}
+
+footer.bg-dark p {
+  color: #cccccc;
+}
+
+footer .f-item.link li a:hover {
+  color: #0cb8b6;
+}
+
+footer .f-item.link li:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Footer Bottom */
+.footer-bottom {
+  border-top: 1px solid #e7e7e7;
+  padding: 15px 0;
+}
+
+footer.bg-dark .footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-bottom li {
+  display: inline-block;
+}
+
+.footer-bottom li a {
+  display: inline-block;
+  border-left: 1px solid #dddddd;
+  margin-left: 12px;
+  padding-left: 15px;
+}
+
+footer.bg-dark .footer-bottom li a {
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-bottom li:first-child a {
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: #0cb8b6;
+}
+
+footer.bg-dark .footer-bottom li:first-child a {
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: #0cb8b6;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+
+/* Style pour les éléments du pied de page */
+footer {
+  background-color: #f5f5f5; /* Couleur de fond du footer */
+  padding: 50px 0; /* Espacement intérieur du footer */
+}
+
+.f-items {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Style pour les éléments 'widget-title' */
+.widget-title {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+/* Style pour les éléments 'link' */
+.link ul {
+  list-style: none; /* Supprimer les puces */
+  padding: 0;
+}
+
+.link ul li {
+  margin-bottom: 8px; /* Espacement entre chaque élément de liste */
+}
+
+.link ul li a {
+  color: #333; /* Couleur du texte des liens */
+  text-decoration: none; /* Supprimer la soulignement des liens */
+  transition: color 0.3s ease; /* Transition douce pour la couleur des liens */
+}
+
+.link ul li a:hover {
+  color: #ff5500; /* Couleur du texte des liens au survol */
+}
+
+/* Style pour les informations sur les branches */
+.branches ul {
+  list-style: none; /* Supprimer les puces */
+  padding: 0;
+}
+
+.branches ul li {
+  margin-bottom: 15px; /* Espacement entre chaque élément de liste */
+}
+
+.branches ul li strong {
+  display: block; /* Afficher le texte en tant que bloc pour une meilleure structure */
+  font-weight: bold; /* Mettre en gras le texte des noms d'hôpitaux */
+  margin-bottom: 5px; /* Espacement après le nom de l'hôpital */
+}
+
+.branches ul li span {
+  font-size: 14px; /* Taille de police pour les informations de l'hôpital */
+  color: #777; /* Couleur du texte pour les informations */
+}
+/* Style pour la section des icônes de réseaux sociaux */
+.social {
+  margin-top: 20px; /* Espacement en haut de la section */
+  display: flex; /* Utiliser un affichage flex pour placer les éléments sur la même ligne */
+  align-items: center; /* Centrer verticalement les éléments */
+}
+
+.social h5 {
+  font-size: 16px; /* Taille de police du titre 'Get Us:' */
+  margin-right: 10px; /* Espacement à droite du titre */
+}
+
+.social ul {
+  list-style: none; /* Supprimer les puces */
+  padding: 0;
+  margin: 0; /* Supprimer les marges par défaut des listes */
+}
+
+.social ul li {
+  display: inline-block; /* Afficher les icônes sur une même ligne */
+  margin-right: 10px; /* Espacement entre chaque icône */
+}
+
+/* Style pour les icônes de réseaux sociaux */
+.social ul li a {
+  display: block;
+  width: 30px; /* Taille des icônes */
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%; /* Bord arrondi pour les icônes */
+  color: #fff; /* Couleur du texte des icônes */
+  background-color: #333; /* Couleur de fond des icônes */
+  transition: background-color 0.3s ease; /* Transition en douceur */
+}
+
+/* Ajoutez des couleurs spécifiques pour chaque réseau social */
+.social ul li.facebook a { background-color: #3b5998; }
+.social ul li.twitter a { background-color: #1da1f2; }
+.social ul li.youtube a { background-color: #c4302b; }
+.social ul li.instagram a { background-color: #e4405f; }
+
+/* Au survol, changer la couleur de fond des icônes */
+.social ul li a:hover {
+  background-color: #555;
+}
+
