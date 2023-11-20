@@ -13,6 +13,10 @@ import { MapsComponent } from './Views/maps/maps.component';
 import { BlogsComponent } from './Views/blogs/blogs.component';
 import { StatistiqueComponent } from './Views/statistique/statistique.component';
 import { BannerComponent } from './Views/banner/banner.component';
+import { NavbarComponent } from './Shared/navbar/navbar.component';
+import { ServiceComponent } from './Shared/Service/service.component';
+import { FooterComponent } from './footer/footer.component';
+import { ContactComponent } from './contact/contact.component';
 //import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
@@ -27,7 +31,11 @@ import { BannerComponent } from './Views/banner/banner.component';
     MapsComponent,
     BlogsComponent,
     StatistiqueComponent,
-    BannerComponent
+    BannerComponent,
+    NavbarComponent,
+    ServiceComponent,
+    FooterComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
