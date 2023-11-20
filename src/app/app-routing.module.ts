@@ -6,7 +6,7 @@ import { HomePageSecondCreatComponent } from './view/home/home-page-second-creat
 import { ServiceComponent } from './Shared/Service/service.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home-page-first', pathMatch: 'full' }, // Page par défaut
+  //{ path: '', redirectTo: '/home-page-first', pathMatch: 'full' }, // Page par défaut
   { path: 'home-page-first', component: HomePageFirstCreatComponent },
   { path: 'home-page-second', component: HomePageSecondCreatComponent },
   {path:'service',component:ServiceComponent}
