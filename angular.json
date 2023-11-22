@@ -29,9 +29,11 @@
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "src/styles.css",
               "src/assets/css/flaticon-set.css"
+             
+          
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js"
+              "node_modules/wowjs/dist/wow.min.js"
             ]
           },
           "configurations": {
@@ -98,7 +100,7 @@
               "src/assets/css/flaticon-set.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js"
+              "node_modules/wowjs/dist/wow.min.js"
             ]
           }
         }

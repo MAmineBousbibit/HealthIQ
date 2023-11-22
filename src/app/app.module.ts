@@ -17,6 +17,7 @@ import { NavbarComponent } from './Shared/navbar/navbar.component';
 import { ServiceComponent } from './Shared/Service/service.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
+import { ServiceMedicalComponent } from './Views/service-medical/service-medical.component';
 //import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ContactComponent } from './contact/contact.component';
     NavbarComponent,
     ServiceComponent,
     FooterComponent,
-    ContactComponent
+    ContactComponent,
+    ServiceMedicalComponent
   ],
   imports: [
     BrowserModule,
