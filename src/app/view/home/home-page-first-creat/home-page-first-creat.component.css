@@ -9,15 +9,15 @@
 }
 
 .content {
-  padding-top: 60px;
+  padding-top: 10%; /* Adjust the percentage based on your design */
   position: absolute;
-  top: 33.5%;
+  top: 50%; /* Center vertically */
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   color: #FFF;
   font-family: 'Inter', sans-serif;
-  font-size: 46px;
+  font-size: 4vw; /* Use viewport width for font size, adjust as needed */
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -50,36 +50,37 @@
 
 .background-image img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-width: 100vw; /* Use viewport width for max-width, adjust as needed */
   object-fit: cover;
   position: relative;
   z-index: 0;
-  animation: zoomIn 5s forwards; /* Use forwards to keep the final state after the animation */
+  animation: zoomIn 5s forwards;
 }
 
 .homepage:hover .arrows {
-  opacity: 1; /* Display the arrows on hover */
+  opacity: 1;
 }
 
 .arrows {
   position: absolute;
-  top: 33.5%;
+  top: 50%; /* Center vertically */
   width: 100%;
   display: flex;
   justify-content: space-between;
   z-index: 2;
-  opacity: 0; /* Initially hide the arrows */
-  transition: opacity 0.3s ease; /* Add a smooth transition effect */
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .arrows svg {
-  width: 32px; /* Adjust the size of the arrows */
+  width: 3vw; /* Use viewport width for arrow size, adjust as needed */
   fill: #D9D9D9;
 }
 
 .button-container {
   position: absolute;
-  top: 45%;
+  top: 70%; /* Adjust the percentage based on your design */
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -91,12 +92,12 @@
   color: #FFF;
   text-align: center;
   font-family: 'Inter', sans-serif;
-  font-size: 16px;
+  font-size: 1.5vw; /* Use viewport width for font size, adjust as needed */
   font-style: normal;
   font-weight: 600;
   line-height: normal;
   background: rgba(64, 186, 166, 0.90);
-  padding: 20px 30px;
+  padding: 2vw 3vw; /* Use viewport width for padding, adjust as needed */
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -112,7 +113,7 @@
 
 .text-layout {
   position: absolute;
-  top: 25%;
+  top: 30%; /* Adjust the percentage based on your design */
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -133,7 +134,7 @@
 .text-layout p {
   color: #FFF;
   font-family: 'Inter', sans-serif;
-  font-size: 21px;
+  font-size: 2vw; /* Use viewport width for font size, adjust as needed */
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -154,7 +155,7 @@
 .content h1 {
   color: #FFF;
   font-family: 'Inter', sans-serif;
-  font-size: 46px;
+  font-size: 4vw; /* Use viewport width for font size, adjust as needed */
   font-style: normal;
   font-weight: 700;
   line-height: normal;
