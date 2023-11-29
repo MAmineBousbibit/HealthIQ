@@ -80,7 +80,7 @@
 
         /* ==================================================
             # Equal Height Init
-        ===============================================*/
+        ===============================================
         $(window).on('resize', function() {
             $(".equal-height").equalHeights();
         });
@@ -88,8 +88,38 @@
         $(".equal-height").equalHeights().find("img, iframe, object").on('load', function() {
             $(".equal-height").equalHeights();
         });
+*/
+ /*-------------------------------------
+	Background image
+	-------------------------------------*/
+    $("[data-bg-image]").each(function () {
+        var img = $(this).data("bg-image");
+        $(this).css({
+            backgroundImage: "url(" + img + ")"
+        });
+    });
+    /*-------------------------------------
+    After Load All Content Add a Class
+    -------------------------------------*/
+    window.onload = addNewClass();
 
-
+    function addNewClass() {
+        $('.fxt-template-animation').imagesLoaded().done(function (instance) {
+            $('.fxt-template-animation').addClass('loaded');
+        });
+    }
+     /*-------------------------------------
+    Toggle Class
+    -------------------------------------*/
+    $(".toggle-password").on('click', function () {
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") == "password") {
+            input.attr("type", "text");
+        } else {
+            input.attr("type", "password");
+        }
+    });
         /* ==================================================
             # Youtube Video Init
          ===============================================*/
