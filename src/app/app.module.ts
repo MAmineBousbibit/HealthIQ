@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 
 import { HomePageSecondCreatComponent } from './view/home/home-page-second-creat/home-page-second-creat.component';
 import { HomePageFirstCreatComponent } from './view/home/home-page-first-creat/home-page-first-creat.component';
@@ -19,12 +20,14 @@ import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { ServiceMedicalComponent } from './Views/service-medical/service-medical.component';
 import { HomeComponent } from './Views/home/home.component';
+import { FormCardComponent } from './component/form-card/form-card.component';
+
 //import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
     AppComponent,
-
+     
     HomePageSecondCreatComponent,
     HomePageFirstCreatComponent,
     HomePageParentComponent,
@@ -39,11 +42,13 @@ import { HomeComponent } from './Views/home/home.component';
     FooterComponent,
     ContactComponent,
     ServiceMedicalComponent,
-    HomeComponent
+    HomeComponent,
+    FormCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule
    // AgmCoreModule.forRoot({
    // apiKey='AIzaSyCsDB4BgPFsmAUX5O2UluvYtZN8YUHpX8M'
   // })
