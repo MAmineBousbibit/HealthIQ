@@ -21,6 +21,7 @@ import { ContactComponent } from './contact/contact.component';
 import { ServiceMedicalComponent } from './Views/service-medical/service-medical.component';
 import { HomeComponent } from './Views/home/home.component';
 import { FormCardComponent } from './component/form-card/form-card.component';
+import { BlogsDetailComponent } from './Views/blogs/blogs-detail/blogs-detail.component';
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -43,7 +44,8 @@ import { FormCardComponent } from './component/form-card/form-card.component';
     ContactComponent,
     ServiceMedicalComponent,
     HomeComponent,
-    FormCardComponent
+    FormCardComponent,
+    BlogsDetailComponent
   ],
   imports: [
     BrowserModule,
