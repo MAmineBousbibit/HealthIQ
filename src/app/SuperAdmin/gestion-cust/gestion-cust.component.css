@@ -1,0 +1,68 @@
+.main-container{
+    display: flex;
+    height: 100vh;
+    background-color: #eff5f4;
+}
+.partie-gauche{
+    background-color: #F0FFFF;
+    border: 1px solid rgb(65, 64, 64) ;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 5px;
+    width: 300px;
+}
+.partie-droite{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+#docteurs{
+    list-style: none;
+    margin-top: 10px;
+}
+.navbar-container{
+    padding: 10px;
+    width: 30%;
+    padding: 8px;
+    border: 2px;
+    border-radius: 5px;  
+    margin-left: 200px;  
+}
+.column{
+    flex: 1;
+    background-color:#F0F8FF	;
+    border-radius: 5px;
+    border: 1px solid gray ;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+.info{
+    background-color:#F5F5F5	;
+    border-radius: 5px;
+    border: 2px solid ;
+    margin-top: 10px;
+    position: relative;
+    margin-right: 10px;
+}
+.details{
+    display: flex;
+}
+.donnes{
+    margin-top: 5px;
+    margin-left: 10px;
+}
+.image{
+    margin-top: 25px;
+    margin-left: 10px;
+}
+.modification{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+

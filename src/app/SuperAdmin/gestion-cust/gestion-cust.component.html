@@ -1,0 +1,67 @@
+<div class="main-container">
+    <div class="partie-gauche">
+            <ul id="docteurs">
+                <li>
+                    <a href="#doc1" (click)="setActiveDiv('Doc1', $event)">
+                     <img src="/assets/img/customer.png" width="50px" height="50px" >
+                    </a>
+                 <hr>
+                </li>
+                <li>
+                    <a href="#doc2" (click)="setActiveDiv('Doc2', $event)">
+                     <img src="/assets/img/customer.png" width="50px" height="50px" >
+                    </a>
+                 <hr>
+                </li>
+            </ul>
+    </div>
+    <div class="partie-droite">
+        <div class="navbar-container">
+            <nav class="navbar">
+                <form class="d-flex" role="search" id="searchbar">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                        </svg>
+                    </button>
+                  </form>
+            </nav>
+        </div>
+    <div class="column">
+        <ul>
+            <li id="Doc1" class="info d-flex" *ngIf="activeDiv ==='Doc1'" >
+                <img class="image" src="/assets/img/customer.png" width="50px" height="50px" >
+                <div class="details">
+                <p class="donnes">
+                Nom: <br>
+                Prenom: <br>
+                Date de naissance:<br>
+                Heures de travail: <br>
+                </p>
+                <p class="modification">
+                    <img src="/assets/img/editer.png" width="20px" height="20px" >
+                    <img src="/assets/img/supprimer.png" width="20px" height="20px" >
+                </p>
+            </div>
+            </li>
+            <li id="Doc2" class="info d-flex" *ngIf="activeDiv ==='Doc2'">
+                <img class="image" src="/assets/img/customer.png" width="50px" height="50px" >
+                <div class="details">
+                <p class="donnes">
+                Nom: <br>
+                Prenom: <br>
+                Date de naissance:<br>
+                Heures de travail: <br>
+                </p>
+                <p class="modification">
+                    <img src="/assets/img/editer.png" width="20px" height="20px" >
+                    <img src="/assets/img/supprimer.png" width="20px" height="20px" >
+                </p>
+            </div>
+            </li>
+        </ul>
+    </div>
+    </div>
+</div>
+
