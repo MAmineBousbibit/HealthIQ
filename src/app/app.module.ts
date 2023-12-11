@@ -22,6 +22,7 @@ import { ServiceMedicalComponent } from './Views/service-medical/service-medical
 import { HomeComponent } from './Views/home/home.component';
 import { FormCardComponent } from './component/form-card/form-card.component';
 import { BlogsDetailComponent } from './Views/blogs/blogs-detail/blogs-detail.component';
+import { DashboardSuperAddComponent } from './SuperAdmin/dashboard-super-add/dashboard-super-add.component';
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -45,7 +46,8 @@ import { BlogsDetailComponent } from './Views/blogs/blogs-detail/blogs-detail.co
     ServiceMedicalComponent,
     HomeComponent,
     FormCardComponent,
-    BlogsDetailComponent
+    BlogsDetailComponent,
+    DashboardSuperAddComponent
   ],
   imports: [
     BrowserModule,
