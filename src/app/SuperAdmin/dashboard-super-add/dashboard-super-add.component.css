@@ -1,0 +1,45 @@
+#searchbar{
+    margin-left: 20%;
+}
+.btn-group{
+    margin-right: 0%;
+    left: auto;
+}
+#humburger{
+    position: absolute;
+    margin-left: 0%;
+}
+.nav-links{
+    list-style: none;
+    background-color: rgba(127, 255, 212, 0.356);
+    width: 23%;
+    height: 100vw;
+    transition: width 0,3s ease;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+.nav-links li{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: auto;
+    text-align: center;
+}
+.nav-links li a {
+    text-decoration: none;
+    color: black;
+}
+#menu-hum a{
+    cursor: pointer;
+}
+#menu{
+    border-radius: 5px;
+    border: 2px solid ;
+    background-color: #F0FFFF;
+}
+@media screen and(max-width: 570px){
+    .navbar{
+        display: flex;
+        position: absolute;
+    }
+}
