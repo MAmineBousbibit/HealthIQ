@@ -22,11 +22,6 @@ import { ServiceMedicalComponent } from './Views/service-medical/service-medical
 import { HomeComponent } from './Views/home/home.component';
 import { FormCardComponent } from './component/form-card/form-card.component';
 import { BlogsDetailComponent } from './Views/blogs/blogs-detail/blogs-detail.component';
-import { PageHomeComponent } from './Views/page-home/page-home.component';
-import { NavComponent } from './Views/nav/nav.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
-import { AuthGuard } from './_guards/auth.guard';
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -50,9 +45,7 @@ import { AuthGuard } from './_guards/auth.guard';
     ServiceMedicalComponent,
     HomeComponent,
     FormCardComponent,
-    BlogsDetailComponent,
-    PageHomeComponent,
-    NavComponent
+    BlogsDetailComponent
   ],
   imports: [
     BrowserModule,
