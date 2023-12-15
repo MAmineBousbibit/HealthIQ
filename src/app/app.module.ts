@@ -22,6 +22,11 @@ import { ServiceMedicalComponent } from './Views/service-medical/service-medical
 import { HomeComponent } from './Views/home/home.component';
 import { FormCardComponent } from './component/form-card/form-card.component';
 import { BlogsDetailComponent } from './Views/blogs/blogs-detail/blogs-detail.component';
+import { PageHomeComponent } from './Views/page-home/page-home.component';
+import { NavComponent } from './Views/nav/nav.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { AuthGuard } from './_guards/auth.guard';
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -45,17 +50,21 @@ import { BlogsDetailComponent } from './Views/blogs/blogs-detail/blogs-detail.co
     ServiceMedicalComponent,
     HomeComponent,
     FormCardComponent,
-    BlogsDetailComponent
+    BlogsDetailComponent,
+    PageHomeComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    RouterModule
    // AgmCoreModule.forRoot({
    // apiKey='AIzaSyCsDB4BgPFsmAUX5O2UluvYtZN8YUHpX8M'
   // })
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

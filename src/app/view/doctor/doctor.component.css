@@ -1,8 +1,19 @@
+
 .site-heading {
   margin-bottom: 60px;
   overflow: hidden;
-  margin-top: -5px;
+  margin-top: 5%;
+ font-family: 'Inter', sans-serif;
+ font-size: 15px;
+font-weight: 400;
+line-height: 30px;
 }
+
+.doctors-area{
+  background-color: #eff5f4;
+
+}
+
 .doctors-area .doctor-items .single-item {
   margin-bottom: 30px;
 }

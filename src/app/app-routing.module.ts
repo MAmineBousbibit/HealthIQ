@@ -6,10 +6,14 @@ import { HomePageSecondCreatComponent } from './view/home/home-page-second-creat
 import { ServiceComponent } from './Shared/Service/service.component';
 import { ServiceMedicalComponent } from './Views/service-medical/service-medical.component';
 import { FormCardComponent } from './component/form-card/form-card.component';
+import { PageHomeComponent } from './Views/page-home/page-home.component';
+import { AuthGuard } from './_guards/auth.guard';
 
 const routes: Routes = [
-  //{ path: '', redirectTo: '/home-page-first', pathMatch: 'full' }, // Page par défaut
+
+  { path: '', redirectTo: 'Home', pathMatch: 'full' }, // Page par défaut
   {path:'Login',component:FormCardComponent},//login path
+  {path:'Home',component:PageHomeComponent},
   { path: 'home-page-first', component: HomePageFirstCreatComponent },
   { path: 'home-page-second', component: HomePageSecondCreatComponent },
   {path:'service',component:ServiceMedicalComponent}

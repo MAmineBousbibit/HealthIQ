@@ -24,23 +24,22 @@
                         <div class="container">
                             <div class="row">
 
-                                <div class="text-primary col-4 h1 px-5"><a href="#" (click)="ShowLoginform()"> Login
+                                <div class="text-primary col-4 h1 px-5"><a  (click)="ShowLoginform()"> Login
                                     </a></div>
                                 <div class="col-2 text-muted h1 px-5"> | </div>
-                                <div class="text-primary col-3 h1 px-3"><a href="#" (click)="ShowSignUpform()"> SignUp
+                                <div class="text-primary col-3 h1 px-3"><a  (click)="ShowSignUpform()"> SignUp
                                     </a></div>
                             </div>
                         </div>
                         <!--Login form-->
                         <div *ngIf="showLoginForm">
                             <p class="text-primary">Login into your pages account</p>
-                            <form>
-                                <!--authentification ansmi component
-                                foem atkhdem b model atafficha selon clique soi model 1 soit 2 -->
+                            <form (ngSubmit)="Login()">
+                               
                                 <div class="form-group row mb-2">
                                     <div class="col-8 input-group ">
-                                        <input type="text" class="form-control" [(ngModel)]="SelectedUser.CodeMedical"
-                                            [ngModelOptions]="{standalone: true}" placeholder="Code Medical">
+                                        <input type="text" class="form-control" [(ngModel)]="SelectedUser.email"
+                                            [ngModelOptions]="{standalone: true}" placeholder="Email">
                                     </div>
                                 </div>
 
@@ -65,7 +64,7 @@
                             </div>
                             <!--step 1-->
                             <div #step1 *ngIf="ValueStep==1">
-                                <form>
+                                <form >
 
 
                                     <div class="form-group row mb-2">
@@ -81,7 +80,7 @@
 
                                     <div class="form-group row mb-2">
                                         <div class="col-8 input-group">
-                                            <input type="email" class="form-control" [(ngModel)]="SelectedUser.password"
+                                            <input type="email" class="form-control" [(ngModel)]="SelectedUser.email"
                                                 [ngModelOptions]="{standalone: true}" placeholder="Email">
                                         </div>
                                     </div>
@@ -89,14 +88,12 @@
                                         <div class="col-8 input-group">
                                             <input type="password" class="form-control"
                                                 [(ngModel)]="SelectedUser.password"
-                                                [ngModelOptions]="{standalone: true}" placeholder="Mot de pass">
+                                                [ngModelOptions]="{standalone: true}" placeholder="password">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-8 input-group">
                                             <input type="password" class="form-control"
-                                                [(ngModel)]="SelectedUser.password"
-                                                [ngModelOptions]="{standalone: true}"
                                                 placeholder="Confirmation de mot de pass">
                                         </div>
                                     </div>
@@ -104,6 +101,7 @@
                                     <div >
                                         
                                         <button class="form-container__sign mt-2 " (click)="nextStep()">Next</button>
+                                        
                                     </div>
                                 </form>
                             </div>
@@ -119,7 +117,7 @@
                                         </div>
                                         <div class="col-6 ">
                                             <input type="text" class="form-control"
-                                                [(ngModel)]="SelectedUser.phoneNumber"
+                                                [(ngModel)]="SelectedUser.ville"
                                                 [ngModelOptions]="{standalone: true}" placeholder="Ville">
                                         </div>
                                     </div>
@@ -135,25 +133,26 @@
                                     <div class="form-group row">
                                         <div class="col-12 ">
                                             <input type="number" class="form-control"
-                                                [(ngModel)]="SelectedUser.adresse"
+                                                [(ngModel)]="SelectedUser.phoneNumber"
                                                 [ngModelOptions]="{standalone: true}" placeholder="Telephone">
                                         </div>
                                        
                                     </div>
                                     <div class="form-check form-check-inline my-2">
                                         <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="inlineRadio1" value="option1">
+                                            id="inlineRadio1" value="Homme" [(ngModel)]="SelectedUser.sex">
                                         <label class="form-check-label" for="inlineRadio1">Homme</label>
                                     </div>
                                     <div class="form-check form-check-inline my-2">
                                         <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="inlineRadio2" value="option2">
+                                            id="inlineRadio2" value="Femme" [(ngModel)]="SelectedUser.sex">
                                         <label class="form-check-label" for="inlineRadio2">Femme</label>
                                     </div>
                                     <div>
                                         <button class="form-container__sign mt-2 "
                                             (click)="prevStep()">Previous</button>
                                         <button class="form-container__sign mt-2 " (click)="nextStep()">Next</button>
+                                        <button class="skip-btn mt-2 " (click)="nextStep()">Skip</button>
                                     </div>
                                 </form>
                             </div>
@@ -181,14 +180,7 @@
                                           </div>
                                     </div>
                                     </div>
-                                    <!--<div class="form-inline">
-                                        <div class="col-6 ">
-                                            <select class="custom-select my-1 mr-sm-2">
-                                                <option *ngFor="let groupe of groupesSanguins" [value]="groupe">{{ groupe }}</option>
-                                            </select>
-                                        </div>
-                                       
-                                    </div>-->
+                                 
                                     <div class="form-group row">
                                         <div class="dropdown col-6 ">
                                             <button class="btn btn-outline-primary dropdown-toggle " type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [value]="groupesSanguins[0]">
@@ -204,7 +196,7 @@
                                         <div class="col-12 mt-3">
                                             <p class=" d-inline-flex ">Êtes vous actuellement actif Physiquement ?</p>
                                             <label class="switch float-end"> 
-                                                <input type="checkbox" (click)="checkedSport()" [checked]="CheckedSport" >
+                                                <input type="checkbox" (click)="checkedSport()" [checked]="CheckedSport" (change)="toggleSportSelection($event)" >
                                                 <span class="slider" ></span>
                                               </label>
                                             
@@ -216,13 +208,13 @@
                                        
                                         <div class="col-9">
                                             <div class="input-group">
-                                                <input type="text" class="form-control"  [(ngModel)]="SelectedUser.taille"
+                                                <input type="text" class="form-control"  [(ngModel)]="SelectedUser.typeSport"
                                                 [ngModelOptions]="{standalone: true}" placeholder="Type de sport">
                                               </div>
                                         </div>
                                         <div class="col-3">
                                             <div class="input-group">
-                                                <input type="number" class="form-control" [(ngModel)]="SelectedUser.taille"
+                                                <input type="number" class="form-control" [(ngModel)]="SelectedUser.nb_foisSport"
                                                 [ngModelOptions]="{standalone: true}" placeholder="Nb fois">
                                               </div>
                                         </div>
@@ -232,12 +224,13 @@
                                         <button class="form-container__sign mt-2 "
                                             (click)="prevStep()">Previous</button>
                                         <button class="form-container__sign mt-2 " (click)="nextStep()">Next</button>
+                                        <button class="skip-btn mt-2 " (click)="nextStep()">Skip</button>
                                     </div>
                                 </form>
                             </div>
                              <!--step 4-->
                              <div #step1 *ngIf="ValueStep==4">
-                                <form>
+                                <form (ngSubmit)="SignUp()">
 
 
                                     <div class="form-group row">
@@ -325,9 +318,8 @@
                                                     </div>
                                     <!--Button Next-->
                                     <div>
-                                        <button class="form-container__sign mt-2 "
-                                            (click)="prevStep()">Previous</button>
-                                        
+                                        <button class="form-container__sign mt-2 "(click)="prevStep()">Previous</button>
+                                            <button class="form-container__sign mt-2 ">SignUp</button>
                                     </div>
                                 </form>
                             </div>
