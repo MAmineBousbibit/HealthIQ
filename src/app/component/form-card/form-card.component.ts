@@ -3,7 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/_Services/auth.service';
 import { JwtService } from 'src/app/_Services/jwt.service';
 import { UserService } from 'src/app/_Services/user.service';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/_models/user';
 @Component({
   selector: 'app-form-card',
   templateUrl: './form-card.component.html',
