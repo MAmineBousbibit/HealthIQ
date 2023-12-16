@@ -24,16 +24,16 @@
                         <div class="container">
                             <div class="row">
 
-                                <div class="text-primary col-4 h1 px-5"><a  (click)="ShowLoginform()"> Login
+                                <div class="color-font col-4 h1 px-5"><a  (click)="ShowLoginform()"> Login
                                     </a></div>
                                 <div class="col-2 text-muted h1 px-5"> | </div>
-                                <div class="text-primary col-3 h1 px-3"><a  (click)="ShowSignUpform()"> SignUp
+                                <div class="color-font col-3 h1 px-3"><a  (click)="ShowSignUpform()"> SignUp
                                     </a></div>
                             </div>
                         </div>
                         <!--Login form-->
                         <div *ngIf="showLoginForm">
-                            <p class="text-primary">Login into your pages account</p>
+                            <p class="color-font" style="color: #0cb8b6;">Login into your pages account</p>
                             <form (ngSubmit)="Login()">
                                
                                 <div class="form-group row mb-2">
@@ -57,7 +57,7 @@
                             <p class="mt-4 d-flex">{{ValueStep}} of 4 Completed</p>
                             <div class="progress" style="height: 10px;">
 
-                                <div class="progress-bar progress-bar-solid " role="progressbar"
+                                <div class="progress-bar progress-bar-solid bg-progress " role="progressbar"
                                  aria-valuemin="0" aria-valuemax="100" 
                                      [style.width.%]="ValueProgress">
                                 </div>
