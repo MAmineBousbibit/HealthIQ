@@ -1,0 +1,15 @@
+/* Google Maps */
+
+
+  .google-maps {
+    max-width: 1100px; /* Remplacez 1000px par la largeur souhaitée */
+    margin: 0 auto; /* Centrer horizontalement la carte sur la page */
+    padding-top: 20px; /* Ajouter un espace blanc de 10px en haut de la carte */
+  }
+  
+  .google-maps iframe {
+    border: medium none;
+    height: 550px;
+    width: 100%; /* Utiliser la largeur maximale possible */
+  }
+  
