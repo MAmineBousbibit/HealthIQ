@@ -653,7 +653,9 @@ html {
     cursor: pointer;
   }
   .form-container__sign:first-child:active,
-  .form-container__sign:hover {
+  .form-container__sign:hover,
+  .button-signIN:hover
+   {
     background-color: #0cb8b6;
   }
   .skip-btn:hover{
@@ -662,7 +664,8 @@ html {
     -webkit-box-shadow: inset 0 0 3px 1px #0cb8b6;
     box-shadow: inset 0 0 3px 1px #0cb8b6;
   }
-  .form-container__sign:focus {
+  .form-container__sign:focus 
+   {
     outline-offset: -2px;
     outline: none;
     -webkit-box-shadow: inset 0 0 3px 1px #79b1b0;
@@ -745,4 +748,36 @@ html {
     background-size: cover; /* Ajuste la taille de l'image pour remplir le div */
     background-position: center left;
    }
+   
+   .button-signIN{
+    margin: 20px 0 10px 0;
+    background-color: #0cb8b6;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
+  }
+   .btng {
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    gap: 10px;
+    border: 1px solid #ededef;
+    background-color:white; 
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+  }
+    .btng:hover {
+      border: 1px solid #0cb8b6;
+      ;
+    }
    
