@@ -24,6 +24,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './_guards/auth.guard';
 import { PageHomeComponent } from './Views/page-home/page-home.component';
+import { DashboardSuperAddComponent } from './SuperAdmin/dashboard-super-add/dashboard-super-add.component';
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -48,7 +49,8 @@ import { PageHomeComponent } from './Views/page-home/page-home.component';
     HomeComponent,
     FormCardComponent,
     BlogsDetailComponent,
-    PageHomeComponent
+    PageHomeComponent,
+    DashboardSuperAddComponent
   ],
   imports: [
     BrowserModule,
