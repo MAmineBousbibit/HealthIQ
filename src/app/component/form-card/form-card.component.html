@@ -24,10 +24,10 @@
                         <div class="container">
                             <div class="row">
 
-                                <div class="color-font col-4 h1 px-5"><a  (click)="ShowLoginform()"> Login
+                                <div class="color-font col-4 h1 px-5"><a (click)="ShowLoginform()"> Login
                                     </a></div>
                                 <div class="col-2 text-muted h1 px-5"> | </div>
-                                <div class="color-font col-3 h1 px-3"><a  (click)="ShowSignUpform()"> SignUp
+                                <div class="color-font col-3 h1 px-3"><a (click)="ShowSignUpform()"> SignUp
                                     </a></div>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                         <div *ngIf="showLoginForm">
                             <p class="color-font" style="color: #0cb8b6;">Login into your pages account</p>
                             <form (ngSubmit)="Login()">
-                               
+
                                 <div class="form-group row mb-2">
                                     <div class="col-8 input-group ">
                                         <input type="text" class="form-control" [(ngModel)]="SelectedUser.email"
@@ -50,6 +50,10 @@
                                     </div>
                                 </div>
                                 <button class="form-container__sign mt-2 ">Sign In</button>
+
+                                <a data-toggle="modal" data-target="#exampleModal" >
+                                    J'ai oublié le Mot de passe
+                                </a>
                             </form>
                         </div>
                         <!--SignUp form-->
@@ -58,13 +62,12 @@
                             <div class="progress" style="height: 10px;">
 
                                 <div class="progress-bar progress-bar-solid bg-progress " role="progressbar"
-                                 aria-valuemin="0" aria-valuemax="100" 
-                                     [style.width.%]="ValueProgress">
+                                    aria-valuemin="0" aria-valuemax="100" [style.width.%]="ValueProgress">
                                 </div>
                             </div>
                             <!--step 1-->
                             <div #step1 *ngIf="ValueStep==1">
-                                <form >
+                                <form>
 
 
                                     <div class="form-group row mb-2">
@@ -98,10 +101,10 @@
                                         </div>
                                     </div>
                                     <!--Button Next-->
-                                    <div >
-                                        
+                                    <div>
+
                                         <button class="form-container__sign mt-2 " (click)="nextStep()">Next</button>
-                                        
+
                                     </div>
                                 </form>
                             </div>
@@ -116,27 +119,25 @@
                                                 [ngModelOptions]="{standalone: true}">
                                         </div>
                                         <div class="col-6 ">
-                                            <input type="text" class="form-control"
-                                                [(ngModel)]="SelectedUser.ville"
+                                            <input type="text" class="form-control" [(ngModel)]="SelectedUser.ville"
                                                 [ngModelOptions]="{standalone: true}" placeholder="Ville">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-12 ">
-                                            <input type="text" class="form-control"
-                                                [(ngModel)]="SelectedUser.adresse"
+                                            <input type="text" class="form-control" [(ngModel)]="SelectedUser.adresse"
                                                 [ngModelOptions]="{standalone: true}" placeholder="adresse">
                                         </div>
-                                       
+
                                     </div>
-                                    
+
                                     <div class="form-group row">
                                         <div class="col-12 ">
                                             <input type="number" class="form-control"
                                                 [(ngModel)]="SelectedUser.phoneNumber"
                                                 [ngModelOptions]="{standalone: true}" placeholder="Telephone">
                                         </div>
-                                       
+
                                     </div>
                                     <div class="form-check form-check-inline my-2">
                                         <input class="form-check-input" type="radio" name="inlineRadioOptions"
@@ -163,62 +164,71 @@
                                     <div class="form-group row">
                                         <div class="col-6">
                                             <div class="input-group">
-                                                <input type="text" class="form-control"  [(ngModel)]="SelectedUser.poid"
-                                                [ngModelOptions]="{standalone: true}" placeholder="Poid">
+                                                <input type="text" class="form-control" [(ngModel)]="SelectedUser.poid"
+                                                    [ngModelOptions]="{standalone: true}" placeholder="Poid">
                                                 <div class="input-group-append ">
-                                                  <span class="input-group-text">KG</span>
+                                                    <span class="input-group-text">KG</span>
                                                 </div>
-                                              </div>
-                                        </div>
-                                    <div class="col-6">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control"  [(ngModel)]="SelectedUser.taille"
-                                            [ngModelOptions]="{standalone: true}" placeholder="Taille">
-                                            <div class="input-group-append ">
-                                              <span class="input-group-text">cm</span>
                                             </div>
-                                          </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control"
+                                                    [(ngModel)]="SelectedUser.taille"
+                                                    [ngModelOptions]="{standalone: true}" placeholder="Taille">
+                                                <div class="input-group-append ">
+                                                    <span class="input-group-text">cm</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    </div>
-                                 
+
                                     <div class="form-group row">
                                         <div class="dropdown col-6 ">
-                                            <button class="btn btn-outline-primary dropdown-toggle " type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [value]="groupesSanguins[0]">
-                                              Groupe Sanguin
+                                            <button class="btn btn-outline-primary dropdown-toggle " type="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                                [value]="groupesSanguins[0]">
+                                                Groupe Sanguin
                                             </button>
-                                            <div class="dropdown-menu" >
-                                                <button *ngFor="let option of groupesSanguins" (click)="selectOption(option)" class="dropdown-item" type="button">{{ option }}</button>
+                                            <div class="dropdown-menu">
+                                                <button *ngFor="let option of groupesSanguins"
+                                                    (click)="selectOption(option)" class="dropdown-item"
+                                                    type="button">{{ option }}</button>
                                             </div>
                                         </div>
                                     </div>
-                           
+
                                     <div class="form-group row">
                                         <div class="col-12 mt-3">
                                             <p class=" d-inline-flex ">Êtes vous actuellement actif Physiquement ?</p>
-                                            <label class="switch float-end"> 
-                                                <input type="checkbox" (click)="checkedSport()" [checked]="CheckedSport" (change)="toggleSportSelection($event)" >
-                                                <span class="slider" ></span>
-                                              </label>
-                                            
+                                            <label class="switch float-end">
+                                                <input type="checkbox" (click)="checkedSport()" [checked]="CheckedSport"
+                                                    (change)="toggleSportSelection($event)">
+                                                <span class="slider"></span>
+                                            </label>
+
                                         </div>
-                                       
+
                                     </div>
                                     <div *ngIf="CheckedSport">
-                                    <div class="form-group row mt-3">
-                                       
-                                        <div class="col-9">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control"  [(ngModel)]="SelectedUser.typeSport"
-                                                [ngModelOptions]="{standalone: true}" placeholder="Type de sport">
-                                              </div>
+                                        <div class="form-group row mt-3">
+
+                                            <div class="col-9">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control"
+                                                        [(ngModel)]="SelectedUser.typeSport"
+                                                        [ngModelOptions]="{standalone: true}"
+                                                        placeholder="Type de sport">
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control"
+                                                        [(ngModel)]="SelectedUser.nb_foisSport"
+                                                        [ngModelOptions]="{standalone: true}" placeholder="Nb fois">
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-3">
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" [(ngModel)]="SelectedUser.nb_foisSport"
-                                                [ngModelOptions]="{standalone: true}" placeholder="Nb fois">
-                                              </div>
-                                        </div>
-                                    </div>
                                     </div>
                                     <div>
                                         <button class="form-container__sign mt-2 "
@@ -228,98 +238,111 @@
                                     </div>
                                 </form>
                             </div>
-                             <!--step 4-->
-                             <div #step1 *ngIf="ValueStep==4">
+                            <!--step 4-->
+                            <div #step1 *ngIf="ValueStep==4">
                                 <form (ngSubmit)="SignUp()">
 
 
                                     <div class="form-group row">
                                         <div class="col-12 ">
                                             <p class=" d-inline-flex ">Avez vous une maladie ?</p>
-                                            <label class="switch float-end "> 
-                                                <input type="checkbox" (click)="checkedMaladie()" [checked]="CheckedMaladie" >
+                                            <label class="switch float-end ">
+                                                <input type="checkbox" (click)="checkedMaladie()"
+                                                    [checked]="CheckedMaladie">
                                                 <span class="slider"></span>
-                                              </label>
+                                            </label>
                                         </div>
-                                       
+
                                     </div>
                                     <div *ngIf="CheckedMaladie">
                                         <div class="form-group row mt-3">
-                                        <!--khsni nbdl table de maladie ****************-->
-                                            <div class="dropdown col-6 ">
-                                                <button class="btn btn-outline-primary dropdown-toggle " type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [value]="groupesSanguins[0]">
-                                                  Maladie
-                                                </button>
-                                                <div class="dropdown-menu" >
-                                                    <button *ngFor="let option of groupesSanguins" (click)="selectOption(option)" class="dropdown-item" type="button">{{ option }}</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-12 ">
-                                                <p class=" d-inline-flex ">Avez vous une alérgie ?</p>
-                                                <label class="switch float-end "> 
-                                                    <input type="checkbox" (click)="checkedAlergie()"  [checked]="CheckedAlergie"
-                                                    >
-                                                    <span class="slider" ></span>
-                                                  </label>
-                                            </div>
-                                           
-                                        </div>
-                                        <div *ngIf="CheckedAlergie">
-                                            <div class="form-group row mt-3">
                                             <!--khsni nbdl table de maladie ****************-->
-                                                <div class="dropdown col-6 ">
-                                                    <button class="btn btn-outline-primary dropdown-toggle " type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [value]="groupesSanguins[0]">
-                                                      Alergie
-                                                    </button>
-                                                    <div class="dropdown-menu" >
-                                                        <button *ngFor="let option of groupesSanguins" (click)="selectOption(option)" class="dropdown-item" type="button">{{ option }}</button>
-                                                    </div>
+                                            <div class="dropdown col-6 ">
+                                                <button class="btn btn-outline-primary dropdown-toggle " type="button"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                                    [value]="groupesSanguins[0]">
+                                                    Maladie
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <button *ngFor="let option of groupesSanguins"
+                                                        (click)="selectOption(option)" class="dropdown-item"
+                                                        type="button">{{ option }}</button>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-12 ">
+                                            <p class=" d-inline-flex ">Avez vous une alérgie ?</p>
+                                            <label class="switch float-end ">
+                                                <input type="checkbox" (click)="checkedAlergie()"
+                                                    [checked]="CheckedAlergie">
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                    <div *ngIf="CheckedAlergie">
+                                        <div class="form-group row mt-3">
+                                            <!--khsni nbdl table de maladie ****************-->
+                                            <div class="dropdown col-6 ">
+                                                <button class="btn btn-outline-primary dropdown-toggle " type="button"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                                    [value]="groupesSanguins[0]">
+                                                    Alergie
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <button *ngFor="let option of groupesSanguins"
+                                                        (click)="selectOption(option)" class="dropdown-item"
+                                                        type="button">{{ option }}</button>
+                                                </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <div class="col-12 ">
-                                                    <p class="mt-2 mr-2 d-inline-flex ">Avez vous des médicament ?</p>
-                                                    <label class="switch float-end "> 
-                                                        <input type="checkbox" (click)="checkedMedicament()" [checked]="CheckedMedicament" >
-                                                        <span class="slider"></span>
-                                                      </label>
-                                                </div>
-                                               
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-12 ">
+                                            <p class="mt-2 mr-2 d-inline-flex ">Avez vous des médicament ?</p>
+                                            <label class="switch float-end ">
+                                                <input type="checkbox" (click)="checkedMedicament()"
+                                                    [checked]="CheckedMedicament">
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                    <div *ngIf="CheckedMedicament">
+                                        <div class="form-group row mt-3">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control"
+                                                    [(ngModel)]="SelectedUser.taille"
+                                                    [ngModelOptions]="{standalone: true}" placeholder="Medicament">
                                             </div>
-                                            <div *ngIf="CheckedMedicament">
-                                                <div class="form-group row mt-3">
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control"  [(ngModel)]="SelectedUser.taille"
-                                                        [ngModelOptions]="{standalone: true}" placeholder="Medicament">
-                                                      </div>
-                                                </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-12 ">
-                                                        <p class=" d-inline-flex ">Avez vous subi des chirurgie ?</p>
-                                                        <label class="switch float-end "> 
-                                                            <input type="checkbox" (click)="Chirurigie()" [checked]="Chirurgie" >
-                                                            <span class="slider"></span>
-                                                          </label>
-                                                    </div>
-                                                   
-                                                </div>
-                                                <div *ngIf="Chirurgie">
-                                                    <div class="form-group row mt-3">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control"  [(ngModel)]="SelectedUser.taille"
-                                                            [ngModelOptions]="{standalone: true}" placeholder="Medicament">
-                                                          </div>
-                                                    </div>
-                                                    </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-12 ">
+                                            <p class=" d-inline-flex ">Avez vous subi des chirurgie ?</p>
+                                            <label class="switch float-end ">
+                                                <input type="checkbox" (click)="Chirurigie()" [checked]="Chirurgie">
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                    <div *ngIf="Chirurgie">
+                                        <div class="form-group row mt-3">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control"
+                                                    [(ngModel)]="SelectedUser.taille"
+                                                    [ngModelOptions]="{standalone: true}" placeholder="Medicament">
+                                            </div>
+                                        </div>
+                                    </div>
                                     <!--Button Next-->
                                     <div>
-                                        <button class="form-container__sign mt-2 "(click)="prevStep()">Previous</button>
-                                            <button class="form-container__sign mt-2 ">SignUp</button>
+                                        <button class="form-container__sign mt-2 "
+                                            (click)="prevStep()">Previous</button>
+                                        <button class="form-container__sign mt-2 ">SignUp</button>
                                     </div>
                                 </form>
                             </div>
@@ -343,3 +366,37 @@
 
     </div>
 </section>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  col-8">
+        <div class="modal-content forgotmodal">
+            <div class="modal-header">
+                <h6  id="exampleModalLabel" class="mx-3">
+                    <div class="color-font2  h3  mx-5 px-5"><a > Forget Password
+                        </a></div>
+                </h6>
+               
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="Forgotpwd()">
+                    
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="color-font2">Entrez Votre Email</label>
+                        <input type="email" class="form-control m-2" id="exampleInputEmail1" [(ngModel)]="EmailForgot.email"
+                        [ngModelOptions]="{standalone: true}" placeholder="Email" aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">Vous devez recoit un code sur votre Email saisie</small>
+                      </div>
+                      <button class="form-container__sign mt-2 ">Envoyer</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               
+            </div>
+        </div>
+    </div>
+</div>

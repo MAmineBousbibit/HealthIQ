@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './_guards/auth.guard';
 import { PageHomeComponent } from './Views/page-home/page-home.component';
 import { DashboardSuperAddComponent } from './SuperAdmin/dashboard-super-add/dashboard-super-add.component';
+import { ForgotPwdComponent } from './component/forgot-pwd/forgot-pwd.component';
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -50,7 +51,8 @@ import { DashboardSuperAddComponent } from './SuperAdmin/dashboard-super-add/das
     FormCardComponent,
     BlogsDetailComponent,
     PageHomeComponent,
-    DashboardSuperAddComponent
+    DashboardSuperAddComponent,
+    ForgotPwdComponent
   ],
   imports: [
     BrowserModule,
