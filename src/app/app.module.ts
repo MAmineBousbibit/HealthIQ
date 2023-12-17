@@ -21,6 +21,16 @@ import { ContactComponent } from './contact/contact.component';
 import { ServiceMedicalComponent } from './Views/service-medical/service-medical.component';
 import { HomeComponent } from './Views/home/home.component';
 import { FormCardComponent } from './component/form-card/form-card.component';
+<<<<<<< Updated upstream
+=======
+import { BlogsDetailComponent } from './Views/blogs/blogs-detail/blogs-detail.component';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './_guards/auth.guard';
+import { PageHomeComponent } from './Views/page-home/page-home.component';
+import { DashboardSuperAddComponent } from './SuperAdmin/dashboard-super-add/dashboard-super-add.component';
+import { NavbarhomeComponent } from './navbarhome/navbarhome.component';
+>>>>>>> Stashed changes
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -43,7 +53,15 @@ import { FormCardComponent } from './component/form-card/form-card.component';
     ContactComponent,
     ServiceMedicalComponent,
     HomeComponent,
+<<<<<<< Updated upstream
     FormCardComponent
+=======
+    FormCardComponent,
+    BlogsDetailComponent,
+    PageHomeComponent,
+    DashboardSuperAddComponent,
+    NavbarhomeComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
