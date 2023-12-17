@@ -22,7 +22,7 @@ CheckedMaladie:boolean=false
 CheckedAlergie:boolean=false
 CheckedMedicament:boolean=false
 Chirurgie:boolean=false
-
+EmailForgot:User=new User();
   ngOnInit() {
   }
 ShowSignUpform(){
@@ -99,5 +99,10 @@ SignUp(){
    )
 
 
+}
+Forgotpwd(){
+  console.log(this.EmailForgot);
+  
+  
 }
 }
