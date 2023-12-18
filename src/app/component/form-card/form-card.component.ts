@@ -32,6 +32,7 @@ export class FormCardComponent implements OnInit {
   formLogin!: FormGroup;
   //SignupForm!:FormGroup;
   SignupGroup!: FormGroup;
+  forgetForm!:FormGroup;
   constructor(private Services: UserService, private AuthService: AuthService, private router: Router, private formBuilder: FormBuilder) {
 
   }
@@ -49,6 +50,7 @@ export class FormCardComponent implements OnInit {
   CheckedAlergie: boolean = false
   CheckedMedicament: boolean = false
   Chirurgie: boolean = false
+  Condition:boolean=false
   EmailForgot: User = new User();
   errorMessage: string = '';
   ngOnInit() {
@@ -90,11 +92,15 @@ export class FormCardComponent implements OnInit {
         typeAlergie: [''],
         MedicamentCheck:[''],
         NomMedicament:[''],
-        Chirurgie:['']
-
+        Chirurgie:[''],
+        
+       // condition: ['', [Validators.required]]
       })
 
-    });
+    }),
+    this.forgetForm=this.formBuilder.group({
+      email:['', [Validators.required, Validators.email]],
+    })
 
 
 
@@ -152,6 +158,10 @@ export class FormCardComponent implements OnInit {
   }
   Chirurigie() {
     this.Chirurgie = !this.Chirurgie
+  }
+  condition(){
+    this.Condition = !this.Condition
+
   }
   toggleSportSelection(event: any) {
     this.CheckedSport = event.target.checked;
@@ -214,17 +224,25 @@ export class FormCardComponent implements OnInit {
     }
   }
 }
+toggleConditionSelection(event: any){
+  this.Condition = event.target.checked;
+  const Condition = this.SignupGroup.get('fourthForm.condition');
+
+  if (Condition) {
+    if (this.Condition) {
+      Condition.setValue(true);
+    } else {
+      Condition.setValue(false);
+    }
+  }
+}
   Login() {
     this.SelectedUser = { ...this.formLogin.value }// as User
-    console.log(this.SelectedUser)
+   // console.log(this.SelectedUser)
     this.Services.Login(this.SelectedUser).subscribe(
       (token: any) => {
-        // recuperation de Token JWT
-
-
-
+    
         this.AuthService.loadProfile(token)
-
       },
       (error) => {
         console.log(error);
@@ -232,9 +250,13 @@ export class FormCardComponent implements OnInit {
     )
   }
   SignUp() {
-
-    this.SelectedUser = this.convertToUser(this.SignupGroup.value)
-    console.log(this.SelectedUser)
+    if (!this.Condition) {
+      
+      alert("Veuillez accepter nos conditions d'utilisation pour continuer.");
+    }
+    else{
+       this.SelectedUser = this.convertToUser(this.SignupGroup.value)
+    //console.log(this.SelectedUser)
     this.Services.Register(this.SelectedUser).subscribe(
       (token: any) => {
         this.AuthService.loadProfile(token)
@@ -244,13 +266,15 @@ export class FormCardComponent implements OnInit {
         this.errorMessage = error.error
       }
     )
+    }
+   
 
 
   }
   Forgotpwd() {
+    
+    this.EmailForgot = { ...this.forgetForm.value }
     console.log(this.EmailForgot);
-
-
   }
 
   //****Fonction qui convert les donnees de formControl a modal USER ***///
@@ -278,6 +302,8 @@ export class FormCardComponent implements OnInit {
     user.NomMedicament=formData.fourthForm.NomMedicament
     user.MedicamentCheck=formData.fourthForm.MedicamentCheck
     user.Chirurgie=formData.fourthForm.Chirurgie
+    user.condition=formData.fourthForm.condition
+
     return user;
   }
 }

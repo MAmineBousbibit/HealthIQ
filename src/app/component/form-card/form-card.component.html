@@ -47,7 +47,7 @@
                                                 Entrez Votre Email
                                             </span>
                                             <span *ngIf="formLogin.get('email')?.errors?.['email']">
-                                                 Email invalide
+                                                 Email invalide <span class=" text-muted font-weight-light font-italic "> ( ex : Email@gmail.com)</span>
                                             </span>
                                         </div>
                                     </div>
@@ -90,7 +90,7 @@
                             
                             <div #step1 *ngIf="ValueStep==1">
                                 
-                                <form formGroupName="SignupForm">
+                                <form novalidate formGroupName="SignupForm">
 
 
                                     <div class="form-group row mb-2">
@@ -129,7 +129,7 @@
                                                         Entrez Votre Email
                                                     </span>
                                                     <span *ngIf="SignupGroup.get('SignupForm.email')?.errors?.['email']">
-                                                         Email invalide
+                                                         Email invalide <span class=" text-muted font-weight-light font-italic "> ( ex : Email@gmail.com)</span>
                                                     </span>
                                                 </div>
                                         </div>
@@ -189,7 +189,7 @@
                             </div>
                             <!--step2 -->
                             <div #step2 *ngIf="ValueStep==2">
-                                <form formGroupName="secondForm">
+                                <form  novalidate formGroupName="secondForm">
                                     <p class="mt-4 d-flex h3">Personal Information</p>
                                     <div class="form-group row">
                                         <div class="col-6 ">
@@ -327,7 +327,7 @@
                             </div>
                             <!--step 4-->
                             <div #step1 *ngIf="ValueStep==4">
-                                <form (ngSubmit)="SignUp()" formGroupName="fourthForm">
+                                <form (ngSubmit)="SignUp()" novalidate formGroupName="fourthForm">
 
 
                                     <div class="form-group row">
@@ -415,7 +415,21 @@
                                         </div>
 
                                     </div>
-                                   
+                                    <div class="alert alert-warning" role="alert">
+                                        
+                                            <input type="checkbox" aria-label="Checkbox for following text input" 
+                                            [checked]="Condition" required
+                                                (change)="toggleConditionSelection($event)" >
+                                            En cochant cette case, vous acceptez nos conditions d'utilisation
+                                            <div class="invalid-feedback">
+                                               
+                                               <span *ngIf="SignupGroup.get('fourthForm.condition')?.errors">
+                                                Veuillez accepter nos conditions d'utilisation pour continuer.
+                                                </span>
+                                            </div>
+                                      </div>
+                                     <!-- Usser deja exist-->
+                                    <div><span class="text-danger">{{this.errorMessage}}</span></div>
                                     <!--Button Next-->
                                     <div>
                                         <button class="form-container__sign mt-2 "
@@ -487,15 +501,36 @@
                
             </div>
             <div class="modal-body">
-                <form (ngSubmit)="Forgotpwd()">
+                <form (ngSubmit)="Forgotpwd()" [formGroup]="forgetForm">
                     
-                    <div class="form-group">
+                  <!--  <div class="form-group">
                         <label for="exampleInputEmail1" class="color-font2">Entrez Votre Email</label>
                         <input type="email" class="form-control m-2" id="exampleInputEmail1" [(ngModel)]="EmailForgot.email"
                         [ngModelOptions]="{standalone: true}" placeholder="Email" aria-describedby="emailHelp">
                         <small id="emailHelp" class="form-text text-muted">Vous devez recoit un code sur votre Email saisie</small>
-                      </div>
-                      <button class="form-container__sign mt-2 ">Envoyer</button>
+                      </div>-->
+                      <div class="form-group row mb-2">
+                        <div class="col-8 input-group">
+                            <input type="email" class="form-control" 
+                               placeholder="Email"
+                                required  email formControlName="email" 
+                                [ngClass]="{'is-invalid':forgetForm.get('email')?.touched &&
+                                 !forgetForm.get('email')?.valid}">
+
+                                <div class="invalid-feedback">
+                                    <span *ngIf="forgetForm.get('email')?.errors?.['required']">
+                                        Entrez Votre Email
+                                    </span>
+                                    <span *ngIf="forgetForm.get('email')?.errors?.['email']">
+                                         Email invalide <span class=" text-muted font-weight-light font-italic "> ( ex : Email@gmail.com)</span>
+                                    </span>
+                                </div>
+                        </div>
+                        <!--Error MSG Deja Existe -->
+                        <div><span class="text-danger">{{this.errorMessage}}</span></div>
+                    </div>
+
+                      <button class="form-container__sign mt-2 " [disabled]="!forgetForm.valid">Envoyer</button>
                 </form>
             </div>
             <div class="modal-footer">
