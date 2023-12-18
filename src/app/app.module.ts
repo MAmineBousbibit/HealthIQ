@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HomePageSecondCreatComponent } from './view/home/home-page-second-creat/home-page-second-creat.component';
 import { HomePageFirstCreatComponent } from './view/home/home-page-first-creat/home-page-first-creat.component';
@@ -25,7 +25,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './_guards/auth.guard';
 import { PageHomeComponent } from './Views/page-home/page-home.component';
 import { DashboardSuperAddComponent } from './SuperAdmin/dashboard-super-add/dashboard-super-add.component';
-import { ForgotPwdComponent } from './component/forgot-pwd/forgot-pwd.component';
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -52,12 +51,13 @@ import { ForgotPwdComponent } from './component/forgot-pwd/forgot-pwd.component'
     BlogsDetailComponent,
     PageHomeComponent,
     DashboardSuperAddComponent,
-    ForgotPwdComponent
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule
   
