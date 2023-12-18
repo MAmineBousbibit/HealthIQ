@@ -11,6 +11,10 @@ export class User {
     ville:any;
     poid:any
     taille:any
+    sex:any
+    sportActif:any
+    typeSport:any
+    nb_foisSport:any
     constructor() {
         this.idUser = '';
         this.CodeMedical ='';
@@ -24,6 +28,7 @@ export class User {
         this.poid=''
         this.ville=''
         this.taille=''
+        this.sex='';
 
 
     }

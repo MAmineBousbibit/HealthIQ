@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ServiceComponent } from './service.component';
+import { ForgotPwdComponent } from './forgot-pwd.component';
 
-describe('ServiceComponent', () => {
-  let component: ServiceComponent;
-  let fixture: ComponentFixture<ServiceComponent>;
+describe('ForgotPwdComponent', () => {
+  let component: ForgotPwdComponent;
+  let fixture: ComponentFixture<ForgotPwdComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ServiceComponent]
+      declarations: [ForgotPwdComponent]
     });
-    fixture = TestBed.createComponent(ServiceComponent);
+    fixture = TestBed.createComponent(ForgotPwdComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
