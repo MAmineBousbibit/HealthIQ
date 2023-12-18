@@ -56,7 +56,15 @@
                                 <div class="form-group row">
                                     <div class="col-8 input-group">
                                         <input type="password" class="form-control"
-                                           placeholder="*********"  formControlName="password">
+                                           placeholder="*********"  formControlName="password"
+                                            required
+                                            [ngClass]="{'is-invalid':formLogin.get('password')?.touched && !formLogin.get('password')?.valid}">
+                                            <div class="invalid-feedback">
+                                                <span *ngIf="formLogin.get('password')?.errors?.['required']">
+                                                    Entrez Votre Email
+                                                </span>
+                                               
+                                            </div>
                                     </div>
                                 </div>
                                 <button [disabled]="!formLogin.valid" class="button-signIN mt-2 ">Sign In</button>
@@ -77,16 +85,20 @@
                                 </div>
                             </div>
                             <!--step 1-->
+                            <form novalidate [formGroup]="SignupGroup">
+
+                            
                             <div #step1 *ngIf="ValueStep==1">
-                                <form novalidate [formGroup]="SignupForm">
+                                
+                                <form formGroupName="SignupForm">
 
 
                                     <div class="form-group row mb-2">
                                         <div class="col-6 ">
                                             <input type="text" class="form-control" placeholder="Nom" required formControlName="nom"
-                                            [ngClass]="{'is-invalid':SignupForm.get('nom')?.touched && !SignupForm.get('nom')?.valid}">
+                                            [ngClass]="{'is-invalid':SignupGroup.get('SignupForm.nom')?.touched && !SignupGroup.get('SignupForm.nom')?.valid}">
                                                 <div class="invalid-feedback">
-                                                    <span *ngIf="SignupForm.get('nom')?.errors?.['required']">
+                                                    <span *ngIf="SignupGroup.get('SignupForm.nom')?.errors?.['required']">
                                                         Entrez Votre Nom
                                                     </span>
                                                     
@@ -95,9 +107,9 @@
                                         <div class="col-6 ">
                                             <input type="text" class="form-control" 
                                                  placeholder="prenom" required formControlName="prenom" 
-                                                [ngClass]="{'is-invalid':SignupForm.get('prenom')?.touched && !SignupForm.get('prenom')?.valid}">
+                                                [ngClass]="{'is-invalid':SignupGroup.get('SignupForm.prenom')?.touched && !SignupGroup.get('SignupForm.prenom')?.valid}">
                                                 <div class="invalid-feedback">
-                                                    <span *ngIf="SignupForm.get('nom')?.errors?.['required']">
+                                                    <span *ngIf="SignupGroup.get('SignupForm.prenom')?.errors?.['required']">
                                                         Entrez Votre Prenom
                                                     </span>
                                                     
@@ -110,13 +122,13 @@
                                             <input type="email" class="form-control" 
                                                placeholder="Email"
                                                 required  email formControlName="email" 
-                                                [ngClass]="{'is-invalid':SignupForm.get('email')?.touched && !SignupForm.get('email')?.valid}">
+                                                [ngClass]="{'is-invalid':SignupGroup.get('SignupForm.email')?.touched && !SignupGroup.get('SignupForm.email')?.valid}">
 
                                                 <div class="invalid-feedback">
-                                                    <span *ngIf="SignupForm.get('email')?.errors?.['required']">
+                                                    <span *ngIf="SignupGroup.get('SignupForm.email')?.errors?.['required']">
                                                         Entrez Votre Email
                                                     </span>
-                                                    <span *ngIf="SignupForm.get('email')?.errors?.['email']">
+                                                    <span *ngIf="SignupGroup.get('SignupForm.email')?.errors?.['email']">
                                                          Email invalide
                                                     </span>
                                                 </div>
@@ -130,15 +142,16 @@
                                             <input type="password" class="form-control"
                                                  placeholder="password" formControlName="password"
                                                  required   formControlName="password" 
-                                                [ngClass]="{'is-invalid': SignupForm.get('PasswordGroup')?.errors ||
-                                                (SignupForm.get('PasswordGroup.password')?.touched 
-                                                 && !SignupForm.get('PasswordGroup.password')?.valid)}">
+                                                [ngClass]="{'is-invalid': 
+                                                ((SignupGroup.get('SignupForm.PasswordGroup.password')?.touched ||
+                                                SignupGroup.get('SignupForm.PasswordGroup.password')?.pristine)
+                                                 && !SignupGroup.get('SignupForm.PasswordGroup.password')?.valid)}">
                                         
                                                 <div class="invalid-feedback">
-                                                    <span *ngIf="SignupForm.get('PasswordGroup.password')?.errors?.['required']">
+                                                    <span *ngIf="SignupGroup.get('SignupForm.PasswordGroup.password')?.errors?.['required']">
                                                        Entrez le mot de passe
                                                    </span>
-                                                    <span *ngIf="SignupForm.get('PasswordGroup.password')?.errors?.['minlength']">
+                                                    <span *ngIf="SignupGroup.get('SignupForm.PasswordGroup.password')?.errors?.['minlength']">
                                                          Entre en moins 8 charactére
                                                     </span>
                                                 </div>
@@ -147,20 +160,21 @@
                                     <div class="form-group row">
                                         <div class="col-8 input-group">
                                             <input type="password" class="form-control"
-                                                placeholder="Confirmation de mot de pass" id="confirmationPWD" formControlName="ConfirmPassword"
-                                                required   
-                                                [ngClass]="{'is-invalid': SignupForm.get('PasswordGroup')?.errors || 
-                                                (( SignupForm.get('PasswordGroup.ConfirmPassword')?.touched || 
-                                                SignupForm.get('PasswordGroup.ConfirmPassword')?.dirty ) && 
-                                                !SignupForm.get('PasswordGroup.ConfirmPassword')?.valid)}">
+                                                placeholder="Confirmation de mot de pass"  formControlName="ConfirmPassword"
+                                                  required 
+                                                [ngClass]="{'is-invalid': SignupGroup.get('SignupForm.PasswordGroup')?.errors || 
+                                                (( SignupGroup.get('SignupForm.PasswordGroup.ConfirmPassword')?.touched || 
+                                                SignupGroup.get('SignupForm.PasswordGroup.ConfirmPassword')?.dirty ) && 
+                                                !SignupGroup.get('SignupForm.PasswordGroup.ConfirmPassword')?.valid)}">
 
                                                 <div class="invalid-feedback">
-                                                    <span *ngIf="SignupForm.get('PasswordGroup')?.errors?.['match']">
+                                                    <span *ngIf="SignupGroup.get('SignupForm.PasswordGroup')?.errors?.['match']">
                                                         Mot de passe n'est pas identique
                                                    </span>
-                                                  <!--  <span *ngIf="SignupForm.get('PasswordGroup.ConfirmPassword')?.errors?.['required']">
+                                                   <span *ngIf="
+                                                   SignupGroup.get('SignupForm.PasswordGroup.ConfirmPassword')?.errors?.['required']">
                                                          Confirmer le mot de passe
-                                                    </span>-->
+                                                    </span>
                                                 </div>
                                         </div>
                                     </div>
@@ -168,30 +182,28 @@
                                     <!--Button Next-->
                                     <div>
 
-                                        <button class="form-container__sign mt-2 " (click)="nextStep()" [disabled]="">Next</button>
+                                        <button class="form-container__sign mt-2 " [disabled]="!SignupGroup.valid" (click)="nextStep()" [disabled]="!SignupGroup.valid">Next</button>
 
                                     </div>
                                 </form>
                             </div>
                             <!--step2 -->
                             <div #step2 *ngIf="ValueStep==2">
-                                <form>
+                                <form formGroupName="secondForm">
                                     <p class="mt-4 d-flex h3">Personal Information</p>
                                     <div class="form-group row">
                                         <div class="col-6 ">
                                             <input type="date" class="form-control"
-                                                [(ngModel)]="SelectedUser.dateNaissance"
-                                                [ngModelOptions]="{standalone: true}">
+                                            formControlName="dateNaissance">
                                         </div>
                                         <div class="col-6 ">
-                                            <input type="text" class="form-control" [(ngModel)]="SelectedUser.ville"
-                                                [ngModelOptions]="{standalone: true}" placeholder="Ville">
+                                            <input type="text" class="form-control" formControlName="ville" placeholder="Ville">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-12 ">
-                                            <input type="text" class="form-control" [(ngModel)]="SelectedUser.adresse"
-                                                [ngModelOptions]="{standalone: true}" placeholder="adresse">
+                                            <input type="text" class="form-control" formControlName="adresse"
+                                               placeholder="adresse">
                                         </div>
 
                                     </div>
@@ -199,20 +211,21 @@
                                     <div class="form-group row">
                                         <div class="col-12 ">
                                             <input type="number" class="form-control"
-                                                [(ngModel)]="SelectedUser.phoneNumber"
-                                                [ngModelOptions]="{standalone: true}" placeholder="Telephone">
+                                            formControlName="phoneNumber" placeholder="Telephone">
                                         </div>
 
                                     </div>
                                     <div class="form-check form-check-inline my-2">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="inlineRadio1" value="Homme" [(ngModel)]="SelectedUser.sex">
-                                        <label class="form-check-label" for="inlineRadio1">Homme</label>
+                                        <input class="form-check-input" type="radio" 
+                                             
+                                            formControlName="sex" name="sex" value="Homme"
+                                            >
+                                        <label class="form-check-label" >Homme</label>
                                     </div>
                                     <div class="form-check form-check-inline my-2">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="inlineRadio2" value="Femme" [(ngModel)]="SelectedUser.sex">
-                                        <label class="form-check-label" for="inlineRadio2">Femme</label>
+                                        <input class="form-check-input" type="radio" 
+                                         formControlName="sex"  name="sex" value="Femme">
+                                        <label class="form-check-label">Femme</label>
                                     </div>
                                     <div>
                                         <button class="form-container__sign mt-2 "
@@ -223,14 +236,14 @@
                                 </form>
                             </div>
                             <!--Step 3 -->
-                            <div #step2 *ngIf="ValueStep==3">
-                                <form>
+                            <div #step2 *ngIf="ValueStep==3" >
+                                <form novalidate formGroupName="thirdForm">
                                     <p class="mt-4 d-flex h3">Health Information</p>
                                     <div class="form-group row">
                                         <div class="col-6">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" [(ngModel)]="SelectedUser.poid"
-                                                    [ngModelOptions]="{standalone: true}" placeholder="Poid">
+                                                <input type="text" class="form-control" formControlName="poid"
+                                                     placeholder="Poid" >
                                                 <div class="input-group-append ">
                                                     <span class="input-group-text">KG</span>
                                                 </div>
@@ -239,8 +252,7 @@
                                         <div class="col-6">
                                             <div class="input-group">
                                                 <input type="text" class="form-control"
-                                                    [(ngModel)]="SelectedUser.taille"
-                                                    [ngModelOptions]="{standalone: true}" placeholder="Taille">
+                                                formControlName="taille" placeholder="Taille">
                                                 <div class="input-group-append ">
                                                     <span class="input-group-text">cm</span>
                                                 </div>
@@ -248,7 +260,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
+                                   <!----<div class="form-group row">
                                         <div class="dropdown col-6 ">
                                             <button class="btn btn-outline-primary dropdown-toggle " type="button"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
@@ -261,8 +273,19 @@
                                                     type="button">{{ option }}</button>
                                             </div>
                                         </div>
-                                    </div>
-
+                                    </div>-->
+                                    <div class="dropdown mt-2 show">
+                                        <a class="btn drop-color dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Groupe Sanguin
+                                        </a>
+                                      
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                          
+                                          <button *ngFor="let option of groupesSanguins"
+                                          (click)="selectOption(option)" class="dropdown-item"
+                                          type="button">{{ option }}</button>
+                                        </div>
+                                      </div>
                                     <div class="form-group row">
                                         <div class="col-12 mt-3">
                                             <p class=" d-inline-flex ">Êtes vous actuellement actif Physiquement ?</p>
@@ -281,16 +304,15 @@
                                             <div class="col-9">
                                                 <div class="input-group">
                                                     <input type="text" class="form-control"
-                                                        [(ngModel)]="SelectedUser.typeSport"
-                                                        [ngModelOptions]="{standalone: true}"
+                                                    formControlName="typeSport"
+                                                        
                                                         placeholder="Type de sport">
                                                 </div>
                                             </div>
                                             <div class="col-3">
                                                 <div class="input-group">
                                                     <input type="number" class="form-control"
-                                                        [(ngModel)]="SelectedUser.nb_foisSport"
-                                                        [ngModelOptions]="{standalone: true}" placeholder="Nb fois">
+                                                    formControlName="nb_foisSport" placeholder="Nb fois">
                                                 </div>
                                             </div>
                                         </div>
@@ -305,7 +327,7 @@
                             </div>
                             <!--step 4-->
                             <div #step1 *ngIf="ValueStep==4">
-                                <form (ngSubmit)="SignUp()">
+                                <form (ngSubmit)="SignUp()" formGroupName="fourthForm">
 
 
                                     <div class="form-group row">
@@ -313,106 +335,99 @@
                                             <p class=" d-inline-flex ">Avez vous une maladie ?</p>
                                             <label class="switch float-end ">
                                                 <input type="checkbox" (click)="checkedMaladie()"
-                                                    [checked]="CheckedMaladie">
+                                                    [checked]="CheckedMaladie"
+                                                    (change)="toggleMaladieSelection($event)">
                                                 <span class="slider"></span>
                                             </label>
                                         </div>
 
                                     </div>
-                                    <div *ngIf="CheckedMaladie">
-                                        <div class="form-group row mt-3">
-                                            <!--khsni nbdl table de maladie ****************-->
-                                            <div class="dropdown col-6 ">
-                                                <button class="btn btn-outline-primary dropdown-toggle " type="button"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                                    [value]="groupesSanguins[0]">
-                                                    Maladie
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <button *ngFor="let option of groupesSanguins"
-                                                        (click)="selectOption(option)" class="dropdown-item"
-                                                        type="button">{{ option }}</button>
-                                                </div>
-                                            </div>
+                                  
+                                    <div class="dropdown my-2 show" *ngIf="CheckedMaladie">
+                                        <a class="btn drop-color dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                           Type Maladie
+                                        </a>
+                                      
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                          
+                                          <button *ngFor="let option of Maladieoption"
+                                          (click)="MaladieOption(option)" class="dropdown-item"
+                                          type="button">{{ option }}</button>
                                         </div>
-                                    </div>
+                                      </div>
+
+
                                     <div class="form-group row">
                                         <div class="col-12 ">
                                             <p class=" d-inline-flex ">Avez vous une alérgie ?</p>
                                             <label class="switch float-end ">
                                                 <input type="checkbox" (click)="checkedAlergie()"
+                                                (change)="toggleAlergieSelection($event)"
+                                                
                                                     [checked]="CheckedAlergie">
                                                 <span class="slider"></span>
                                             </label>
                                         </div>
 
                                     </div>
-                                    <div *ngIf="CheckedAlergie">
-                                        <div class="form-group row mt-3">
-                                            <!--khsni nbdl table de maladie ****************-->
-                                            <div class="dropdown col-6 ">
-                                                <button class="btn btn-outline-primary dropdown-toggle " type="button"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                                    [value]="groupesSanguins[0]">
-                                                    Alergie
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <button *ngFor="let option of groupesSanguins"
-                                                        (click)="selectOption(option)" class="dropdown-item"
-                                                        type="button">{{ option }}</button>
-                                                </div>
-                                            </div>
+                                   
+                                    <div class="dropdown my-2 show" *ngIf="CheckedAlergie">
+                                        <a class="btn drop-color dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Type d'alergie
+                                        </a>
+                                      
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                          
+                                          <button *ngFor="let option of alergieOption"
+                                          (click)="AlergieOption(option)" class="dropdown-item"
+                                          type="button">{{ option }}</button>
                                         </div>
-                                    </div>
+                                      </div>
+
                                     <div class="form-group row">
                                         <div class="col-12 ">
                                             <p class="mt-2 mr-2 d-inline-flex ">Avez vous des médicament ?</p>
                                             <label class="switch float-end ">
-                                                <input type="checkbox" (click)="checkedMedicament()"
-                                                    [checked]="CheckedMedicament">
+                                                <input type="checkbox" (click)=" checkedMedicament()"
+                                                    [checked]="CheckedMedicament"
+                                                    (change)="toggleMedicamentSelection($event)">
                                                 <span class="slider"></span>
                                             </label>
                                         </div>
 
                                     </div>
-                                    <div *ngIf="CheckedMedicament">
-                                        <div class="form-group row mt-3">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control"
-                                                    [(ngModel)]="SelectedUser.taille"
-                                                    [ngModelOptions]="{standalone: true}" placeholder="Medicament">
-                                            </div>
+                                    <div class="form-group row"  *ngIf="CheckedMedicament">
+                                        <div class="col-12 ">
+                                            <input type="text" class="form-control"
+                                            formControlName="NomMedicament" placeholder="Nom de médicament">
                                         </div>
+
                                     </div>
+                                    
                                     <div class="form-group row">
                                         <div class="col-12 ">
                                             <p class=" d-inline-flex ">Avez vous subi des chirurgie ?</p>
                                             <label class="switch float-end ">
-                                                <input type="checkbox" (click)="Chirurigie()" [checked]="Chirurgie">
+                                                <input type="checkbox" (click)="Chirurigie()" [checked]="Chirurgie"
+                                                (change)="toggleChururgieSelection($event)">
                                                 <span class="slider"></span>
                                             </label>
                                         </div>
 
                                     </div>
-                                    <div *ngIf="Chirurgie">
-                                        <div class="form-group row mt-3">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control"
-                                                    [(ngModel)]="SelectedUser.taille"
-                                                    [ngModelOptions]="{standalone: true}" placeholder="Medicament">
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
                                     <!--Button Next-->
                                     <div>
                                         <button class="form-container__sign mt-2 "
                                             (click)="prevStep()">Previous</button>
-                                        <button class="form-container__sign mt-2 ">SignUp</button>
+                                        <button class="form-container__sign mt-2 " [disabled]="!SignupGroup.valid">SignUp</button>
                                     </div>
                                     
                                 </form>
                             </div>
+                        </form>
                         </div>
+                    
                     </div>
                     <div class="fxt-style-line" *ngIf="showLoginForm">
                         <h3>Or Login With Email</h3>
