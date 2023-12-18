@@ -23,6 +23,7 @@ export class User {
     MedicamentCheck:any
     NomMedicament:any
     Chirurgie:any
+   condition :any
     constructor() {
         this.idUser = '';
         this.CodeMedical ='';
@@ -44,7 +45,8 @@ export class User {
         this.alergieCheck='';
         this.MedicamentCheck='';
         this.NomMedicament='';
-        this.Chirurgie=';'
+        this.Chirurgie='';
+        this.condition='';
 
     }
 }
