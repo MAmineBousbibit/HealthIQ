@@ -34,22 +34,33 @@
                         <!--Login form-->
                         <div *ngIf="showLoginForm">
                             <p class="color-font" style="color: #0cb8b6;">Login into your pages account</p>
-                            <form (ngSubmit)="Login()">
+                            <form novalidate (ngSubmit)="Login()"  [formGroup]="formLogin">
 
                                 <div class="form-group row mb-2">
                                     <div class="col-8 input-group ">
-                                        <input type="text" class="form-control" [(ngModel)]="SelectedUser.email"
-                                            [ngModelOptions]="{standalone: true}" placeholder="Email">
+                                        <input type="text" class="form-control" 
+                                            placeholder="Email" required email formControlName="email" required email
+                                            [ngClass]="{'is-invalid':formLogin.get('email')?.touched && !formLogin.get('email')?.valid}"
+                                          >
+                                        <div class="invalid-feedback">
+                                            <span *ngIf="formLogin.get('email')?.errors?.['required']">
+                                                Entrez Votre Email
+                                            </span>
+                                            <span *ngIf="formLogin.get('email')?.errors?.['email']">
+                                                 Email invalide
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <div class="col-8 input-group">
-                                        <input type="password" class="form-control" [(ngModel)]="SelectedUser.password"
-                                            [ngModelOptions]="{standalone: true}" placeholder="*********">
+                                        <input type="password" class="form-control"
+                                           placeholder="*********"  formControlName="password">
                                     </div>
                                 </div>
-                                <button class="button-signIN mt-2 ">Sign In</button>
+                                <button [disabled]="!formLogin.valid" class="button-signIN mt-2 ">Sign In</button>
+                            
 
                                 <a data-toggle="modal" data-target="#exampleModal" class="text-decoration-underline color-font2">
                                     J'ai oublié le Mot de passe
@@ -57,7 +68,7 @@
                             </form>
                         </div>
                         <!--SignUp form-->
-                        <div *ngIf="showSignUpForm">
+                        <div *ngIf="showSignUpForm" >
                             <p class="mt-4 d-flex">{{ValueStep}} of 4 Completed</p>
                             <div class="progress" style="height: 10px;">
 
@@ -67,43 +78,97 @@
                             </div>
                             <!--step 1-->
                             <div #step1 *ngIf="ValueStep==1">
-                                <form>
+                                <form novalidate [formGroup]="SignupForm">
 
 
                                     <div class="form-group row mb-2">
                                         <div class="col-6 ">
-                                            <input type="text" class="form-control" [(ngModel)]="SelectedUser.Nom"
-                                                [ngModelOptions]="{standalone: true}" placeholder="Nom">
+                                            <input type="text" class="form-control" placeholder="Nom" required formControlName="nom"
+                                            [ngClass]="{'is-invalid':SignupForm.get('nom')?.touched && !SignupForm.get('nom')?.valid}">
+                                                <div class="invalid-feedback">
+                                                    <span *ngIf="SignupForm.get('nom')?.errors?.['required']">
+                                                        Entrez Votre Nom
+                                                    </span>
+                                                    
+                                                </div>
                                         </div>
                                         <div class="col-6 ">
-                                            <input type="text" class="form-control" [(ngModel)]="SelectedUser.prenom"
-                                                [ngModelOptions]="{standalone: true}" placeholder="prenom">
+                                            <input type="text" class="form-control" 
+                                                 placeholder="prenom" required formControlName="prenom" 
+                                                [ngClass]="{'is-invalid':SignupForm.get('prenom')?.touched && !SignupForm.get('prenom')?.valid}">
+                                                <div class="invalid-feedback">
+                                                    <span *ngIf="SignupForm.get('nom')?.errors?.['required']">
+                                                        Entrez Votre Prenom
+                                                    </span>
+                                                    
+                                                </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group row mb-2">
                                         <div class="col-8 input-group">
-                                            <input type="email" class="form-control" [(ngModel)]="SelectedUser.email"
-                                                [ngModelOptions]="{standalone: true}" placeholder="Email">
+                                            <input type="email" class="form-control" 
+                                               placeholder="Email"
+                                                required  email formControlName="email" 
+                                                [ngClass]="{'is-invalid':SignupForm.get('email')?.touched && !SignupForm.get('email')?.valid}">
+
+                                                <div class="invalid-feedback">
+                                                    <span *ngIf="SignupForm.get('email')?.errors?.['required']">
+                                                        Entrez Votre Email
+                                                    </span>
+                                                    <span *ngIf="SignupForm.get('email')?.errors?.['email']">
+                                                         Email invalide
+                                                    </span>
+                                                </div>
                                         </div>
+                                        <!--Error MSG Deja Existe -->
+                                        <div><span class="text-danger">{{this.errorMessage}}</span></div>
                                     </div>
+                                    <div formGroupName="PasswordGroup">
                                     <div class="form-group row mb-2">
                                         <div class="col-8 input-group">
                                             <input type="password" class="form-control"
-                                                [(ngModel)]="SelectedUser.password"
-                                                [ngModelOptions]="{standalone: true}" placeholder="password">
-                                        </div>
+                                                 placeholder="password" formControlName="password"
+                                                 required   formControlName="password" 
+                                                [ngClass]="{'is-invalid': SignupForm.get('PasswordGroup')?.errors ||
+                                                (SignupForm.get('PasswordGroup.password')?.touched 
+                                                 && !SignupForm.get('PasswordGroup.password')?.valid)}">
+                                        
+                                                <div class="invalid-feedback">
+                                                    <span *ngIf="SignupForm.get('PasswordGroup.password')?.errors?.['required']">
+                                                       Entrez le mot de passe
+                                                   </span>
+                                                    <span *ngIf="SignupForm.get('PasswordGroup.password')?.errors?.['minlength']">
+                                                         Entre en moins 8 charactére
+                                                    </span>
+                                                </div>
+                                            </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-8 input-group">
                                             <input type="password" class="form-control"
-                                                placeholder="Confirmation de mot de pass">
+                                                placeholder="Confirmation de mot de pass" id="confirmationPWD" formControlName="ConfirmPassword"
+                                                required   
+                                                [ngClass]="{'is-invalid': SignupForm.get('PasswordGroup')?.errors || 
+                                                (( SignupForm.get('PasswordGroup.ConfirmPassword')?.touched || 
+                                                SignupForm.get('PasswordGroup.ConfirmPassword')?.dirty ) && 
+                                                !SignupForm.get('PasswordGroup.ConfirmPassword')?.valid)}">
+
+                                                <div class="invalid-feedback">
+                                                    <span *ngIf="SignupForm.get('PasswordGroup')?.errors?.['match']">
+                                                        Mot de passe n'est pas identique
+                                                   </span>
+                                                  <!--  <span *ngIf="SignupForm.get('PasswordGroup.ConfirmPassword')?.errors?.['required']">
+                                                         Confirmer le mot de passe
+                                                    </span>-->
+                                                </div>
                                         </div>
                                     </div>
+                                </div>
                                     <!--Button Next-->
                                     <div>
 
-                                        <button class="form-container__sign mt-2 " (click)="nextStep()">Next</button>
+                                        <button class="form-container__sign mt-2 " (click)="nextStep()" [disabled]="">Next</button>
 
                                     </div>
                                 </form>
@@ -344,6 +409,7 @@
                                             (click)="prevStep()">Previous</button>
                                         <button class="form-container__sign mt-2 ">SignUp</button>
                                     </div>
+                                    
                                 </form>
                             </div>
                         </div>

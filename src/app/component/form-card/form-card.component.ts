@@ -4,13 +4,38 @@ import { AuthService } from 'src/app/_Services/auth.service';
 import { JwtService } from 'src/app/_Services/jwt.service';
 import { UserService } from 'src/app/_Services/user.service';
 import { User } from 'src/app/_models/user';
+import { FormBuilder,FormControl,FormGroup, Validators,AbstractControl } from '@angular/forms';
+
+
+
+function  PasswordMatcher(c:AbstractControl):{[key:string]:boolean }| null{
+const password=c.get('password');
+const confPassword=c.get('ConfirmPassword');
+
+/*if (password?.pristine=== confPassword?.pristine){
+  return null;
+
+}*/
+
+if (password?.value=== confPassword?.value){
+  return null;
+
+}
+return {'match':true}
+}
 @Component({
   selector: 'app-form-card',
   templateUrl: './form-card.component.html',
   styleUrls: ['./form-card.component.css']
 })
 export class FormCardComponent implements OnInit {
-constructor(private Services:UserService,private AuthService:AuthService,private router:Router){}
+
+  formLogin!: FormGroup;
+  SignupForm!:FormGroup;
+constructor(private Services:UserService,private AuthService:AuthService,private router:Router,private formBuilder: FormBuilder){
+ 
+}
+
 SelectedUser: User=new User();
 showLoginForm:Boolean=true
 showSignUpForm:Boolean=false
@@ -23,7 +48,23 @@ CheckedAlergie:boolean=false
 CheckedMedicament:boolean=false
 Chirurgie:boolean=false
 EmailForgot:User=new User();
+errorMessage: string = ''; 
   ngOnInit() {
+    this.formLogin=this.formBuilder.group({
+      email:['', [Validators.required,Validators.email]],
+      password:['',Validators.required]
+    })
+    this.SignupForm=this.formBuilder.group({
+      nom:['',[Validators.required]],
+      prenom:['',[Validators.required]],
+      email:['', [Validators.required,Validators.email]],
+      PasswordGroup:this.formBuilder.group({
+        password:['',[Validators.required,Validators.minLength(8)]],
+        ConfirmPassword:['',[Validators.required]]
+      },{validators:PasswordMatcher})
+      
+
+    })
   }
 ShowSignUpform(){
       this.showSignUpForm=true
@@ -70,7 +111,7 @@ toggleSportSelection(event: any) {
   }
 }
 Login(){
-
+ this.SelectedUser = { ...this.formLogin.value } as User
  console.log(this.SelectedUser)
  this.Services.Login(this.SelectedUser).subscribe(
   (token:any)=>{
@@ -87,14 +128,15 @@ Login(){
  )
 }
 SignUp(){
-  //this.SelectedUser=new User();
+ 
   console.log(this.SelectedUser)
   this.Services.Register(this.SelectedUser).subscribe(
     (token:any)=>{
       this.AuthService.loadProfile(token)
     },
     (error)=>{
-      console.log(error);
+      console.log(error.error);
+      this.errorMessage=error.error
     }
    )
 
