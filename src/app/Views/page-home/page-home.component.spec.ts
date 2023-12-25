@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BannerComponent } from './banner.component';
+import { PageHomeComponent } from './page-home.component';
 
-describe('BannerComponent', () => {
-  let component: BannerComponent;
-  let fixture: ComponentFixture<BannerComponent>;
+describe('PageHomeComponent', () => {
+  let component: PageHomeComponent;
+  let fixture: ComponentFixture<PageHomeComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [BannerComponent]
+      declarations: [PageHomeComponent]
     });
-    fixture = TestBed.createComponent(BannerComponent);
+    fixture = TestBed.createComponent(PageHomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

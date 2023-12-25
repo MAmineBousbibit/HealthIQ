@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DoctorService } from 'src/app/services/doctor.service';
+import { DoctorService } from 'src/app/_Services/doctor.service';
 import {  Route, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
