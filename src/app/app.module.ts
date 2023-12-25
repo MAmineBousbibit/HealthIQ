@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HomePageSecondCreatComponent } from './view/home/home-page-second-creat/home-page-second-creat.component';
 import { HomePageFirstCreatComponent } from './view/home/home-page-first-creat/home-page-first-creat.component';
@@ -23,6 +23,8 @@ import { HomeComponent } from './Views/home/home.component';
 import { FormCardComponent } from './component/form-card/form-card.component';
 import { BlogsDetailComponent } from './Views/blogs/blogs-detail/blogs-detail.component';
 import { DashboardSuperAddComponent } from './SuperAdmin/dashboard-super-add/dashboard-super-add.component';
+import { GestionDocComponent } from './SuperAdmin/gestion-doc/gestion-doc.component';
+import { HttpClientModule } from '@angular/common/http';
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -47,12 +49,15 @@ import { DashboardSuperAddComponent } from './SuperAdmin/dashboard-super-add/das
     HomeComponent,
     FormCardComponent,
     BlogsDetailComponent,
-    DashboardSuperAddComponent
+    DashboardSuperAddComponent,
+    GestionDocComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
    // AgmCoreModule.forRoot({
    // apiKey='AIzaSyCsDB4BgPFsmAUX5O2UluvYtZN8YUHpX8M'
   // })
