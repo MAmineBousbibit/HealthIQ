@@ -2,13 +2,13 @@
     <div class="partie-gauche">
             <ul id="docteurs">
                 <li>
-                    <a href="#doc1" (click)="setActiveDiv('Doc1',$event)">
+                    <a>
                      <img src="/assets/img/docteur.png" width="50px" height="50px" >
                     </a>
                  <hr>
                 </li>
                 <li>
-                    <a href="#doc2" (click)="setActiveDiv('Doc2',$event)">
+                    <a>
                      <img src="/assets/img/docteur.png" width="50px" height="50px" >
                     </a>
                  <hr>
@@ -29,34 +29,39 @@
             </nav>
         </div>
     <div class="column">
+        <button class="btn" type="button" style="margin-left: 20px ;" name="add"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z"/>
+                <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
+              </svg>
+        </button>
+       
         <ul>
-            <li id="Doc1" class="info d-flex" *ngIf="activeDiv ==='Doc1'" >
+            <li  class="info d-flex" *ngFor="let doctor of doctors" >
                 <img class="image" src="/assets/img/docteur.png" width="50px" height="50px" >
                 <div class="details">
                 <p class="donnes">
-                Nom: <br>
-                Prenom: <br>
-                Date de naissance:<br>
-                Heures de travail: <br>
+                  Prenom:
+                  <span *ngIf="!doctor.editing">{{doctor.first_name}}</span>
+                  <input *ngIf="doctor.editing" type="text" [(ngModel)]="doctor.updatedFirstName">
+                  <br>
+                  Nom:
+                  <span *ngIf="!doctor.editing">{{doctor.last_name}} </span>
+                  <input *ngIf="doctor.editing" type="text" [(ngModel)]="doctor.updatedLastName">
+                  <br>
+                  Email:
+                  <span *ngIf="!doctor.editing">{{doctor.email}}</span>
+                  <input *ngIf="doctor.editing" type="email" [(ngModel)]="doctor.updatedEmail">
+                  <br>
+                  <button class="btn" type="button" *ngIf="doctor.editing" (click)="updateDoctor(doctor)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save" viewBox="0 0 16 16">
+                    <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1z"/>
+                   </svg>
+                  </button>
                 </p>
                 <p class="modification">
-                    <img src="/assets/img/editer.png" width="20px" height="20px" >
-                    <img src="/assets/img/supprimer.png" width="20px" height="20px" >
-                </p>
-            </div>
-            </li>
-            <li id="Doc2" class="info d-flex" *ngIf="activeDiv ==='Doc2'">
-                <img class="image" src="/assets/img/docteur.png" width="50px" height="50px" >
-                <div class="details">
-                <p class="donnes">
-                Nom: <br>
-                Prenom: <br>
-                Date de naissance:<br>
-                Heures de travail: <br>
-                </p>
-                <p class="modification">
-                    <img src="/assets/img/editer.png" width="20px" height="20px" >
-                    <img src="/assets/img/supprimer.png" width="20px" height="20px" >
+                    <img src="/assets/img/editer.png" width="20px" height="20px" (click)="toggleEditing(doctor)" >
+                    <img src="/assets/img/supprimer.png" width="20px" height="20px" (click)="deleteDoctor(doctor.id)">
                 </p>
             </div>
             </li>
@@ -65,3 +70,55 @@
     </div>
 </div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        
+        <div class="modal-body">
+            <form [formGroup]="NouveauDocteurForm">
+                <div class="space-y-12">
+                  <div class="border-b border-gray-900/10 pb-12">
+                    <h2 class="text-base font-semibold leading-7 text-gray-900">Informations du Docteur</h2>
+                    <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                      <div class="sm:col-span-3">
+                        <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Prenom</label>
+                        <div class="mt-2">
+                          <input type="text" name="first-name" id="first-name" required formControlName="first_name" autocomplete="given-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </div>
+              
+                      <div class="sm:col-span-3">
+                        <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Nom</label>
+                        <div class="mt-2">
+                          <input type="text" name="last-name" id="last-name" required formControlName="last_name" autocomplete="family-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </div>
+              
+                      <div class="sm:col-span-4">
+                        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
+                        <div class="mt-2">
+                          <input id="email" name="email" type="email" required formControlName="email" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </div>
+                    </div>
+                  </div> 
+                </div>
+                
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+              <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+            </svg>
+          </button>
+          <button type="submit" class="btn btn-outline-info" (click)="addDoctor()" routerLink="/gestion-doc">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save" viewBox="0 0 16 16">
+              <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
