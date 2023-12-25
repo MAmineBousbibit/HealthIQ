@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './_guards/auth.guard';
 import { PageHomeComponent } from './Views/page-home/page-home.component';
 import { DashboardSuperAddComponent } from './SuperAdmin/dashboard-super-add/dashboard-super-add.component';
+import { ChatboxComponent } from './Views/page-home/chatbox/chatbox.component';
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -51,6 +52,7 @@ import { DashboardSuperAddComponent } from './SuperAdmin/dashboard-super-add/das
     BlogsDetailComponent,
     PageHomeComponent,
     DashboardSuperAddComponent,
+    ChatboxComponent,
    
   ],
   imports: [
