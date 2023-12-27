@@ -33,15 +33,11 @@ toggleChatBox1(){
   this.box=true;
   this.chat=false;
 }
-sendmsg(){
- 
-  console.log(this.inputValue);
-  this.inputValue='';
-}
+
 
 handleAskGPT(){
 let url="https://api.openai.com/v1/chat/completions"
-let httpHeaders=new HttpHeaders().set("Authorization","Bearer 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")
+let httpHeaders=new HttpHeaders().set("Authorization","Bearer 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")
 this.messages.push({
   role:"user",content:this.queryFormGroup.value.query
 })
@@ -61,6 +57,9 @@ this.httpClient.post(url,payload,{headers:httpHeaders}).subscribe({
    })
    
    console.log(this.result)
+   this.queryFormGroup=this.formBuilder.group({
+    query:this.formBuilder.control('')
+   })
   },
   error:(err)=>{
 

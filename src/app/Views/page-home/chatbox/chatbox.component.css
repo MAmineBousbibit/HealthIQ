@@ -111,10 +111,12 @@ padding: 20%;
   }
   
   .nav-bar a {
-    color: #6B6C7B;
+    color:#0cb8b6;
     white-space: nowrap;
     margin-left: 10px;
     user-select: none;
+    text-align: center;
+    text-decoration: underline;
   }
   
   .close {
@@ -145,56 +147,71 @@ padding: 20%;
   }
   
   .messages-area {
-   /* background-color: green;*/
+   
     width: 100%;
     height: 210px;
+    overflow-y: auto;
   }
-  
   .sender-area {
     background-color: rgba(255, 255, 255, 0.522);
     width: 100%;
     height: 70px;
-    display: flex;
     border-radius: 8px;
-  }
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Pour espacer les éléments horizontalement */
+    padding: 0 10px; /* Espacement intérieur pour l'espace autour des éléments */
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Pour que les éléments prennent tout l'espace disponible */
+}
+
+.send-input {
+    outline: none;
+    border: none;
+    height: 40px;
+    width: calc(100% - 40px); /* Ajuster la largeur pour laisser de la place pour l'icône 
+    border-radius: 7px;*/
+    background-color: #f2f2fc;
+    color: #0cb8b6;
+    padding-left: 10px; /* Espacement interne à gauche pour l'entrée */
+    flex-grow: 1; /* Permettre à l'entrée de s'étendre autant que possible */
+}
+
+.send {
+    width: 30px;
+    height: 40px;
+    background-color: #f2f2fc;
+ padding-top: 4%;
+    cursor: pointer;
+}
+
   
   .message {
     width: 100%;
-    height: 40px;
+    height: auto;
   }
   
-  .message.one,
-  .message.three,
-  .message.five {
-    background-color: #f4f4f9;
+  .message.one
+   {
+    background-color: rgba(255, 255, 255, 0.522);
+    border-radius: 8px;
+    padding: 2%;
+    font-size: small;
+    color: #828E9E;
+    overflow: auto;
+
   }
   
-  .message.two,
-  .message.four,
-  .message.six {
-    background-color: #f8f8f9ec;
-  }
   
   .send-img {
     width: 30px;
   }
   
-  .send-input {
-    outline: none;
-    display: flex;
-    border: none;
-  
-    height: 40px;
-    width: 100%;
-    border-radius: 7px;
-    background: none;
-    color: #0cb8b6;
-    text-overflow: ellipsis;
-    padding-left: 5%;
-    overflow: hidden;
-   
-  }
-  
+ 
   .send-input::placeholder {
     color: #828E9E;
     padding: 5%;
@@ -213,21 +230,15 @@ padding: 20%;
     gap: 5px;
     border: 1px solid #f6f6f9;
   }
-  
-  .send {
-    width: 30px;
-    height: 30px;
-    background-color: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
+ 
   
   .send-icon {
-    width: 17px;
+    width: 20px;
   }
-
+  .send-icon:hover{
+    width: 25;
+    box-shadow: #0cb8b6 5px ;
+  }
   .tooltip-container2 {
     width: 20%; /* Par exemple, vous pouvez ajuster la valeur à ce que vous voulez */
   }
