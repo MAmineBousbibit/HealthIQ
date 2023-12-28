@@ -19,8 +19,8 @@ const routes: Routes = [
   {
     path: 'admin',
     component: DashboardSuperAddComponent, 
-    canActivate:[AuthGuard],// User doit être admin pour acces a ces Page ****/
-    children: [
+    canActivate:[AuthGuard],// User doit être admin pour acces a ces Page**/
+    /*children: [
       {
         path: 'Patients',
         component: GestionCustComponent  // Composant pour le chemin 'admin/Patients'
@@ -30,8 +30,10 @@ const routes: Routes = [
         component: GestionDocComponent // Composant pour le chemin 'admin/Doctors'
       },
       
-    ]
-  }
+    ]*/
+  },
+  {path:'gestion-doc', component:GestionDocComponent},
+  {path:'gestion-cust', component:GestionCustComponent}
 
 ];
 
