@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +13,13 @@ export class JwtService {
 
   public saveToken(token:string):void{  //*********Sauvgarde de token******/
     localStorage.setItem('token',token)
-    
-    this.router.navigate(['/Home']) /*Redirection to Home Page  */
-    
   }
   
   /**********************Verifier Si User est  Login */
   public isLoggedIn():boolean{
     //return this.getRoles() && this.getToken();
   const token=localStorage.getItem('token')
-  console.log("token qui se trouve dans LOCALSTORAGE",token);
+  //console.log("token qui se trouve dans LOCALSTORAGE",token);
   return !! token;
   
   }

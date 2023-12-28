@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { jwtDecode } from 'jwt-decode';
 import { JwtService } from './jwt.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class AuthService {
   userID:any;
   token!:string;
   isAuthenticated:boolean =false;
-  constructor(private http:HttpClient,private JWTService:JwtService) { }
+  constructor(private http:HttpClient,private JWTService:JwtService,private router:Router) { }
 
   /*/************************* Fonction Qui Decode Jeton de User*/ 
   public loadProfile(token:any){
@@ -27,9 +28,18 @@ export class AuthService {
     this.userID=jwtDecoder.ID;
     if(this.role==='ROLE_USER'){
     this.JWTService.saveToken(this.token)
-    console.log("Token Saved ");
-    
+    this.router.navigate(['/Home'])
     }
+    else if (this.role==='ROLE_ADMIN') {
+      this.JWTService.saveToken(this.token)
+      this.router.navigate(['/admin'])
+   
+    } 
+    else  {
+      this.JWTService.saveToken(this.token)
+      //this.router.navigate(['/Doctor'])
+   
+    } 
   }
 
 }
