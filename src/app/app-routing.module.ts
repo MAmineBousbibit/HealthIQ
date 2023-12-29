@@ -9,6 +9,12 @@ import { DashboardSuperAddComponent } from './SuperAdmin/dashboard-super-add/das
 import { GestionCustComponent } from './SuperAdmin/gestion-cust/gestion-cust.component';
 import { GestionDocComponent } from './SuperAdmin/gestion-doc/gestion-doc.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { DoctorInterfaceComponent } from './doctor-interface/doctor-interface.component';
+import { TabDashboardComponent } from './doctor-interface/tab-dashboard/tab-dashboard.component';
+import { CalendrierComponent } from './doctor-interface/calendrier/calendrier.component';
+import { OrdonnanceComponent } from './doctor-interface/ordonnance/ordonnance.component';
+import { PatientsComponent } from './doctor-interface/patients/patients.component';
+import { SettingComponent } from './doctor-interface/setting/setting.component';
 
 const routes: Routes = [
 
@@ -16,6 +22,30 @@ const routes: Routes = [
   {path:'Home',component:PageHomeComponent},
   {path:'Login',component:FormCardComponent},//login path
   {path:'Blog-Details',component:BlogsDetailComponent},
+  {path:'Doctor',component:DoctorInterfaceComponent,
+  children: [
+    {
+      path: 'Dashboard',
+      component: TabDashboardComponent  // Composant pour le chemin 'admin/Patients'
+    },
+    {
+      path: 'Calendrier',
+      component: CalendrierComponent  // Composant pour le chemin 'admin/Patients'
+    },
+    {
+      path: 'Ordonnance',
+      component: OrdonnanceComponent  // Composant pour le chemin 'admin/Patients'
+    },  {
+      path: 'Patients',
+      component: PatientsComponent  // Composant pour le chemin 'admin/Patients'
+    },  {
+      path: 'Settings',
+      component: SettingComponent  // Composant pour le chemin 'admin/Patients'
+    },
+    
+  ]
+},
+
   {
     path: 'admin',
     component: DashboardSuperAddComponent, 

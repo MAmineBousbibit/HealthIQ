@@ -29,6 +29,14 @@ import { PageHomeComponent } from './Views/page-home/page-home.component';
 import { DashboardSuperAddComponent } from './SuperAdmin/dashboard-super-add/dashboard-super-add.component';
 import { GestionDocComponent } from './SuperAdmin/gestion-doc/gestion-doc.component';
 import { ChatboxComponent } from './Views/page-home/chatbox/chatbox.component';
+import { DoctorInterfaceComponent } from './doctor-interface/doctor-interface.component';
+import { NavbarDocComponent } from './doctor-interface/navbar-doc/navbar-doc.component';
+import { SidebarComponent } from './doctor-interface/sidebar/sidebar.component';
+import { TabDashboardComponent } from './doctor-interface/tab-dashboard/tab-dashboard.component';
+import { CalendrierComponent } from './doctor-interface/calendrier/calendrier.component';
+import { PatientsComponent } from './doctor-interface/patients/patients.component';
+import { OrdonnanceComponent } from './doctor-interface/ordonnance/ordonnance.component';
+import { SettingComponent } from './doctor-interface/setting/setting.component';
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -57,6 +65,14 @@ import { ChatboxComponent } from './Views/page-home/chatbox/chatbox.component';
     PageHomeComponent,
     DashboardSuperAddComponent,
     ChatboxComponent,
+    DoctorInterfaceComponent,
+    NavbarDocComponent,
+    SidebarComponent,
+    TabDashboardComponent,
+    CalendrierComponent,
+    PatientsComponent,
+    OrdonnanceComponent,
+    SettingComponent,
    
   ],
   imports: [
