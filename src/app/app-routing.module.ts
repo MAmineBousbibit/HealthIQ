@@ -23,32 +23,42 @@ const routes: Routes = [
   {path:'Home',component:PageHomeComponent},
   {path:'Login',component:FormCardComponent},//login path
   {path:'Blog-Details',component:BlogsDetailComponent},
-  {path:'Doctor',component:DoctorInterfaceComponent,
-  children: [
-    {
-      path: 'Dashboard',
-      component: TabDashboardComponent  // Composant pour le chemin 'admin/Patients'
-    },{
-      path: 'Appointments',
-      component: AppointmentsComponent  // Composant pour le chemin 'admin/Patients'
-    },
-    {
-      path: 'Calendrier',
-      component: CalendrierComponent  // Composant pour le chemin 'admin/Patients'
-    },
-    {
-      path: 'Ordonnance',
-      component: OrdonnanceComponent  // Composant pour le chemin 'admin/Patients'
-    },  {
-      path: 'Patients',
-      component: PatientsComponent  // Composant pour le chemin 'admin/Patients'
-    },  {
-      path: 'Settings',
-      component: SettingComponent  // Composant pour le chemin 'admin/Patients'
-    },
-    
-  ]
-},
+  { 
+    path: 'Doctor',
+    component: DoctorInterfaceComponent,
+    children: [
+      { 
+        path: '', // Route vide pour rediriger vers 'Dashboard'
+        redirectTo: 'Dashboard',
+        pathMatch: 'full'
+      },
+      { 
+        path: 'Dashboard',
+        component: TabDashboardComponent  
+      },
+      { 
+        path: 'Appointments',
+        component: AppointmentsComponent  
+      },
+      { 
+        path: 'Calendrier',
+        component: CalendrierComponent  
+      },
+      { 
+        path: 'Ordonnance',
+        component: OrdonnanceComponent  
+      },
+      { 
+        path: 'Patients',
+        component: PatientsComponent  
+      },
+      { 
+        path: 'Settings',
+        component: SettingComponent  
+      }
+    ]
+  }
+  ,
 
   {
     path: 'admin',
