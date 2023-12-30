@@ -15,4 +15,11 @@ export class SettingComponent {
     this.informations = !this.informations; 
 
   }
+  editinformation(){
+    console.log("editdoc")
+  }
+  editpassword(){
+    console.log("editpwd Doc")
+
+  }
 }

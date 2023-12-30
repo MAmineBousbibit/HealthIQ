@@ -13,7 +13,7 @@ color: white;
 }
 .fonction{
     margin-left: 5%;
-  
+   padding-bottom: 3%;
 }
 button{
     border: none;
@@ -38,4 +38,15 @@ button{
 }
 .star{
     color: rgb(252, 184, 59);
+}
+.Change-btn{
+    width:100%;
+    padding: 1%;
+    border-radius: 15px;
+    background-color: #323e67;
+    color: white;
+    font-weight: bolder;
+}
+.Change-btn:hover{
+    background-color: #67686b;
 }

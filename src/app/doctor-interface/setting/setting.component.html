@@ -35,7 +35,7 @@
     <div class="row ">
         <div class="col-6 fonction">
            <div>
-            <p><button>les informations personnel</button> <i (click)="Changeinfo()" class="mx-5 icon-down fa-solid fa-angle-down"></i> </p>
+            <p><button><i class="icon mx-2 fa-solid fa-user"></i> les informations personnel</button> <i (click)="Changeinfo()" class="mx-5 icon-down fa-solid fa-angle-down"></i> </p>
             <div class="card p-2" *ngIf="informations">
                 <form>
                     <div class="form-group row mb-2">
@@ -74,12 +74,15 @@
                             </div>
                         </div>
                     </div>
+                    <div>
+                        <button (click)="editinformation()" class=" float-right Change-btn">Change</button>
+                    </div>
                 </form>
             </div>
            </div>
            <hr class="light-hr">
            <div>
-            <p><button>Changer mot de passe <i (click)="ChangePWD()" class="mx-5 icon-down fa-solid fa-angle-down"></i></button> </p>
+            <p><button> <i class="icon mx-2 fa-solid fa-lock"></i>Changer mot de passe <i (click)="ChangePWD()" class="mx-5 icon-down fa-solid fa-angle-down"></i></button> </p>
             <div class="card p-2" *ngIf="formPWD">
                 <form>
                     <div class="form-group row my-2">
@@ -99,6 +102,9 @@
                       <div class="col-sm-8">
                         <input type="password" class="form-control" id="inputPassword">
                       </div>
+                    </div>
+                    <div>
+                        <button (click)="editpassword()" class=" float-right Change-btn">Change</button>
                     </div>
                   </form>
             </div>
