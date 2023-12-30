@@ -15,6 +15,7 @@ import { CalendrierComponent } from './doctor-interface/calendrier/calendrier.co
 import { OrdonnanceComponent } from './doctor-interface/ordonnance/ordonnance.component';
 import { PatientsComponent } from './doctor-interface/patients/patients.component';
 import { SettingComponent } from './doctor-interface/setting/setting.component';
+import { AppointmentsComponent } from './doctor-interface/appointments/appointments.component';
 
 const routes: Routes = [
 
@@ -27,6 +28,9 @@ const routes: Routes = [
     {
       path: 'Dashboard',
       component: TabDashboardComponent  // Composant pour le chemin 'admin/Patients'
+    },{
+      path: 'Appointments',
+      component: AppointmentsComponent  // Composant pour le chemin 'admin/Patients'
     },
     {
       path: 'Calendrier',

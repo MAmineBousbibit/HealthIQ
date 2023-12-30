@@ -1,1 +1,59 @@
 
+.widget{
+    border-radius: 4%;
+    margin-left: 2%;
+    padding: 20px;
+    box-shadow:   4px 4px 12px #f6f6f6 ;/* Ombre pour l'image */
+  width: 31%;
+    color: white;
+}
+.widget1{
+    margin-left: 1%;
+    background: linear-gradient(90deg, rgba(73, 88, 140, 0.647) 0%, rgba(73, 88, 140, 0.647) 50%, rgba(62, 164, 161, 0.647) 100%);
+}
+.widget2{
+    
+    background: linear-gradient(90deg, rgba(73, 88, 140, 0.647) 0%, rgba(73, 88, 140, 0.647) 50%, rgba(162, 111, 72, 0.647) 100%);
+}
+.widget3{
+    
+    background: linear-gradient(90deg, rgba(73, 88, 140, 0.647) 0%, rgba(73, 88, 140, 0.647) 50%, rgba(154, 61, 138, 0.647) 100%);
+}
+.widget4{
+    
+    background: linear-gradient(90deg, rgba(73, 88, 140, 0.647) 0%, rgba(73, 88, 140, 0.647) 50%, rgba(154, 61, 138, 0.647) 100%);
+}
+.lis{
+    margin-top: 4%;
+    margin-right: 0%;
+    border-radius: 5%;
+     box-shadow:   4px 4px 12px #777171/* Ombre pour l'image */
+    
+}
+.lis li{
+   color: rgb(99, 97, 97);
+background-color: #a5d8caca;
+
+}
+
+.round-image {
+    width: 20%; /* Taille de l'image */
+    height: 20%;
+    border-radius: 55%; /* Pour créer une forme ronde */
+    margin-right: 5px; /* Espace entre l'image et le texte */
+}
+.todolist{
+    margin-left: 4%;
+}
+.todolist .card-header{
+    background: linear-gradient(90deg, rgba(73, 88, 140, 0.647) 0%, rgba(73, 88, 140, 0.647) 50%, rgba(62, 164, 161, 0.647) 100%);
+
+
+    font-weight: bolder;
+    color: rgb(71, 70, 70);
+    
+}
+.todolist .card .list-group li{
+    background-color: #a5d8caca;
+}
+

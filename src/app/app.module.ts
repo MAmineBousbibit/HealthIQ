@@ -37,6 +37,7 @@ import { CalendrierComponent } from './doctor-interface/calendrier/calendrier.co
 import { PatientsComponent } from './doctor-interface/patients/patients.component';
 import { OrdonnanceComponent } from './doctor-interface/ordonnance/ordonnance.component';
 import { SettingComponent } from './doctor-interface/setting/setting.component';
+import { AppointmentsComponent } from './doctor-interface/appointments/appointments.component';
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -73,6 +74,7 @@ import { SettingComponent } from './doctor-interface/setting/setting.component';
     PatientsComponent,
     OrdonnanceComponent,
     SettingComponent,
+    AppointmentsComponent,
    
   ],
   imports: [
