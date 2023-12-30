@@ -1,0 +1,41 @@
+
+.img-thumbnail{
+
+height: 60%;
+
+padding: 0;
+}
+.col-white{
+color: white;
+}
+.bleu{
+    color:#677295;
+}
+.fonction{
+    margin-left: 5%;
+  
+}
+button{
+    border: none;
+    background-color: transparent; 
+    margin-right: 15px;
+}
+.icon-down{
+    color:#677295;
+}
+.icon-down:hover{
+    font-size: larger;
+}
+.card{
+    border: none;
+    
+    background-color: transparent; 
+
+}
+.card input{
+    background-color: transparent; 
+    border: solid #363f5dce;
+}
+.star{
+    color: rgb(252, 184, 59);
+}

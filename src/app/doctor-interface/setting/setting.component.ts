@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./setting.component.css']
 })
 export class SettingComponent {
+  formPWD:boolean=false
+  informations:boolean=false
+  ChangePWD(){
+    this.formPWD = !this.formPWD; 
+  }
+  Changeinfo(){
+    this.informations = !this.informations; 
 
+  }
 }
