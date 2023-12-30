@@ -25,13 +25,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './_guards/auth.guard';
 import { PageHomeComponent } from './Views/page-home/page-home.component';
 import { DashboardSuperAddComponent } from './SuperAdmin/dashboard-super-add/dashboard-super-add.component';
+import {NotificationService} from "./_Services/Notification.service";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 //import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
     AppComponent,
-     
+
     HomePageSecondCreatComponent,
     HomePageFirstCreatComponent,
     HomePageParentComponent,
@@ -40,9 +42,9 @@ import { DashboardSuperAddComponent } from './SuperAdmin/dashboard-super-add/das
     MapsComponent,
     BlogsComponent,
     StatistiqueComponent,
-    
+
     NavbarComponent,
-   
+
     FooterComponent,
     ContactComponent,
     ServiceMedicalComponent,
@@ -51,20 +53,23 @@ import { DashboardSuperAddComponent } from './SuperAdmin/dashboard-super-add/das
     BlogsDetailComponent,
     PageHomeComponent,
     DashboardSuperAddComponent,
-   
+
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    RouterModule
-  
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        RouterModule,
+        MatTooltipModule
+
+    ],
+  providers: [AuthGuard,
+  NotificationService
   ],
-  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
 
 }
