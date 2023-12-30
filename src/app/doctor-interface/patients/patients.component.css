@@ -34,14 +34,16 @@ color :white;
     font-weight: bold;
 }
 .meet-btn{
-    padding: 5%;
+    padding: 3%;
     border: none;
     border:solid rgb(20, 66, 88);
-    border-radius: 10%;
+    border-radius: 5%;
    background-color: rgba(204, 224, 224, 0);
     color: rgb(20, 66, 88);
+    height: 10%;
 }
 .meet-btn:hover{
     box-shadow:   4px 4px 12px #777171/* Ombre pour l'image */;
     border:solid rgb(20, 66, 88);
+   
 }
