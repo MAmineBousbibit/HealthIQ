@@ -1,23 +1,25 @@
 .cardPatient{
     background: rgb(204,224,224);
-background: linear-gradient(0deg, rgba(204,224,224,1) 0%, #75cab3c5  100%);
+/*background: linear-gradient(0deg, rgba(204,224,224,1) 0%, #415080  100%);*/
+background-color: #67729579 ;
+
    
     
 }
 .card:hover{
-    color: aqua;
+    color: linear-gradient(0deg, rgba(204,224,224,1) 0%, #415080  100%);
 }
 .col-green{
-    color: rgb(20, 66, 88);
+color :white;
     font-size: large;
 }
 .font{
  margin-top: 5%;
  font-size: small;
- color: grey;
+ color: black;
 }
 .fontcolor{
-    color: grey;
+    color: black;
 
 }
 .iconcolor{
@@ -25,7 +27,7 @@ background: linear-gradient(0deg, rgba(204,224,224,1) 0%, #75cab3c5  100%);
     margin-right: 2%;
 }
 .redcolor{
-    color: red;
+    color: rgb(160, 20, 20);
     margin-right: 10px;
 }
 .font-weight-bold{
