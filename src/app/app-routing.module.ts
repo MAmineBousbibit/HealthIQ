@@ -9,6 +9,13 @@ import { DashboardSuperAddComponent } from './SuperAdmin/dashboard-super-add/das
 import { GestionCustComponent } from './SuperAdmin/gestion-cust/gestion-cust.component';
 import { GestionDocComponent } from './SuperAdmin/gestion-doc/gestion-doc.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { DoctorInterfaceComponent } from './doctor-interface/doctor-interface.component';
+import { TabDashboardComponent } from './doctor-interface/tab-dashboard/tab-dashboard.component';
+import { CalendrierComponent } from './doctor-interface/calendrier/calendrier.component';
+import { OrdonnanceComponent } from './doctor-interface/ordonnance/ordonnance.component';
+import { PatientsComponent } from './doctor-interface/patients/patients.component';
+import { SettingComponent } from './doctor-interface/setting/setting.component';
+import { AppointmentsComponent } from './doctor-interface/appointments/appointments.component';
 
 const routes: Routes = [
 
@@ -16,11 +23,48 @@ const routes: Routes = [
   {path:'Home',component:PageHomeComponent},
   {path:'Login',component:FormCardComponent},//login path
   {path:'Blog-Details',component:BlogsDetailComponent},
+  { 
+    path: 'Doctor',
+    component: DoctorInterfaceComponent,
+    children: [
+      { 
+        path: '', // Route vide pour rediriger vers 'Dashboard'
+        redirectTo: 'Dashboard',
+        pathMatch: 'full'
+      },
+      { 
+        path: 'Dashboard',
+        component: TabDashboardComponent  
+      },
+      { 
+        path: 'Appointments',
+        component: AppointmentsComponent  
+      },
+      { 
+        path: 'Calendrier',
+        component: CalendrierComponent  
+      },
+      { 
+        path: 'Ordonnance',
+        component: OrdonnanceComponent  
+      },
+      { 
+        path: 'Patients',
+        component: PatientsComponent  
+      },
+      { 
+        path: 'Settings',
+        component: SettingComponent  
+      }
+    ]
+  }
+  ,
+
   {
     path: 'admin',
     component: DashboardSuperAddComponent, 
-    canActivate:[AuthGuard],// User doit être admin pour acces a ces Page ****/
-    children: [
+    canActivate:[AuthGuard],// User doit être admin pour acces a ces Page**/
+    /*children: [
       {
         path: 'Patients',
         component: GestionCustComponent  // Composant pour le chemin 'admin/Patients'
@@ -30,8 +74,10 @@ const routes: Routes = [
         component: GestionDocComponent // Composant pour le chemin 'admin/Doctors'
       },
       
-    ]
-  }
+    ]*/
+  },
+  {path:'gestion-doc', component:GestionDocComponent},
+  {path:'gestion-cust', component:GestionCustComponent}
 
 ];
 

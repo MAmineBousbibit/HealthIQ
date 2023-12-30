@@ -1,0 +1,45 @@
+.cardPatient{
+    background: rgb(204,224,224);
+background: linear-gradient(0deg, rgba(204,224,224,1) 0%, #75cab3c5  100%);
+   
+    
+}
+.card:hover{
+    color: aqua;
+}
+.col-green{
+    color: rgb(20, 66, 88);
+    font-size: large;
+}
+.font{
+ margin-top: 5%;
+ font-size: small;
+ color: grey;
+}
+.fontcolor{
+    color: grey;
+
+}
+.iconcolor{
+    color: black;
+    margin-right: 2%;
+}
+.redcolor{
+    color: red;
+    margin-right: 10px;
+}
+.font-weight-bold{
+    font-weight: bold;
+}
+.meet-btn{
+    padding: 5%;
+    border: none;
+    border:solid rgb(20, 66, 88);
+    border-radius: 10%;
+   background-color: rgba(204, 224, 224, 0);
+    color: rgb(20, 66, 88);
+}
+.meet-btn:hover{
+    box-shadow:   4px 4px 12px #777171/* Ombre pour l'image */;
+    border:solid rgb(20, 66, 88);
+}

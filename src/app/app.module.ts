@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HomePageSecondCreatComponent } from './view/home/home-page-second-creat/home-page-second-creat.component';
@@ -25,15 +27,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './_guards/auth.guard';
 import { PageHomeComponent } from './Views/page-home/page-home.component';
 import { DashboardSuperAddComponent } from './SuperAdmin/dashboard-super-add/dashboard-super-add.component';
-import {NotificationService} from "./_Services/Notification.service";
-import {MatTooltipModule} from "@angular/material/tooltip";
+import { GestionDocComponent } from './SuperAdmin/gestion-doc/gestion-doc.component';
+import { ChatboxComponent } from './Views/page-home/chatbox/chatbox.component';
+import { DoctorInterfaceComponent } from './doctor-interface/doctor-interface.component';
+import { NavbarDocComponent } from './doctor-interface/navbar-doc/navbar-doc.component';
+import { SidebarComponent } from './doctor-interface/sidebar/sidebar.component';
+import { TabDashboardComponent } from './doctor-interface/tab-dashboard/tab-dashboard.component';
+import { CalendrierComponent } from './doctor-interface/calendrier/calendrier.component';
+import { PatientsComponent } from './doctor-interface/patients/patients.component';
+import { OrdonnanceComponent } from './doctor-interface/ordonnance/ordonnance.component';
+import { SettingComponent } from './doctor-interface/setting/setting.component';
+import { AppointmentsComponent } from './doctor-interface/appointments/appointments.component';
 
 //import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
     AppComponent,
-
+     
     HomePageSecondCreatComponent,
     HomePageFirstCreatComponent,
     HomePageParentComponent,
@@ -42,34 +53,45 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MapsComponent,
     BlogsComponent,
     StatistiqueComponent,
-
+    
     NavbarComponent,
-
+   
     FooterComponent,
     ContactComponent,
     ServiceMedicalComponent,
     HomeComponent,
     FormCardComponent,
     BlogsDetailComponent,
+    GestionDocComponent,
     PageHomeComponent,
     DashboardSuperAddComponent,
-
+    ChatboxComponent,
+    DoctorInterfaceComponent,
+    NavbarDocComponent,
+    SidebarComponent,
+    TabDashboardComponent,
+    CalendrierComponent,
+    PatientsComponent,
+    OrdonnanceComponent,
+    SettingComponent,
+    AppointmentsComponent,
+   
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        RouterModule,
-        MatTooltipModule
-
-    ],
-  providers: [AuthGuard,
-  NotificationService
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+   // AgmCoreModule.forRoot({
+   // apiKey='AIzaSyCsDB4BgPFsmAUX5O2UluvYtZN8YUHpX8M'
+  // })
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule
+  
   ],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule {
+export class AppModule { 
 
 }
