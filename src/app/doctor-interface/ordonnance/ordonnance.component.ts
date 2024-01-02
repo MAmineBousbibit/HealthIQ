@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./ordonnance.component.css']
 })
 export class OrdonnanceComponent {
-
+  PDFform(){}
+  
 }
