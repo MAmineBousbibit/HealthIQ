@@ -9,7 +9,7 @@ export class AppComponent {
   title = 'HealthIq';
   
 ngOnInit() {
-  console.log("salam ");
+ 
   
   
   }
