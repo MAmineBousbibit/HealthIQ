@@ -1,13 +1,14 @@
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
  /***URL de RestAPI de Login USER  */
-  Path_SERVER="http://localhost:8080/api/v1/auth/";
+  Path_SERVER=environment.PATH_SERVER;
   requestHeader=new HttpHeaders(
     { "No-Auth":"True"}  
   );
