@@ -1,14 +1,23 @@
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
+
 import { environment } from 'src/environments/environment';
+
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
  /***URL de RestAPI de Login USER  */
+
   Path_SERVER=environment.PATH_SERVER;
+
+
+  private getAll_api = 'http://localhost:8080/doctor/list';
+
   requestHeader=new HttpHeaders(
     { "No-Auth":"True"}  
   );
@@ -26,7 +35,9 @@ export class UserService {
       headers:this.requestHeader
     });
   }
-
+  getAllDoctors():Observable<any>{
+    return this.httpclient.get(this.getAll_api);
+  }
   /**Fonction de Login  ******/
   public Login(USER:any){
     return this.httpclient.post(this.Path_SERVER+'authenticate',USER,{

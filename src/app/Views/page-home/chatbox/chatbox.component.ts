@@ -42,7 +42,9 @@ toggleChatBox1(){
 
 handleAskGPT(){
 let url="https://api.openai.com/v1/chat/completions"
+
 let httpHeaders=new HttpHeaders().set('Authorization', `Bearer ${this.API_KEY}`)
+
 this.messages.push({
   role:"user",content:this.queryFormGroup.value.query
 })

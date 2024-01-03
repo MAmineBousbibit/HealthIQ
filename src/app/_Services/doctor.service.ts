@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
@@ -11,7 +11,9 @@ export class DoctorService{
     private delete_api = 'http://localhost:8080/doctor/delete';
     private getById_api = 'http://localhost:8080/doctor/List';
     private update_api = 'http://localhost:8080/doctor/update';
-
+    requestHeader=new HttpHeaders(
+      { "No-Auth":"True"}  
+    );
     constructor(private http:HttpClient) { }
 
    getAllDoctors():Observable<any>{
