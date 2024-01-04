@@ -28,7 +28,7 @@ function PasswordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
   styleUrls: ['./form-card.component.css']
 })
 export class FormCardComponent implements OnInit {
-
+  PopConfirmation:boolean=false;
   formLogin!: FormGroup;
   //SignupForm!:FormGroup;
   SignupGroup!: FormGroup;
@@ -121,6 +121,10 @@ export class FormCardComponent implements OnInit {
     this.ValueProgress += 25
     this.ValueStep += 1
 
+  }
+  skipStep(){
+    this.ValueProgress = 100
+    this.ValueStep = 4 
   }
   prevStep() {
     this.ValueProgress = this.ValueProgress - 25
@@ -252,6 +256,8 @@ toggleConditionSelection(event: any){
     )
   }
   SignUp() {
+    this.PopConfirmation=true;
+
     if (!this.Condition) {
       
       alert("Veuillez accepter nos conditions d'utilisation pour continuer.");

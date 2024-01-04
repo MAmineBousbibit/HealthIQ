@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 
 
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { FullCalendarModule } from '@fullcalendar/angular';
+import {ModalModule } from 'ngx-bootstrap/modal';
 import { HomePageSecondCreatComponent } from './view/home/home-page-second-creat/home-page-second-creat.component';
 import { HomePageFirstCreatComponent } from './view/home/home-page-first-creat/home-page-first-creat.component';
 import { HomePageParentComponent } from './view/home/home-page-parent/home-page-parent.component';
@@ -29,6 +30,15 @@ import { PageHomeComponent } from './Views/page-home/page-home.component';
 import { DashboardSuperAddComponent } from './SuperAdmin/dashboard-super-add/dashboard-super-add.component';
 import { GestionDocComponent } from './SuperAdmin/gestion-doc/gestion-doc.component';
 import { ChatboxComponent } from './Views/page-home/chatbox/chatbox.component';
+import { DoctorInterfaceComponent } from './doctor-interface/doctor-interface.component';
+import { NavbarDocComponent } from './doctor-interface/navbar-doc/navbar-doc.component';
+import { SidebarComponent } from './doctor-interface/sidebar/sidebar.component';
+import { TabDashboardComponent } from './doctor-interface/tab-dashboard/tab-dashboard.component';
+import { CalendrierComponent } from './doctor-interface/calendrier/calendrier.component';
+import { PatientsComponent } from './doctor-interface/patients/patients.component';
+import { OrdonnanceComponent } from './doctor-interface/ordonnance/ordonnance.component';
+import { SettingComponent } from './doctor-interface/setting/setting.component';
+import { AppointmentsComponent } from './doctor-interface/appointments/appointments.component';
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -57,12 +67,23 @@ import { ChatboxComponent } from './Views/page-home/chatbox/chatbox.component';
     PageHomeComponent,
     DashboardSuperAddComponent,
     ChatboxComponent,
+    DoctorInterfaceComponent,
+    NavbarDocComponent,
+    SidebarComponent,
+    TabDashboardComponent,
+    CalendrierComponent,
+    PatientsComponent,
+    OrdonnanceComponent,
+    SettingComponent,
+    AppointmentsComponent,
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    FullCalendarModule,
+    ModalModule.forRoot(),
    // AgmCoreModule.forRoot({
    // apiKey='AIzaSyCsDB4BgPFsmAUX5O2UluvYtZN8YUHpX8M'
   // })

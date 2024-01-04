@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DoctorService } from 'src/app/_Services/doctor.service';
 import {  Route, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/_Services/user.service';
 
 @Component({
   selector: 'app-gestion-doc',
@@ -13,7 +14,7 @@ export class GestionDocComponent implements OnInit {
   NouveauDocteurForm!: FormGroup;
 
  
-  constructor(private router:Router, private doctorService: DoctorService,
+  constructor(private router:Router, private doctorService: DoctorService ,private doc:UserService,
     private formulaire: FormBuilder){ }
     ngOnInit(){
       this.NouveauDocteurForm = this.formulaire.group({
@@ -24,8 +25,8 @@ export class GestionDocComponent implements OnInit {
       this.getAllDoctors();
     }
     getAllDoctors(){
-      this.doctorService.getAllDoctors().subscribe((res)=>{
-        console.log(res);
+      this.doc.getAllDoctors().subscribe((res)=>{
+        console.log("salam",res);
         this.doctors=res;
       });
     }

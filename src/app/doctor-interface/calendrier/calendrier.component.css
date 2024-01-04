@@ -1,0 +1,10 @@
+.fc {
+    background-color: rgba(245, 245, 220, 0.488);
+    margin: 2%;
+    color: rgb(78, 77, 75);
+    padding: 2%;
+    
+}
+div.fc-view-harness .fc-view-harness-active{
+    border-left: solid blue;
+}

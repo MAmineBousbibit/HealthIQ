@@ -1,0 +1,49 @@
+.cardPatient{
+    background: rgb(204,224,224);
+/*background: linear-gradient(0deg, rgba(204,224,224,1) 0%, #415080  100%);*/
+background-color: #67729579 ;
+
+   
+    
+}
+.card:hover{
+    color: linear-gradient(0deg, rgba(204,224,224,1) 0%, #415080  100%);
+}
+.col-green{
+color :white;
+    font-size: large;
+}
+.font{
+ margin-top: 5%;
+ font-size: small;
+ color: black;
+}
+.fontcolor{
+    color: black;
+
+}
+.iconcolor{
+    color: black;
+    margin-right: 2%;
+}
+.redcolor{
+    color: rgb(160, 20, 20);
+    margin-right: 10px;
+}
+.font-weight-bold{
+    font-weight: bold;
+}
+.meet-btn{
+    padding: 3%;
+    border: none;
+    border:solid rgb(20, 66, 88);
+    border-radius: 5%;
+   background-color: rgba(204, 224, 224, 0);
+    color: rgb(20, 66, 88);
+    height: 10%;
+}
+.meet-btn:hover{
+    box-shadow:   4px 4px 12px #777171/* Ombre pour l'image */;
+    border:solid rgb(20, 66, 88);
+   
+}
