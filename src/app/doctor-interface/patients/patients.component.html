@@ -156,3 +156,50 @@
       <!--end of Card Patient-->
 </div>
 </div>>
+
+<div class="container">
+  <div class="row mx-5">
+    <div *ngFor="let user of _users" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 mt-3">
+      <div class="card py-3 py-md-3 cardPatient">
+        <!-- Display user information dynamically -->
+        <div class="d-flex justify-content-between px-3 px-md-4">
+          <img src="assets/img/profil/profil1.jpg" height="55px" width="55px" alt="" class="rounded-circle">
+          <div>
+
+            <h6 class="col-green">{{ user.firstName }} {{ user.prenom }}</h6>
+            <p class="font">Patient Id: {{ user.id }}</p>
+          </div>
+          <div>
+            <!-- You can bind other user properties dynamically here -->
+            <h6 class="font">10:00 - 10:30 AM</h6>
+            <p class="font">Friday, June 26</p>
+          </div>
+        </div>
+        <hr class="light-hr">
+        <div class="d-flex flex-column justify-content-start w-100 px-3 px-md-4 fontcolor">
+          <div><i class="fas fa-map-marker-alt pt-3 psr-3 iconcolor"></i> {{ user.adresse }}
+          </div>
+          <div><i class="fas fa-phone pt-3 psr-3 iconcolor"></i> {{ user.phoneNumber }}</div>
+        </div>
+        <hr class="light-hr">
+        <div class="d-flex justify-content-between px-1 px-md-4">
+          <div>
+            <div class="d-flex">
+              <p class="px-1"><i class="fa-solid fa-droplet redcolor"></i>Blood Group:</p>
+              <div class="font-weight-bold"> group sang</div>
+            </div>
+            <div class="d-flex">
+              <p class="psr-2"> Reports: </p>
+              <div class="font-weight-bold"><i class="far fa-file-pdf redcolor mx-2"></i></div>
+            </div>
+          </div>
+        </div>
+        <hr class="light-hr">
+        <div class="  d-flex justify-content-around px-4 ">
+          <button class="meet-btn">
+            GOOGLE meet <i class="fa-solid fa-video"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
