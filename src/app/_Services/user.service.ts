@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 export class UserService {
  /***URL de RestAPI de Login USER  */
 
-  Path_SERVER=environment.PATH_SERVER;
+  Path_SERVER="http://localhost:8080/api/v1/auth/";
 
 
   private getAll_api = 'http://localhost:8080/doctor/list';

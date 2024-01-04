@@ -63,37 +63,16 @@ const routes: Routes = [
   {
     path: 'admin',
     component: DashboardSuperAddComponent, 
-<<<<<<< HEAD
     canActivate:[AuthGuard],// User doit être admin pour acces a ces Page ****/
-    children: [
-     /* {
-        path: 'gestion-cust',
-=======
-    canActivate:[AuthGuard],// User doit être admin pour acces a ces Page**/
-    /*children: [
-      {
-        path: 'Patients',
->>>>>>> 5a62fae6696f089b72c96ecf38fe3f3a904e972c
-        component: GestionCustComponent  // Composant pour le chemin 'admin/Patients'
-      },
-      {
-        path: 'gestion-doc',
-        component: GestionDocComponent // Composant pour le chemin 'admin/Doctors'
-      },*/
-      
-<<<<<<< HEAD
-    ]
+
   },
   {path: 'gestion-doc', component:GestionDocComponent},
   {path:'gestion-cust', component:GestionCustComponent}
-=======
-    ]*/
-  },
-  {path:'gestion-doc', component:GestionDocComponent},
-  {path:'gestion-cust', component:GestionCustComponent}
+    ];
+ 
 
->>>>>>> 5a62fae6696f089b72c96ecf38fe3f3a904e972c
-];
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

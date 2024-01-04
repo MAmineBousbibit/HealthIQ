@@ -20,7 +20,7 @@ export class ChatboxComponent implements OnInit {
   chat=false;
 
   inputValue: string = ''; 
-  API_KEY:any=environment.API_KEY;
+
 
 
   constructor(private formBuilder:FormBuilder,private httpClient:HttpClient){}
@@ -43,7 +43,7 @@ toggleChatBox1(){
 handleAskGPT(){
 let url="https://api.openai.com/v1/chat/completions"
 
-let httpHeaders=new HttpHeaders().set('Authorization', `Bearer ${this.API_KEY}`)
+let httpHeaders=new HttpHeaders().set('Authorization', `Bearer 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`)
 
 this.messages.push({
   role:"user",content:this.queryFormGroup.value.query
