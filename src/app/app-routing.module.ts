@@ -65,6 +65,19 @@ const routes: Routes = [
     component: DashboardSuperAddComponent, 
     canActivate:[AuthGuard],// User doit être admin pour acces a ces Page ****/
 
+    path:'admin',
+    component: DashboardSuperAddComponent,
+    canActivate:[AuthGuard],// User doit etre admin pour ecces a ces pages 
+    /*children: [{
+      path: 'Patients',
+      component: GestionCustComponent
+    },
+    {
+      path: 'Doctors',
+      component: GestionDocComponent
+    },
+
+  ]*/
   },
   {path: 'gestion-doc', component:GestionDocComponent},
   {path:'gestion-cust', component:GestionCustComponent}
@@ -75,6 +88,9 @@ const routes: Routes = [
 
 
 @NgModule({
+  {path: 'gestion-cust', component:GestionCustComponent}
+]
+  @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
