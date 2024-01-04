@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-chatbox',
@@ -19,11 +21,14 @@ export class ChatboxComponent implements OnInit {
 
   inputValue: string = ''; 
 
+
+
   constructor(private formBuilder:FormBuilder,private httpClient:HttpClient){}
  ngOnInit(): void {
      this.queryFormGroup=this.formBuilder.group({
       query:this.formBuilder.control('')
      })
+  
  } 
   toggleChatBox(): void {
     this.box=false;
@@ -37,7 +42,9 @@ toggleChatBox1(){
 
 handleAskGPT(){
 let url="https://api.openai.com/v1/chat/completions"
-let httpHeaders=new HttpHeaders().set("Authorization","Bearer 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")
+
+let httpHeaders=new HttpHeaders().set('Authorization', `Bearer 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`)
+
 this.messages.push({
   role:"user",content:this.queryFormGroup.value.query
 })

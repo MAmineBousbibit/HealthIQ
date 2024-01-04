@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 
 
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { FullCalendarModule } from '@fullcalendar/angular';
+import {ModalModule } from 'ngx-bootstrap/modal';
 import { HomePageSecondCreatComponent } from './view/home/home-page-second-creat/home-page-second-creat.component';
 import { HomePageFirstCreatComponent } from './view/home/home-page-first-creat/home-page-first-creat.component';
 import { HomePageParentComponent } from './view/home/home-page-parent/home-page-parent.component';
@@ -81,6 +82,8 @@ import { AppointmentsComponent } from './doctor-interface/appointments/appointme
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    FullCalendarModule,
+    ModalModule.forRoot(),
    // AgmCoreModule.forRoot({
    // apiKey='AIzaSyCsDB4BgPFsmAUX5O2UluvYtZN8YUHpX8M'
   // })
