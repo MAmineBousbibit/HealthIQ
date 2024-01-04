@@ -21,18 +21,19 @@ const routes: Routes = [
     component: DashboardSuperAddComponent, 
     canActivate:[AuthGuard],// User doit être admin pour acces a ces Page ****/
     children: [
-      {
-        path: 'Patients',
+     /* {
+        path: 'gestion-cust',
         component: GestionCustComponent  // Composant pour le chemin 'admin/Patients'
       },
       {
-        path: 'Doctors',
+        path: 'gestion-doc',
         component: GestionDocComponent // Composant pour le chemin 'admin/Doctors'
-      },
+      },*/
       
     ]
-  }
-
+  },
+  {path: 'gestion-doc', component:GestionDocComponent},
+  {path:'gestion-cust', component:GestionCustComponent}
 ];
 
 @NgModule({
