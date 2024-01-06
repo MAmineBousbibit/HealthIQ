@@ -26,7 +26,7 @@ export class GestionDocComponent implements OnInit {
     }
     getAllDoctors(){
       this.doc.getAllDoctors().subscribe((res)=>{
-        console.log("salam",res);
+       
         this.doctors=res;
       });
     }

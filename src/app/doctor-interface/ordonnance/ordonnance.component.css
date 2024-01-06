@@ -1,17 +1,35 @@
+.row{
+    margin-left: 3%;
+}
+.container{
+    padding-bottom: 12%;
 
-.card-header,.card-foote{
-    background: linear-gradient(90deg, rgba(73, 88, 140, 0.647) 0%, rgba(73, 88, 140, 0.647) 50%, rgba(162, 111, 72, 0.647) 100%);
+}
+.card-header,.card-footer{
+    background: linear-gradient(90deg, rgba(73, 88, 140, 0.647) 0%, rgba(73, 88, 140, 0.647) 50%, rgba(62, 164, 161, 0.438) 100%);
+
 }
 .col-red{
     color : rgb(204, 19, 19);
     font-size: x-large;
+ 
+
 }
 .pdf{
     border: none;
     background-color: transparent;
     padding: 2%;
 }
-
+.titre{
+color: white;
+font-weight: bolder;
+}
+.icon{
+  
+    font-size: x-large;
+    margin-top: 2px;
+    margin-right: 3px;
+}
 .col-red:hover{
   
     color : rgba(204, 19, 19, 0.805);
@@ -23,5 +41,22 @@
 }
 .card-body{
    background-color: #6772954a;
+
+}
+
+.btn{
+    border: none;
+    background-color: transparent;
+    
+}
+.btn:hover{
+font-size: larger;
+text-shadow: #777171;
+}
+
+input:hover,textarea:hover{
+border:solid #677295 ;
+box-shadow:   4px 4px 12px #777171/* Ombre pour l'image */
+
 
 }
