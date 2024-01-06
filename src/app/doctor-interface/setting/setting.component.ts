@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Doctor } from 'src/app/_models/doctor';
 
 @Component({
   selector: 'app-setting',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./setting.component.css']
 })
 export class SettingComponent {
+  Doctor = new Doctor(); 
+
   formPWD:boolean=false
   informations:boolean=false
   ChangePWD(){
@@ -16,10 +19,10 @@ export class SettingComponent {
 
   }
   editinformation(){
-    console.log("editdoc")
+    console.log(this.Doctor)
   }
   editpassword(){
-    console.log("editpwd Doc")
+    console.log(this.Doctor)
 
   }
 }

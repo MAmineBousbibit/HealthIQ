@@ -1,6 +1,68 @@
-<div class="row p-2">
-  <div class="col-lg-12 col-md-8 p-5 m-2  ">
-    <full-calendar [options]="calendarOptions"></full-calendar>
+<div class="calender">
+  <div class="col-lg-10 col-md-8 mx-5">
+    <full-calendar [options]="calendarOptions"  (eventClick)="handleEventClick($event)"></full-calendar>
   </div>  
 
 </div>
+
+
+
+<!-- Modale pour afficher les détails de l'événement et le formulaire de suppression -->
+
+  <div class="modal " id="eventModal" tabindex="-1" >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-3">
+        
+          <p>
+            {{  this.Event.title }}
+          </p>
+          <hr>
+          <div>
+            <form>
+              <div class=" col-md-12 mb-3">
+                
+                <input type="text" class="form-control" placeholder="Titre"  value="{{this.Event.title}}">
+              
+              </div>
+              
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                       
+                        <input type="date" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                          {{  this.Event.hour }}
+                        </button>
+                        <div  class="dropdown-menu">
+                            <a *ngFor="let option of options"class="dropdown-item" >{{option}}</a>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+              <div class="form-group row my-2">
+                <label class="col-sm-4 col-form-label"  >Détail d'évenement</label>
+                <div class="col-sm-8">
+                <textarea class="form-control " placeholder="Text" value='{{this.Event.description}}'></textarea>
+                </div>
+              </div>
+             
+              <div class=" d-flex justify-content-between modal-footer">
+                <button type="button" class="btn btn-outline-secondary" (click)="closeevent()"> Annuler</button>
+                <button  type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> </button>
+
+              </div>
+             
+            </form>
+          </div>
+       
+       
+      </div>
+    </div>
+  </div>
+
