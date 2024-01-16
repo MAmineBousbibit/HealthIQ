@@ -1,8 +1,9 @@
-export class Doctor{
-    id: any;
-    first_name: any;
-    last_name: any;
-    email: any;
+export interface Doctor{
+    id: string;
+    first_name: string;
+    last_name: string;
+    email: string;
+    password:any;
     adresse:any;
     age:any;
     debutTime:any;
