@@ -30,6 +30,7 @@ export class GestionDocComponent implements OnInit {
       this.doc.getAllDoctors().subscribe((res)=>{
         console.log(res);
         this.doctors=res;
+        
       });
     }
     deleteDoctor(id: string) {
