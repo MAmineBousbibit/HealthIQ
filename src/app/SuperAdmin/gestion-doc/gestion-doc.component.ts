@@ -20,13 +20,15 @@ export class GestionDocComponent implements OnInit {
       this.NouveauDocteurForm = this.formulaire.group({
         first_name: [null, [Validators.required]],
         last_name: [null, [Validators.required]],
-        email: [null, [Validators.required, Validators.email]]
+        email: [null, [Validators.required, Validators.email]],
+        debutTime: [null, [Validators.required]],
+        finTime: [null, [Validators.required]]
       })
       this.getAllDoctors();
     }
     getAllDoctors(){
       this.doc.getAllDoctors().subscribe((res)=>{
-        console.log("salam",res);
+        console.log(res);
         this.doctors=res;
       });
     }
@@ -59,16 +61,20 @@ export class GestionDocComponent implements OnInit {
         doctor.updatedFirstName = doctor.first_name;
         doctor.updatedLastName = doctor.last_name;
         doctor.updatedEmail = doctor.email;
+        doctor.updatedDebutTime = doctor.debutTime;
+        doctor.updatedFinTime = doctor.finTime;
       } else { 
         this.doctorService.updateDoctor(doctor);
       }
     }
     updateDoctor(doctor:any){
-      const { updatedFirstName, updatedLastName, updatedEmail } = doctor;
+      const { updatedFirstName, updatedLastName, updatedEmail, updatedDebutTime, updatedFinTime } = doctor;
       const updatedData = {
       first_name: updatedFirstName,
       last_name: updatedLastName,
       email: updatedEmail,
+      debutTime: updatedDebutTime,
+      finTime: updatedFinTime
     }
     this.doctorService.updateDoctor(doctor.id, updatedData)
       .subscribe((response) => {
