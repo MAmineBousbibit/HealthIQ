@@ -2,6 +2,7 @@ import { AfterViewInit, Component,ElementRef,OnInit,ViewChild } from '@angular/c
 import { CalendarOptions } from '@fullcalendar/core'; // useful for typechecking
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { BsModalRef,BsModalService ,ModalModule} from 'ngx-bootstrap/modal';
+import { DoctorService } from 'src/app/_Services/doctor.service';
 import { Events } from 'src/app/_models/events';
 
 @Component({
@@ -11,19 +12,19 @@ import { Events } from 'src/app/_models/events';
 })
 export class CalendrierComponent {
  // @ViewChild('eventModal') eventModal!: ElementRef;
-  constructor() {}
+  constructor( private ServiceDoc:DoctorService) {}
+  ngOnInit(): void {
+   this.getEvents()
+ 
+   
+  }
+  addEvent:boolean=false
   @ViewChild('eventModal') eventModal: any; // Référence à la modale
  options=['9:00','10:00','11:00','12:00','14:00','15:00']
+ optionEtat=['Urgent','À venir','Annulé']
   Event=new Events
   title:any;
-  events:any= [
-    { title: 'event 1', date: '2023-12-01' ,color:'red',hour:'12:00'},
-    { title: 'event 1', date: '2023-12-10' ,color:'red',hour:'12:00'},
-
-    { title: 'event 45', date: '2024-01-05' ,color:'red',hour:'12:00'},
-
-    { title: 'event 2', date: '2023-11-27',color:'green' }
-  ]
+  events:any=[]
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     
@@ -35,11 +36,14 @@ export class CalendrierComponent {
   };
  
   handleEventClick(eventInfo: any) {
- 
+
  this.Event.title=eventInfo.event._def.title;
  this.Event.hour=eventInfo.event._def.extendedProps.hour;
  this.Event.description=eventInfo.event._def.extendedProps.hour;
  this.Event.date=eventInfo.event.start;
+
+
+
  const date = eventInfo.event.start;
 
 const year = date.getFullYear();
@@ -53,7 +57,7 @@ const inputDateElement = document.querySelector<HTMLInputElement>('.form-control
 if (inputDateElement !== null) {
   inputDateElement.value = formattedDate;
 } 
-   console.log(this.Event);
+   //console.log(this.Event);
    const modal=document.getElementById('eventModal')
    
    if(modal!=null){
@@ -62,21 +66,102 @@ if (inputDateElement !== null) {
    }
 
   }
+ajouterEvent(){
+  this.addEvent=true
+  console.log("ok",this.addEvent);
+  const modal=document.getElementById('ajoutmodal')
+   
+  if(modal!=null){
+   modal.style.display='block';
 
+  }
+  this.Event=new Events()
+}
   closeevent(){
   this.Event=new Events;
    const modal=document.getElementById('eventModal')
+  const modal2=document.getElementById('ajoutmodal')
+
    
    if(modal!=null){
     modal.style.display='none';
 
    }
+ 
+    if(modal2!=null){
+     modal2.style.display='none';
+ 
+    }{
+
+   }
   }
 
+  btnAdd()
+{
+  console.log("event add",this.Event);
+  if (this.Event.status=="Urgent") {
+    this.Event.color='red'
+  } else if(this.Event.status=="À venir") {
+    this.Event.color='green'
+  }
+  else{
+    this.Event.color='orange'
+  }
+  this.ServiceDoc.AddEvent(this.Event).subscribe(
+    (response) => {
+     //console.log(response);
+     this.ngOnInit();
+     
+    },
+    (error) => {
+      console.log(error);
+    }
+  )
+  this.closeevent()
+} 
 
-  deleteEvent() {
-    
+  delEvent(){
+//console.log("del",this.Event);
+  
+
+    this.updateCalendrier()
   this.closeevent()// Fermer la modale après la suppression
-  }
-  };
 
+  }
+
+  selectStatus(selectedOption: string): void {
+    this.Event.status = selectedOption;
+  }
+  selectHour(selectedOption: string): void {
+    this.Event.hour = selectedOption;
+  }
+
+  
+getEvents(){
+  this.ServiceDoc.getEvents().subscribe(
+    (response) => {
+    
+     this.events=response
+     this.updateCalendrier()
+     
+     
+     
+    },
+    (error) => {
+      console.log(error);
+    }
+  )
+}
+
+updateCalendrier(){
+  this.calendarOptions = {
+    initialView: 'dayGridMonth',
+    plugins: [dayGridPlugin],
+    events: this.events,
+    eventClick: this.handleEventClick.bind(this),
+}
+  }
+
+
+
+}

@@ -1,4 +1,5 @@
 <div class="calender">
+  <div class="col-lg-10 col-md-8"> <button class="btn btn-secondary mb-4"  (click)="ajouterEvent()" >Ajouter un event</button></div>
   <div class="col-lg-10 col-md-8 mx-5">
     <full-calendar [options]="calendarOptions"  (eventClick)="handleEventClick($event)"></full-calendar>
   </div>  
@@ -54,7 +55,7 @@
              
               <div class=" d-flex justify-content-between modal-footer">
                 <button type="button" class="btn btn-outline-secondary" (click)="closeevent()"> Annuler</button>
-                <button  type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> </button>
+                <button  type="submit" class="btn btn-danger" (click)="delEvent()"><i class="fa-solid fa-trash"></i> </button>
 
               </div>
              
@@ -65,4 +66,81 @@
       </div>
     </div>
   </div>
+<div *ngIf="addEvent">
 
+</div>
+ <div class="modal" id="ajoutmodal" tabindex="-1" >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-3">
+        
+          <p>
+           Ajouter Event
+          </p>
+          <hr>
+          <div>
+            <form>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Titre d'event"  [ngModelOptions]="{ standalone: true }" [(ngModel)]="Event.title" >
+                </div>
+                <div class="col-md-6">
+         
+                  <div class="dropdown">
+                    
+                      <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                        <div *ngIf="Event?.status; else errorContent">
+                          {{ Event.status }}
+                        </div>
+                        <ng-template #errorContent>
+                         Statut
+                        </ng-template>
+
+                      </button>
+                      <div  class="dropdown-menu">
+                          <a *ngFor="let option of optionEtat"class="dropdown-item" (click)="selectStatus(option)">{{option}}</a>
+                         
+                      </div>
+                  </div>
+              </div>
+              </div>
+             
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                       
+                        <input type="date" class="form-control" [ngModelOptions]="{ standalone: true }" [(ngModel)]="Event.date">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                          {{Event.hour}}
+                        </button>
+                        <div  class="dropdown-menu">
+                            <a *ngFor="let option of options"class="dropdown-item" (click)="selectHour(option)" >{{option}}</a>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+              <div class="form-group row my-2">
+                <label class="col-sm-4 col-form-label"  >Détail d'évenement</label>
+                <div class="col-sm-8">
+                <textarea class="form-control " placeholder="Text"  [ngModelOptions]="{ standalone: true }" [(ngModel)]="Event.description" ></textarea>
+                </div>
+              </div>
+             
+              <div class=" d-flex justify-content-between modal-footer">
+                <button type="button" class="btn btn-outline-secondary" (click)="closeevent()"> Annuler</button>
+                <button  type="submit" class="btn btn-success" (click)="btnAdd()">Ajouter </button>
+
+              </div>
+             
+            </form>
+          </div>
+       
+       
+      </div>
+    </div>
+  </div>

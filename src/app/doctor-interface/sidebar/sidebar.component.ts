@@ -10,5 +10,7 @@ export class SidebarComponent {
   constructor(private route:Router){
 
   }
-  
+  logout(){
+    console.log("logout doc")
+  }
 }

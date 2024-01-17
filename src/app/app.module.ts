@@ -39,6 +39,8 @@ import { PatientsComponent } from './doctor-interface/patients/patients.componen
 import { OrdonnanceComponent } from './doctor-interface/ordonnance/ordonnance.component';
 import { SettingComponent } from './doctor-interface/setting/setting.component';
 import { AppointmentsComponent } from './doctor-interface/appointments/appointments.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SearchPipe } from './doctor-interface/appointments/search.pipe';
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -76,6 +78,7 @@ import { AppointmentsComponent } from './doctor-interface/appointments/appointme
     OrdonnanceComponent,
     SettingComponent,
     AppointmentsComponent,
+    SearchPipe,
    
   ],
   imports: [
@@ -84,12 +87,10 @@ import { AppointmentsComponent } from './doctor-interface/appointments/appointme
     FormsModule,
     FullCalendarModule,
     ModalModule.forRoot(),
-   // AgmCoreModule.forRoot({
-   // apiKey='AIzaSyCsDB4BgPFsmAUX5O2UluvYtZN8YUHpX8M'
-  // })
+ 
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
   
   ],
   providers: [AuthGuard],
