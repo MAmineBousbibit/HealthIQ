@@ -39,6 +39,7 @@ import { PatientsComponent } from './doctor-interface/patients/patients.componen
 import { OrdonnanceComponent } from './doctor-interface/ordonnance/ordonnance.component';
 import { SettingComponent } from './doctor-interface/setting/setting.component';
 import { AppointmentsComponent } from './doctor-interface/appointments/appointments.component';
+import { PdfTemplateComponent } from './pdf-template/pdf-template.component';
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -76,6 +77,7 @@ import { AppointmentsComponent } from './doctor-interface/appointments/appointme
     OrdonnanceComponent,
     SettingComponent,
     AppointmentsComponent,
+    PdfTemplateComponent,
    
   ],
   imports: [

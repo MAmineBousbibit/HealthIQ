@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../_Services/user.service";
 import {User} from "../../_models/user";
+import {PdfGeneratorService} from "../../_Services/pdf.service";
 
 @Component({
   selector: 'app-patients',
@@ -19,8 +20,11 @@ export class PatientsComponent implements OnInit{
 
 
 
-  constructor(private _userService:UserService) {
-  }
+  constructor(private _userService:UserService, private pdfGeneratorService: PdfGeneratorService) {}
+
+generatePDF(user: User): void {
+  this.pdfGeneratorService.generatePDF(user);
+}
 
 
   onClickPatient():void{
