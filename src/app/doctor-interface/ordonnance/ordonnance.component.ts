@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-
 import { DoctorService } from 'src/app/_Services/doctor.service';
 import { Ordonnance } from 'src/app/_models/ordonnance';
-
 
 @Component({
   selector: 'app-ordonnance',
@@ -10,7 +8,6 @@ import { Ordonnance } from 'src/app/_models/ordonnance';
   styleUrls: ['./ordonnance.component.css']
 })
 export class OrdonnanceComponent {
-
   constructor(private ServiceDoc:DoctorService){}
   Ordonnance=new Ordonnance();
   PDFform(){}
@@ -29,5 +26,4 @@ export class OrdonnanceComponent {
     )
     
   }
-
 }
