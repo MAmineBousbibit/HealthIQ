@@ -8,6 +8,7 @@ RUN npm install --force
 
 COPY . .
 
+
 RUN npm run build --force
 
 EXPOSE 4200
