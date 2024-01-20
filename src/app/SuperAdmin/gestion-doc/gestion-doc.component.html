@@ -40,28 +40,38 @@
       
        
         <ul>
-            <li  class="info d-flex" *ngFor="let doctor of doctors" >
+            <li class="info d-flex" *ngFor="let doctor of doctors" >
                 <img class="image" src="/assets/img/docteur.png" width="50px" height="50px" >
                 <div class="details">
-                <p class="donnes">
-                  Prenom:
+                <div class="donnes">
+                  <div class="name-container">
+                  <span style="margin-right: 10px;">Prenom:</span>
                   <span *ngIf="!doctor.editing">{{ doctor.first_name }}</span>
                   <input *ngIf="doctor.editing" type="text" [(ngModel)]="doctor.updatedFirstName">
                   <br>
-                  Nom:
+                  <span class="nom" style="margin-right: 10px;">Nom:</span>
                   <span *ngIf="!doctor.editing">{{ doctor.last_name }}</span>
                   <input *ngIf="doctor.editing" type="text" [(ngModel)]="doctor.updatedLastName">
-                  <br>
+                  </div>
                   Email:
                   <span *ngIf="!doctor.editing">{{ doctor.email }}</span>
                   <input *ngIf="doctor.editing" type="email" [(ngModel)]="doctor.updatedEmail">
+                  <br>
+                  Heure de Travail:<br>
+                  <span style="margin-left: 70px;">Debut:</span> 
+                  <span *ngIf="!doctor.editing">{{ doctor.debutTime}}</span>
+                  <input *ngIf="doctor.editing" type="time" [(ngModel)]="doctor.updatedDebutTime">
+                  <br>
+                  <span style="margin-left: 70px;">Fin:</span> 
+                  <span *ngIf="!doctor.editing">{{ doctor.finTime}}</span>
+                  <input *ngIf="doctor.editing" type="time" [(ngModel)]="doctor.updatedFinTime">
                   <br>
                   <button class="btn" type="button" *ngIf="doctor.editing" (click)="updateDoctor(doctor)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save" viewBox="0 0 16 16">
                     <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1z"/>
                    </svg>
                   </button>
-                </p>
+                </div>
                 <p class="modification">
                     <img src="/assets/img/editer.png" width="20px" height="20px" (click)="toggleEditing(doctor)" >
                     <img src="/assets/img/supprimer.png" width="20px" height="20px" (click)="deleteDoctor(doctor.id)">
@@ -75,7 +85,7 @@
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content" style="height: 650px;">
         <div class="modal-header">
 
         
@@ -85,13 +95,13 @@
             
               
                   <div class="border-b border-gray-900/10 pb-12">
-                    <h2 class="text-base font-semibold leading-7 text-gray-900">Informations du Docteur</h2>
+                    <h1 class="text-base font-semibold leading-7 text-gray-900">Informations du Docteur</h1>
               
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                       <div class="sm:col-span-3">
                         <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Prenom</label>
                         <div class="mt-2">
-                          <input type="text" name="first-name" id="first-name" required formControlName="first_name" autocomplete="given-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                          <input type="text" name="first-name" id="first-name" required formControlName="first_name" autocomplete="given-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required="required">
                         </div>
                       </div>
               
@@ -101,6 +111,13 @@
                           <input type="text" name="last-name" id="last-name" required formControlName="last_name" autocomplete="family-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
                       </div>
+
+                      <div class="sm:col-span-3">
+                        <label for="adresse" class="block text-sm font-medium leading-6 text-gray-900">Adresse</label>
+                        <div class="mt-2">
+                          <input type="text" name="adresse" id="adresse" required formControlName="adresse" autocomplete="family-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </div>
               
                       <div class="sm:col-span-4">
                         <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
@@ -108,12 +125,32 @@
                           <input id="email" name="email" type="email" required formControlName="email" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
                       </div>
+
+                      <div class="sm:col-span-4">
+                        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Mot De Passe</label>
+                        <div class="mt-2">
+                          <input id="mdp" name="mdp" type="mdp" required formControlName="mdp" autocomplete="mdp" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </div>
+
+                      <div class="sm:col-span-3">
+                        <label for="work-start" class="block text-sm font-medium leading-6 text-gray-900">Début de travail</label>
+                        <div class="mt-2">
+                            <input type="time" name="work-start" id="work-start" required formControlName="work_start" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                    </div>
+
+                    <div class="sm:col-span-3">
+                      <label for="work-end" class="block text-sm font-medium leading-6 text-gray-900">Fin de travail</label>
+                      <div class="mt-2">
+                          <input type="time" name="work-end" id="work-end" required formControlName="work_end" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                      </div>
+                  </div>
                     </div>
                   </div> 
                 </div>
                 
               </form>
-        </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
@@ -126,8 +163,8 @@
               <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1z"/>
             </svg>
           </button>
-          
         </div>
+      </div>
       </div>
     </div>
   </div>

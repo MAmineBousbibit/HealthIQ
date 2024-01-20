@@ -39,7 +39,11 @@ import { PatientsComponent } from './doctor-interface/patients/patients.componen
 import { OrdonnanceComponent } from './doctor-interface/ordonnance/ordonnance.component';
 import { SettingComponent } from './doctor-interface/setting/setting.component';
 import { AppointmentsComponent } from './doctor-interface/appointments/appointments.component';
-import { PdfTemplateComponent } from './pdf-template/pdf-template.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SearchPipe } from './doctor-interface/appointments/search.pipe';
+import { NgChartsModule } from 'ng2-charts';
+import { Chart } from 'chart.js';
+import { SearchPipeHomePipe } from './Views/navbar/search-pipe-home.pipe';
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -77,7 +81,8 @@ import { PdfTemplateComponent } from './pdf-template/pdf-template.component';
     OrdonnanceComponent,
     SettingComponent,
     AppointmentsComponent,
-    PdfTemplateComponent,
+    SearchPipe,
+    SearchPipeHomePipe,
    
   ],
   imports: [
@@ -86,12 +91,12 @@ import { PdfTemplateComponent } from './pdf-template/pdf-template.component';
     FormsModule,
     FullCalendarModule,
     ModalModule.forRoot(),
-   // AgmCoreModule.forRoot({
-   // apiKey='AIzaSyCsDB4BgPFsmAUX5O2UluvYtZN8YUHpX8M'
-  // })
+    
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    NgChartsModule,
+  
   
   ],
   providers: [AuthGuard],

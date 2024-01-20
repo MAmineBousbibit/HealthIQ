@@ -1,10 +1,44 @@
+.calender{
+    padding: 5%;
+}
 .fc {
-    background-color: rgba(245, 245, 220, 0.488);
-    margin: 2%;
-    color: rgb(78, 77, 75);
-    padding: 2%;
+    background-color: #91b5fb74;
+   padding: 2%;
+    color:white;
+    box-shadow:   4px 4px 12px rgb(77, 76, 76);
+    border-radius: 2%;/* Ombre pour l'image */
+   
     
 }
-div.fc-view-harness .fc-view-harness-active{
-    border-left: solid blue;
+.fc-dayGridDay.fc-day {
+    color: red; /* Changer la couleur du texte des jours en rouge */
 }
+
+.modal{
+    padding: 5%;
+    background-color: rgba(0, 0, 0, 0.5); /* Couleur de fond semi-transparente */
+    backdrop-filter: blur(1px); /* Effet flou, peut ne pas être pris en charge sur tous les navigateurs */
+    z-index: 1040; /* Doit être inférieur au z-index de la modale pour la placer en arrière-plan */
+    display: none; /* Initialement masqué */
+  }
+.modal-content{
+    background-color: #323e67 ;
+    color: white;
+
+}
+input,textarea{
+    background-color:#323e67  ;
+    color: white;
+} 
+
+input:hover,textarea:hover,.btn:hover{
+    box-shadow:   4px 4px 12px #777171/* Ombre pour l'image */;
+   
+}
+input::placeholder,textarea::placeholder{
+    color: white;
+}
+
+  input[type="date"] {
+    color: white; /* Couleur du texte */
+  }
