@@ -41,6 +41,8 @@ import { SettingComponent } from './doctor-interface/setting/setting.component';
 import { AppointmentsComponent } from './doctor-interface/appointments/appointments.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SearchPipe } from './doctor-interface/appointments/search.pipe';
+import { NgChartsModule } from 'ng2-charts';
+import { Chart } from 'chart.js';
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -87,10 +89,12 @@ import { SearchPipe } from './doctor-interface/appointments/search.pipe';
     FormsModule,
     FullCalendarModule,
     ModalModule.forRoot(),
- 
+    
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+    NgChartsModule,
+  
   
   ],
   providers: [AuthGuard],

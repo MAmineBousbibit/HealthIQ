@@ -8,6 +8,7 @@ export class Doctor{
     debutTime:any;
     finTime:any;
     PrixConsultation:any;
+    Operation:any
     
 
 

@@ -64,6 +64,26 @@ export class DoctorService{
 
   }
 
+  getToDoList(){
+    return this.http.get(this.ApiHost + 'ToDoList/getAll')
+
+  }
+
+  CheckedTodoList(id:any, list?:any){
+    const updateUrl = `${this.ApiHost+'ToDoList/update'}/${id}`;
+    return this.http.put(updateUrl,list);
+  }
+  NoCheckedTodoList(id:any, list?:any){
+    const updateUrl = `${this.ApiHost+'ToDoList/falseCheck'}/${id}`;
+    return this.http.put(updateUrl,list);
+  }
+  AddToDo(list:any){
+
+  return this.http.post(this.ApiHost + 'ToDoList/add', list,{
+      headers:this.requestHeader
+    }
+    );
+  }
 
 
 }

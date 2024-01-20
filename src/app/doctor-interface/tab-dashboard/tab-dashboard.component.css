@@ -10,7 +10,7 @@
 
 .widget1{
     margin-left: 1%;
-    background: linear-gradient(90deg, rgba(73, 88, 140, 0.647) 0%, rgba(73, 88, 140, 0.647) 50%, rgba(62, 164, 161, 0.438) 100%);
+    background: linear-gradient(90deg, rgba(73, 88, 140, 0.647) 0%, rgba(73, 88, 140, 0.647) 50%, rgba(62, 164, 161, 0.653) 100%);
 }
 .widget2{
     
@@ -27,19 +27,56 @@
 .lis{
     margin-top: 4%;
     margin-right: 0%;
-    border-radius: 5%;
-     box-shadow:   4px 4px 12px #777171/* Ombre pour l'image */
+    border: none;
+    box-shadow:   4px 4px 12px #323e6773;/* Ombre pour l'image */
+    
+
+
     
 }
+.lis ul{
+    list-style: none;
+    align-items: none;
+}
 .lis li{
+    padding-top: 3%;
+    padding-left: 3%;
+    padding-bottom: 1%;
+    padding-right: 3%;
    color: rgb(99, 97, 97);
-background-color: #a5d8caca;
+   background-color: rgba(73, 87, 140, 0.533);
+   list-style: none;
+   align-items: none;
 
 }
+.patientlist-text{
+    color: white;
 
+}
+.patientlist-text1{
+    color: rgba(255, 255, 255, 0.763);
+    font-size: large;
+
+    font-weight: bold;
+    text-decoration: underline;
+}
+.patientlist-text2{
+ font-size: small;
+ color: white;
+
+ float: right;
+
+}
+.patientlist-text3{
+    color: rgba(154, 61, 138, 0.647);
+    font-size: large;
+
+    font-weight: bold;
+    text-decoration: underline;
+}
 .round-image {
-    width: 20%; /* Taille de l'image */
-    height: 20%;
+    width: 12%; /* Taille de l'image */
+    height: 12%;
     border-radius: 55%; /* Pour créer une forme ronde */
     margin-right: 5px; /* Espace entre l'image et le texte */
 }
@@ -51,10 +88,74 @@ background-color: #a5d8caca;
 
 
     font-weight: bolder;
-    color: rgb(71, 70, 70);
+    color: rgba(255, 255, 255, 0.763);
     
 }
 .todolist .card .list-group li{
-    background-color: #a5d8caca;
+    background-color: rgba(73, 88, 140, 0.647);
 }
 
+.chart-container{
+    box-shadow:   4px 4px 12px #323e67;/* Ombre pour l'image */
+    background-color: rgba(73, 87, 140, 0.504);
+
+}
+.titre_chart{
+font-size: large;
+color: rgba(163, 114, 77, 0.933);
+font-weight: bold;
+text-decoration: underline;
+
+  
+}
+.add-ToDo{
+    border: none;
+    float: right;
+    border-radius: 20%;
+    background: transparent;
+}
+.plus{
+
+    float: right;
+    color: rgba(255, 255, 255, 0.763);
+    font-size: large;
+
+
+}
+.plus:hover{
+
+   font-size: larger;
+
+}
+
+/* Sélecteur pour styliser la case à cocher non cochée */
+.form-check-input:not(:checked) {
+    border-color: rgba(62, 164, 161, 0.547); /* Couleur de la bordure de la case à cocher non cochée */
+    background-color: rgb(241, 241, 236); /* Couleur de fond de la case à cocher non cochée */
+  }
+  
+  /* Sélecteur pour styliser la case à cocher cochée */
+  .form-check-input:checked {
+    border-color: rgba(62, 164, 161, 0.647); /* Couleur de la bordure de la case à cocher cochée */
+    background-color: rgba(62, 164, 161, 0.948); /* Couleur de fond de la case à cocher cochée */
+  }
+  
+  .modal-title{
+    color: rgba(255, 255, 255, 0.763);
+  }
+  .modal-content{
+    background: linear-gradient(90deg, rgb(106, 116, 153) 0%, rgb(95, 182, 179)50%, rgb(62, 164, 161) 100%);
+
+  }
+
+  .txt{
+    color: white;
+    font-weight: bold;
+  }
+  .graph_patient{
+    box-shadow:   4px 4px 12px #323e67da;/* Ombre pour l'image */
+    background-color: rgba(73, 87, 140, 0.504);
+    margin-left: 2%;
+
+  }
+ 
