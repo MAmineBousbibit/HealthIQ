@@ -43,6 +43,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SearchPipe } from './doctor-interface/appointments/search.pipe';
 import { NgChartsModule } from 'ng2-charts';
 import { Chart } from 'chart.js';
+import { SearchPipeHomePipe } from './Views/navbar/search-pipe-home.pipe';
 
 //import { AgmCoreModule } from '@agm/core';
 
@@ -81,6 +82,7 @@ import { Chart } from 'chart.js';
     SettingComponent,
     AppointmentsComponent,
     SearchPipe,
+    SearchPipeHomePipe,
    
   ],
   imports: [
