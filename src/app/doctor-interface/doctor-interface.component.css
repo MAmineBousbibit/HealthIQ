@@ -1,39 +1,7 @@
 
+.milieu{
+   margin-left: 96px;
 
-.side-nav {
-   width: 100%; /* Ajuster la largeur du side-nav */
-   
-   flex: 0 0 auto;
-}
-
-
-.flex-container {
-   display: flex;
-  
-   /* Utilisation de flexbox pour les éléments côte à côte */
-}
-
-
-
-
-.content{
- /* Supprimer la marge fixe */
-   padding-top: 14px;
-   padding-bottom: 10px; /* Ajouter du padding pour éviter des problèmes sur les petits écrans */
    background-color: #6772954a;
-   margin-top: 4%;
-  margin-left: 8%;
-   flex: 1;
-  
- 
-
+   
 }
-
-/* Ajouter des media queries pour différentes tailles d'écran */
-@media (min-width: 768px) {
-   .side-nav {
-       width: 96px; /* Par exemple, pour les écrans plus larges */
-   }
-}
-
-

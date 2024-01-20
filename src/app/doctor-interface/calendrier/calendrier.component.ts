@@ -1,6 +1,7 @@
-import { AfterViewInit, Component,ElementRef,OnInit,ViewChild } from '@angular/core';
+import { Component,OnInit,ViewChild } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core'; // useful for typechecking
 import dayGridPlugin from '@fullcalendar/daygrid';
+
 import { BsModalRef,BsModalService ,ModalModule} from 'ngx-bootstrap/modal';
 import { DoctorService } from 'src/app/_Services/doctor.service';
 import { Events } from 'src/app/_models/events';
@@ -11,6 +12,7 @@ import { Events } from 'src/app/_models/events';
   styleUrls: ['./calendrier.component.css']
 })
 export class CalendrierComponent {
+
  // @ViewChild('eventModal') eventModal!: ElementRef;
   constructor( private ServiceDoc:DoctorService) {}
   ngOnInit(): void {
@@ -25,16 +27,20 @@ export class CalendrierComponent {
   Event=new Events
   title:any;
   events:any=[]
+
+  modalRef?:BsModalRef;
+  
+
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     
     plugins: [dayGridPlugin],
     events:this.events,
-    eventClick: this.handleEventClick.bind(this), 
-    
+    eventClick: this.handleDateClick.bind(this), 
    
   };
  
+
   handleEventClick(eventInfo: any) {
 
  this.Event.title=eventInfo.event._def.title;
@@ -127,6 +133,12 @@ ajouterEvent(){
     this.updateCalendrier()
   this.closeevent()// Fermer la modale après la suppression
 
+ 
+  };
+
+   handleDateClick(arg:any) {
+    alert('date click! ' + arg.dateStr)
+    console.log(arg)
   }
 
   selectStatus(selectedOption: string): void {

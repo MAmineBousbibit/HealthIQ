@@ -40,25 +40,25 @@
                 <form>
                     <div class="form-group row mb-2">
                         <div class="col-6 ">
-                            <input type="text"  class="form-control" placeholder="Nom" [ngModelOptions]="{ standalone: true }"  [(ngModel)]="Doctor.first_name">
+                            <input type="text" disabled class="form-control" placeholder="Nom" >
                         </div>
                         <div class="col-6 ">
                             <input type="text" class="form-control" 
-                                 placeholder="prenom"  [ngModelOptions]="{ standalone: true }"  [(ngModel)]="Doctor.last_name">
+                                 placeholder="prenom" disabled >
                         </div>
                     </div>
                     <div class="form-group row mb-2">
                         <div class="col-6 ">
-                            <input type="text" class="form-control" placeholder="email" [ngModelOptions]="{ standalone: true }"  [(ngModel)]="Doctor.email">
+                            <input type="text" disabled class="form-control" placeholder="email" >
                         </div>
                         <div class="col-6 ">
                             <input type="text" class="form-control" 
-                                 placeholder="adresse" required [ngModelOptions]="{ standalone: true }" [(ngModel)]="Doctor.adresse" >
+                                 placeholder="adresse" required  >
                         </div>
                     </div>
                     <div class="form-group row mb-2">
                         <div class="col-6 ">
-                            <input type="text" class="form-control" placeholder="Prix de Consultation"[ngModelOptions]="{ standalone: true }"  [(ngModel)]="Doctor.PrixConsultation">
+                            <input type="text" disabled class="form-control" placeholder="Prix de Consultation" >
                         </div>
                        
                     </div>
@@ -67,10 +67,10 @@
                             
                             <p><i class="fa-regular fa-clock"></i><span class="text-bolder ">  Horaire de Travaille </span></p>
                             <div class="col-4 d-inline">
-                           Debut  :<input type="datetime-local" class="form-control" [ngModelOptions]="{ standalone: true }" [(ngModel)]="Doctor.debutTime">
+                           Debut  :<input type="datetime-local" class="form-control" >
                            </div>
                            <div class="col-4 d-inline ">
-                            Fin  :<input type="datetime-local" class="form-control" [ngModelOptions]="{ standalone: true }" [(ngModel)]="Doctor.finTime">
+                            Fin  :<input type="datetime-local" class="form-control" >
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                         </div>
                       </div>
                     <div class="form-group row my-2">
-                        <label for="inputPassword" class="col-sm-4 col-form-label" >New Password</label>
+                        <label for="inputPassword" class="col-sm-4 col-form-label">New Password</label>
                         <div class="col-sm-8">
                           <input type="password" class="form-control" id="inputPassword">
                         </div>
