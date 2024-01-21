@@ -4,6 +4,7 @@ import { DoctorService } from 'src/app/_Services/doctor.service';
 import { FlaskAnalyseService } from 'src/app/_Services/flask-analyse.service';
 import { ToDo } from 'src/app/_models/to-do';
 import * as $ from 'jquery';
+import { AuthService } from 'src/app/_Services/auth.service';
 @Component({
   selector: 'app-tab-dashboard',
   templateUrl: './tab-dashboard.component.html',
@@ -11,9 +12,22 @@ import * as $ from 'jquery';
 })
 export class TabDashboardComponent  {
   @ViewChild('myModal') myModal!: ElementRef;
-constructor(private FlaskService:FlaskAnalyseService, private DocService:DoctorService){
+ UserID:any
+ Id="6593d95fe01ea7347c191052" /******************* */
+constructor(private FlaskService:FlaskAnalyseService, private DocService:DoctorService,private AuthServices: AuthService){
+ /**************************** */
+  this.UserID=AuthServices.getIDUser()
+ 
+  this.DocService.getOneDoctor(this.Id).subscribe(
+    (data:any)=>{
+      console.log("user-auth :", data);
+      
+    }
+  )
+ /**************************** */
 
 }
+
 
 compteurDates: { [date: string]: number } = {};
 PatientList:any

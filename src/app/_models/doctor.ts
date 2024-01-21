@@ -8,8 +8,11 @@ export class Doctor{
     age:any;
     debutTime:any;
     finTime:any;
-    PrixConsultation:any;
-    Operation:any
+    prixConsultation:any;
+    Operation:any;
+    image:any;
+    specilite:any;
+    naissance:any;
     
 
 
