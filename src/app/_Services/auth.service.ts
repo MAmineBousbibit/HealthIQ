@@ -23,7 +23,7 @@ export class AuthService {
    //Decodage de Token 
     let jwtDecoder:any =jwtDecode(this.token)
    //afectation les info de token 
-    this.email=jwtDecoder.sub;
+    //this.email=jwtDecoder.sub;
     this.role=jwtDecoder.role
     this.userID=jwtDecoder.ID;
     if(this.role==='ROLE_USER'){
@@ -38,8 +38,11 @@ export class AuthService {
     else  {
       this.JWTService.saveToken(this.token)
       this.router.navigate(['/Doctor'])
-   
     } 
+  }
+//*******Recupere Dato from Token  */
+  getIDUser(){
+  return this.userID
   }
 
 }
