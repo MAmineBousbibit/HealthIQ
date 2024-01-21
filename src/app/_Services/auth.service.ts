@@ -37,7 +37,7 @@ export class AuthService {
     } 
     else  {
       this.JWTService.saveToken(this.token)
-      //this.router.navigate(['/Doctor'])
+      this.router.navigate(['/Doctor'])
    
     } 
   }

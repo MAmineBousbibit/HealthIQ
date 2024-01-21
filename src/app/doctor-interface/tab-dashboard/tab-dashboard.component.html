@@ -5,7 +5,7 @@
         <div class="info-box7 l-bg-card1 order-info-box7">
           <div class="info-box7-block">
             <h5 class="m-b-15 icon1">Todays Patients</h5>
-            <h2 class="text-end"><i class="icon1 fas fa-user-injured float-start"></i><span>231</span></h2>
+            <h2 class="text-end"><i class="icon1 fas fa-user-injured float-start"></i><span>{{nbPatientsTOTAL}}</span></h2>
             <p class="m-b-0 icon1">18% Higher Then Last Month</p>
           </div>
         </div>
@@ -14,8 +14,8 @@
       <div class="col-lg-3 col-sm-6 widget widget2">
         <div class="info-box7 l-bg-card2 order-info-box7">
           <div class="info-box7-block">
-            <h5 class="m-b-15">Appointments</h5>
-            <h2 class="text-end"><i class="far fa-calendar-check float-start"></i><span>122</span></h2>
+            <h5 class="m-b-15">Today Appointments </h5>
+            <h2 class="text-end"><i class="far fa-calendar-check float-start"></i><span>{{nbTotalAppoitment}}</span></h2>
             <p class="m-b-0">21% Higher Then Last Month</p>
           </div>
         </div>
@@ -36,27 +36,28 @@
 <div class="container">
   <div class="row">
     <div class="col-8">
-      <div class="">
-
-      </div>
+    
+      <div class="chart-container p-3 rounded m-4">
+        <div class="titre_chart mb-2 "><p>Consultation par jour</p> </div>
+        <canvas  id="MyChart" ></canvas>
+       </div>
     </div>
-    <div class="col-4 ">
+    <div class="col-4 rounded">
       
-      <ul class="list-group lis shadow-lg">
-        <li class="list-group-item">
-            <img src="assets/img/profil/profil1.jpg" class="round-image" alt="Image1"> Patient1
+      <ul class="list-group lis rounded">
+        <li class="" >
+          <span class=" patientlist-text1">List des patients</span>
+          <hr class="m-0 mt-1">
+          
+      </li>
+        <li class="" *ngFor="let Patient of PatientList">
+            <img src="assets/img/profil/profil1.jpg" class="round-image" alt="Image1"> <span class="mx-2 patientlist-text">{{ Patient.Id_patient.firstName }} {{ Patient.Id_patient.lastName }}</span> 
+            <span class="m-1 patientlist-text2 float-right">{{ Patient.date}}  {{ Patient.hour}}</span>
+            
         </li>
-        <li class="list-group-item">
-          <img src="assets/img/profil/profil1.jpg" class="round-image" alt="Image1"> Patient1
-      </li> <li class="list-group-item">
-        <img src="assets/img/profil/profil1.jpg" class="round-image" alt="Image1"> Patient1
-    </li> <li class="list-group-item">
-      <img src="assets/img/profil/profil1.jpg" class="round-image" alt="Image1"> Patient1
-  </li> <li class="list-group-item">
-    <img src="assets/img/profil/profil1.jpg" class="round-image" alt="Image1"> Patient1
-</li>
-        <!-- ... (les autres éléments de la liste) ... -->
-    </ul>
+      
+       
+       </ul>
     
      
     </div>
@@ -69,41 +70,68 @@
   <div class="card" >
     <div class="card-header ">
      <i class="fa-solid fa-list"></i>     TO DO LIST
+     <button type="button" class="add-ToDo" (click)="newEvent()" data-toggle="modal" data-target="#exampleModal">
+      <i class="plus fa-solid fa-plus"></i>
+    </button>
     </div>
-    <ul class="list-group list-group-flush">
-     
-      <li class="list-group-item "> <input type="checkbox" class="form-check-input" ><span class="mx-2">Cras justo odio</span> </li>
-      <li class="list-group-item "> <input type="checkbox" class="form-check-input" ><span class="mx-2">Cras justo odio</span> </li>
-      <li class="list-group-item "> <input type="checkbox" class="form-check-input" ><span class="mx-2">Cras justo odio</span> </li>
-      <li class="list-group-item "> <input type="checkbox" class="form-check-input" ><span class="mx-2">Cras justo odio</span> </li>
-   
+    <ul class="list-group list-group-flush" *ngFor="let todo of ListToDo; let i = index">
+      <li class="list-group-item">
+        <input type="checkbox" class="form-check-input" (change)="checkedDo(i)" [(ngModel)]="todo.cheked">
+        <span class="mx-2">{{todo.event}}</span>
+      </li>
     </ul>
   </div>
 </div>
-<div class="col-lg-4 col-sm-6 ">
-  <div class="card" >
-    <div class="card-header ">
-     <i class="fa-solid fa-list"></i>     TO DO LIST
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item "> <input type="checkbox" class="form-check-input" ><span class="mx-2">Cras justo odio</span> </li>
-      <li class="list-group-item "> <input type="checkbox" class="form-check-input" ><span class="mx-2">Cras justo odio</span> </li>
-      <li class="list-group-item "> <input type="checkbox" class="form-check-input" ><span class="mx-2">Cras justo odio</span> </li>
-      <li class="list-group-item "> <input type="checkbox" class="form-check-input" ><span class="mx-2">Cras justo odio</span> </li>
-      <li class="list-group-item "> <input type="checkbox" class="form-check-input" ><span class="mx-2">Cras justo odio</span> </li>
-   
-    </ul>
-  </div>
-</div><div class="col-lg-4 col-sm-6 ">
+<div class="col-lg-4 col-sm-6  graph_patient rounded">
   <div class="info-box7 l-bg-card1 order-info-box7">
     <div class="info-box7-block">
-      <h5 class="m-b-15 px-5">Number of Patients</h5>
-      <h2 class="text-end"><i class="mx-5 fas fa-user-injured float-start"></i><span>231</span></h2>
-      <div>
-             Graphe
+      <h5 class="m-b-15 mt-2 patientlist-text3"></h5>
+      <div class="p-2 mt-2">
+        <canvas  id="graph" ></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-lg-4 col-sm-6  graph_patient rounded">
+  <div class="info-box7 l-bg-card1 order-info-box7">
+    <div class="info-box7-block">
+      <h5 class="m-b-15 mt-2 patientlist-text3">Nombres des Patients</h5>
+      <div class="p-2 mt-2">
+        <canvas  id="patientChart" height="300"></canvas>
       </div>
     </div>
   </div>
 </div>
 </div>
+</div>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div  #myModal class="modal " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >To Do</h5>
+        
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group row my-2">
+              <label  class="col-sm-2 col-form-label txt">Event</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" [ngModelOptions]="{ standalone: true }" [(ngModel)]="TODO.event" >
+              </div>
+            </div>
+          
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addToDo()">Ajouter</button>
+      </div>
+    </div>
+  </div>
 </div>
