@@ -254,7 +254,7 @@ function isEventInCurrentDay(eve: any, currentDate: Date): boolean {
   return `${year}-${month}`;
 }
 ChartPatient(){
- console.log("hah",this.DataEvents) 
+// console.log("hah",this.DataEvents) 
 
  const last12MonthsEvents = this.DataEvents.filter((event: any) => {
   const eventDate = new Date(event.date);
@@ -274,7 +274,7 @@ const monthlyPatientCount =this.DataEvents.reduce((result:any, event:any) => {
 // Extract the last 12 months
 const last12Months = Object.keys(monthlyPatientCount).slice(-12);
 last12Months.forEach((monthAndYear) => {
-  console.log(`Month: ${monthAndYear}, Total Patients: ${monthlyPatientCount[monthAndYear]}`);
+ // console.log(`Month: ${monthAndYear}, Total Patients: ${monthlyPatientCount[monthAndYear]}`);
 });
   interface ChartData {
     labels: any;

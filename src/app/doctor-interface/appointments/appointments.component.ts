@@ -23,7 +23,7 @@ this.getEvent()
   getEvent(){
     this.ServiceDoc.getEvents().subscribe(
       (response) => {
-        console.log("events",response)
+        //console.log("events",response)
         this.AppoitmentTable=response
        
       },
