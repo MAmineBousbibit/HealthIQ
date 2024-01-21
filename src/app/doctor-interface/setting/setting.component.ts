@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from 'src/app/_Services/auth.service';
 import { DoctorService } from 'src/app/_Services/doctor.service';
 import { Doctor } from 'src/app/_models/doctor';
-
+//import * as moment from 'moment';
 @Component({
   selector: 'app-setting',
   templateUrl: './setting.component.html',
@@ -15,6 +15,7 @@ export class SettingComponent {
   //**6599449e3c0530726e1d654b */
   DoctorData=new Doctor()
   AgeDoc:any
+  formattedDate:any
   constructor( private DocService:DoctorService,private AuthServices: AuthService){
  /**************************** */
  this.UserID=AuthServices.getIDUser()
@@ -24,6 +25,7 @@ export class SettingComponent {
      console.log("user-auth :", data);
      this.DoctorData=data
      this.calculateAge(this.DoctorData.naissance)
+     this.Doctor=data
      
    }
  )
@@ -39,6 +41,12 @@ export class SettingComponent {
   }
   editinformation(){
     console.log(this.Doctor)
+    this.DocService.updateDoctor(this.Id,this.Doctor).subscribe(
+      (response:any)=>{
+        console.log("updated doc",response);
+        
+      }
+    )
   }
   editpassword(){
     console.log(this.Doctor)
@@ -60,4 +68,17 @@ export class SettingComponent {
   
     this.AgeDoc=age
   }
+
+  /*changeDate() {
+    const startDate = moment('2024-01-22T08:15');
+    const endDate = moment('2024-01-28T15:30');
+
+    const startDayName = startDate.format('ddd').toUpperCase();
+    const endDayName = endDate.format('ddd').toUpperCase();
+
+    const startTime = startDate.format('h:mm A');
+    const endTime = endDate.format('h:mm A');
+
+    this.formattedDate = `${startDayName} - ${endDayName} ${startTime} - ${endTime}`;
+  }*/
 }
