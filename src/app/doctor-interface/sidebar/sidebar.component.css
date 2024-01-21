@@ -12,7 +12,7 @@
 
   }
   .image{
-    margin-top: 15%;
+    margin-top: 25%;
    
    height: 25%;
    max-height: 25%;
@@ -74,4 +74,9 @@
   }
 .orange{
   color:white
+}
+
+.logout {
+  margin-top: 65%;
+  margin-bottom: 0; /* Ajustez la valeur selon l'espace souhaité */
 }

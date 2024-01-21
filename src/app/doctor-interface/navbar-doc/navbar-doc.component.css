@@ -1,8 +1,9 @@
 .bg-nav{
     background-color:#323e67 ;
-    color:black;
+ 
     z-index: 40;
-   
+    position: fixed;
+    width: 100%;
     
 }
 .navbar-brand{
@@ -20,3 +21,10 @@ img{
    margin-top: 2px;
     color : white;
 }
+.logo-nav{
+
+    width: 20%;
+    height: 20%;
+   
+    
+      }
