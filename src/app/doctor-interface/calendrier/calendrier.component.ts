@@ -12,6 +12,7 @@ import { Events } from 'src/app/_models/events';
 })
 export class CalendrierComponent {
  // @ViewChild('eventModal') eventModal!: ElementRef;
+ formattedDate:any
   constructor( private ServiceDoc:DoctorService) {}
   ngOnInit(): void {
    this.getEvents()
@@ -44,18 +45,19 @@ export class CalendrierComponent {
 
 
 
- const date = eventInfo.event.start;
+const date = eventInfo.event.start;
 
-const year = date.getFullYear();
+
 const month = String(date.getMonth() + 1).padStart(2, '0');
 const day = String(date.getDate()).padStart(2, '0'); 
+const year = date.getFullYear()
+this.formattedDate = `${year}-${month}-${day}`;
 
-const formattedDate = ${year}-${month}-${day};
 
 const inputDateElement = document.querySelector<HTMLInputElement>('.form-control[type="date"]');
 
 if (inputDateElement !== null) {
-  inputDateElement.value = formattedDate;
+  inputDateElement.value = this.formattedDate;
 } 
    //console.log(this.Event);
    const modal=document.getElementById('eventModal')
