@@ -1,5 +1,4 @@
 export class Events {
-    
     _id:any;
         date:any;
         title:any;

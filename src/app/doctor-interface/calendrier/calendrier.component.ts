@@ -50,7 +50,7 @@ const year = date.getFullYear();
 const month = String(date.getMonth() + 1).padStart(2, '0');
 const day = String(date.getDate()).padStart(2, '0'); 
 
-const formattedDate = `${year}-${month}-${day}`;
+const formattedDate = ${year}-${month}-${day};
 
 const inputDateElement = document.querySelector<HTMLInputElement>('.form-control[type="date"]');
 
@@ -68,7 +68,7 @@ if (inputDateElement !== null) {
   }
 ajouterEvent(){
   this.addEvent=true
-  //console.log("ok",this.addEvent);
+  console.log("ok",this.addEvent);
   const modal=document.getElementById('ajoutmodal')
    
   if(modal!=null){
@@ -98,7 +98,7 @@ ajouterEvent(){
 
   btnAdd()
 {
-  //console.log("event add",this.Event);
+  console.log("event add",this.Event);
   if (this.Event.status=="Urgent") {
     this.Event.color='red'
   } else if(this.Event.status=="À venir") {
