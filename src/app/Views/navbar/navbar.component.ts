@@ -7,7 +7,6 @@ import { AuthService } from 'src/app/_Services/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-<<<<<<< HEAD
   constructor(private authService: AuthService) {}
 
   isLoggedIn(): boolean {
@@ -22,7 +21,5 @@ export class NavbarComponent {
     // Ajoutez ici votre logique de déconnexion (peut-être un appel à une méthode du service d'authentification)
   }
 
-=======
   searchText='';
->>>>>>> 5b0dfb2f7ccf037613e3d865248833c7936e898b
 }
