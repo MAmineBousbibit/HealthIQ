@@ -19,7 +19,7 @@ export class DoctorService{
       { "No-Auth":"True"}  
     );
     constructor(private http:HttpClient) { }
-getAllDoctors():Observable<any>{
+  getAllDoctors():Observable<any>{
     return this.http.get(this.getAll_api);
   }
   
