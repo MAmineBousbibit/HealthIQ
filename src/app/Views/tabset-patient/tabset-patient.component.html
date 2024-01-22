@@ -1,1 +1,185 @@
-<p>tabset-patient works!</p>
+<div class="container mt-4">
+  <div class="row">
+  <div class="col-12">
+  <div class="card card-default shadow rounded">
+  <div class="card-body">
+  <div class="row">
+  <div class="col-12">
+  <!-- <button class="btn btn-default">IH Tabs</button> -->
+  <ul class="tabs-container">
+    <li  (click)="onTabClick('Personal Details')" [class.active]="activeTab == 'Personal Details'" class="tab-link">Make an Appointment</li>
+    <li (click)="onTabClick('Account Details')" [class.active]="activeTab == 'Account Details'"  class="tab-link">Profile</li>
+    <li (click)="onTabClick('Other Details')" [class.active]="activeTab == 'Other Details'"  class="tab-link">My Board</li>
+  </ul>
+  <div *ngIf="activeTab == 'Personal Details'" class="w-100">
+    <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+      <h4 style="margin-bottom: 15px;margin-top: 15px;">Appointment Form :</h4>
+      <div class="form-group">
+        <label for="firstname">Firstname</label>
+        <input type="text" formControlName="firstname" class="form-control" id="firstname">
+      </div>
+      <div class="form-group">
+        <label for="lastname">Lastname</label>
+        <input type="text" formControlName="lastname" class="form-control" id="lastname">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" formControlName="email" class="form-control" id="email">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="tel" formControlName="phone" class="form-control" id="phone">
+      </div>
+      <div class="form-group">
+      <div class="dropdown mt-2 show">
+        <label for="phone">Spécialités</label>
+        <a class="btn drop-color dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          choose your speciality
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <button *ngFor="let option of specialites"
+          (click)="selectOption(option)" class="dropdown-item"
+          type="button">{{ option }}</button>
+        </div>
+      </div>
+      </div>
+      <div class="form-group">
+        <div class="dropdown mt-2 show">
+          <label for="phone"> Doctors</label>
+          <a class="btn drop-color dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            choose your doctor
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <button *ngFor="let option of doctors"
+            (click)="selectOption(option)" class="dropdown-item"
+            type="button">{{ option }}</button>
+          </div>
+        </div>
+        </div>
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" formControlName="date" class="form-control" id="date">
+      </div>
+      <div class="form-group">
+        <label for="time">Time</label>
+        <input type="time" formControlName="time" class="form-control" id="time">
+      </div>
+      <div class="form-group">
+        <label>Status : </label>
+        <div class="radio-group">
+          <label style="color: red;">
+            <input type="radio" formControlName="status" value="urgent" name="status"> Urgent
+          </label>
+          <label style="color: green;">
+            <input type="radio" formControlName="status" value="a-venir" name="status"> À venir
+          </label>
+          <label style="color: orange;">
+            <input type="radio" formControlName="status" value="annule" name="status"> Annulé
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea formControlName="message" class="form-control" id="message" placeholder="Ajoutez quelque chose..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+  <div *ngIf="activeTab == 'Account Details'" class="w-100">
+
+    <h4 style="margin-bottom: 20px;margin-top: 15px;">Profile :</h4>
+
+    <div class="form-group">
+      <label for="photo">Upload Photo</label>
+      <input type="file" formControlName="photo" class="form-control" id="photo">
+    </div>
+    <form>
+      <div class="form-group">
+        <label for="firstname">First Name</label>
+        <input type="text" formControlName="firstname" class="form-control" id="firstname">
+      </div>
+      <div class="form-group">
+        <label for="lastname">Last Name</label>
+        <input type="text" formControlName="lastname" class="form-control" id="lastname">
+      </div>
+      <div class="form-group">
+        <label for="birthdate">Date of Birth</label>
+        <input type="date" formControlName="birthdate" class="form-control" id="birthdate">
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" formControlName="city" class="form-control" id="city">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="tel" formControlName="phone" class="form-control" id="phone">
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select formControlName="gender" class="form-control" id="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+      </form>
+    <h4 style="margin-bottom: 20px;margin-top: 15px;">Password Reset :</h4>
+    <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="actualpassword">Actual Password</label>
+        <input type="password" formControlName="actualpassword" class="form-control" id="actualpassword">
+      </div>
+      <div class="form-group">
+        <label for="newpassword">New Password</label>
+        <input type="password" formControlName="newpassword" class="form-control" id="newpassword">
+      </div>
+      <div class="form-group">
+        <label for="Confirmpassword">Confirm New Password</label>
+        <input type="password" formControlName="Confirmpassword" class="form-control" id="Confirmpassword">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+  <div *ngIf="activeTab == 'Other Details'" class="w-100">
+    <h4 style="margin-bottom: 15px;margin-top: 15px;">Consultations :</h4>
+<div class="form-group">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Speciality</th>
+        <th>Doctor</th>
+        <th>Status</th>
+        <th>Prescription</th>
+        <th>Remarks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2022-01-01</td>
+        <td>Cardiology</td>
+        <td>Dr. Smith</td>
+        <td>completed</td>
+        <td><a href="prescription_1.pdf" target="_blank">prescription_1.pdf</a></td>
+        <td>Patient is recovering well.</td>
+      </tr>
+      <tr>
+        <td>2022-02-15</td>
+        <td>Dermatology</td>
+        <td>Dr. Johnson</td>
+        <td>pending</td>
+        <td><a href="prescription_2.pdf" target="_blank">prescription_2.pdf</a></td>
+        <td>Follow up required.</td>
+      </tr>
+      <!-- Ajoutez d'autres lignes statiques si nécessaire -->
+    </tbody>
+  </table>
+</div>
+
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
