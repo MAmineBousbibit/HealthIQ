@@ -22,7 +22,15 @@ export class GestionDocComponent implements OnInit {
         last_name: [null, [Validators.required]],
         email: [null, [Validators.required, Validators.email]],
         debutTime: [null, [Validators.required]],
-        finTime: [null, [Validators.required]]
+        finTime: [null, [Validators.required]],
+        password: [null, [Validators.required]],
+        age: [null, [Validators.required]],
+        prixConsultation: [null, [Validators.required]],
+        Operation: [null, [Validators.required]],
+        image: [null, [Validators.required]],
+        specialite: [null, [Validators.required]],
+        naissance: [null, [Validators.required]],
+        adresse: [null, [Validators.required]]
       })
       this.getAllDoctors();
     }
@@ -63,18 +71,37 @@ export class GestionDocComponent implements OnInit {
         doctor.updatedEmail = doctor.email;
         doctor.updatedDebutTime = doctor.debutTime;
         doctor.updatedFinTime = doctor.finTime;
+        doctor.updatedPassword = doctor.password;
+        doctor.updatedAge = doctor.age;
+        doctor.updatedPrixConsultation = doctor.prixConsultation;
+        doctor.updatedOperation = doctor.Operation;
+        doctor.updatedImage = doctor.image;
+        doctor.updatedSpecialite = doctor.specialite;
+        doctor.updatedNaissance = doctor.naissance;
+        doctor.updatedAdresse = doctor.adresse;
       } else { 
         this.doctorService.updateDoctor(doctor);
       }
     }
     updateDoctor(doctor:any){
-      const { updatedFirstName, updatedLastName, updatedEmail, updatedDebutTime, updatedFinTime } = doctor;
+      const { updatedFirstName, updatedLastName, updatedEmail, 
+        updatedDebutTime, updatedFinTime, updatedPassword,
+        updatedAge, updatedPrixConsultation, updatedOperation,
+        updatedImage, updatedSpecialite, updatedNaissance, updatedAdresse } = doctor;
       const updatedData = {
       first_name: updatedFirstName,
       last_name: updatedLastName,
       email: updatedEmail,
       debutTime: updatedDebutTime,
-      finTime: updatedFinTime
+      finTime: updatedFinTime,
+      password: updatedPassword,
+      age: updatedAge,
+      prixConsultation: updatedPrixConsultation,
+      operation: updatedOperation,
+      image: updatedImage,
+      specialite: updatedSpecialite,
+      naissance: updatedNaissance,
+      adresse: updatedAdresse
     }
     this.doctorService.updateDoctor(doctor.id, updatedData)
       .subscribe((response) => {
