@@ -5,6 +5,7 @@ import { FlaskAnalyseService } from 'src/app/_Services/flask-analyse.service';
 import { ToDo } from 'src/app/_models/to-do';
 import * as $ from 'jquery';
 import { AuthService } from 'src/app/_Services/auth.service';
+import { Doctor } from 'src/app/_models/doctor';
 @Component({
   selector: 'app-tab-dashboard',
   templateUrl: './tab-dashboard.component.html',
@@ -12,6 +13,7 @@ import { AuthService } from 'src/app/_Services/auth.service';
 })
 export class TabDashboardComponent  {
   @ViewChild('myModal') myModal!: ElementRef;
+  Doctor=new Doctor()
  UserID:any
  Id="6593d95fe01ea7347c191052" /******************* */
 constructor(private FlaskService:FlaskAnalyseService, private DocService:DoctorService,private AuthServices: AuthService){
@@ -21,6 +23,7 @@ constructor(private FlaskService:FlaskAnalyseService, private DocService:DoctorS
   this.DocService.getOneDoctor(this.Id).subscribe(
     (data:any)=>{
       console.log("user-auth :", data);
+      this.Doctor=data
       
     }
   )
@@ -124,10 +127,13 @@ this.chart = new Chart("MyChart", {
 
   }
   getDataEvent() {
-    const id_Doc = "1";
-    this.FlaskService.getEventsDoc(id_Doc).subscribe(
+   
+    const id="6593d95fe01ea7347c191052"
+    const requestBody = { "id_Doc": id}; 
+    this.FlaskService.getEventsDoc(requestBody).subscribe(
       (response: any) => {
        this.DataEvents=response
+      console.log("data",this.DataEvents);
       
        this.NombreConsultation(response)
        this.GetPatient()
@@ -163,9 +169,12 @@ GetPatient(){
 getToDoList(){
   this.DocService.getToDoList().subscribe(
     (response: any) => {
-     //console.log("TodoList",response);
-
-     this.ListToDo=response;
+     console.log("TodoList",response);
+     const filteredEvents = response.filter((rp:any) => rp.id_Doc.id === this.Id);
+     this.ListToDo=filteredEvents
+     //this.ListToDo=response;
+     console.log("lastDo",filteredEvents);
+     
      
      },
      (error) => {
@@ -211,7 +220,9 @@ addToDo()
 {
   
 this.TODO.checked=false
-this.TODO.id_Doc.id="1"  /*****id de doc************************************ */
+//console.log("jsjs",this.Doctor.id );
+
+this.TODO.id_Doc.id=this.Doctor.id  
 
 this.DocService.AddToDo(this.TODO).subscribe(
   (resp:any)=>{
@@ -240,8 +251,8 @@ PatientGraphe(){
  // Utilisez la fonction filter pour sélectionner les événements qui répondent aux critères
 const filteredEvents = this.DataEvents.filter((evet:any) =>
 
-evet.Id_patient && 
-evet.Id_patient.firstname !=="" &&
+evet.id_patient && 
+evet.id_patient.firstname !=="" &&
 isEventInCurrentDay(evet, currentDate),//verifier la date de aujourd'hui que event on a 
 
 

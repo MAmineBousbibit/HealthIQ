@@ -50,7 +50,7 @@ export class UserService {
   /**Fonction pour recuperer tout les patient**/
 
   public findAll():Observable<Array<User>>{
-    return this._httpclient.get<Array<User>>(`${this._apiUrl}/`);
+    return this._httpclient.get<Array<User>>(`${this._apiUrl}/all`);
   }
 
 

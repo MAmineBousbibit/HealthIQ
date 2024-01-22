@@ -2,7 +2,9 @@ import { AfterViewInit, Component,ElementRef,OnInit,ViewChild } from '@angular/c
 import { CalendarOptions } from '@fullcalendar/core'; // useful for typechecking
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { BsModalRef,BsModalService ,ModalModule} from 'ngx-bootstrap/modal';
+import { AuthService } from 'src/app/_Services/auth.service';
 import { DoctorService } from 'src/app/_Services/doctor.service';
+import { Doctor } from 'src/app/_models/doctor';
 import { Events } from 'src/app/_models/events';
 
 @Component({
@@ -12,8 +14,22 @@ import { Events } from 'src/app/_models/events';
 })
 export class CalendrierComponent {
  // @ViewChild('eventModal') eventModal!: ElementRef;
+ Doctor=new Doctor()
  formattedDate:any
-  constructor( private ServiceDoc:DoctorService) {}
+ UserID:any
+ Id="6593d95fe01ea7347c191052" /******************* */
+ //**6599449e3c0530726e1d654b */
+  constructor( private ServiceDoc:DoctorService, private AuthServices:AuthService) {
+    this.UserID=AuthServices.getIDUser()
+ 
+    this.ServiceDoc.getOneDoctor(this.Id).subscribe(
+      (data:any)=>{
+        console.log("user-auth :", data);
+        this.Doctor=data
+      
+      }
+    )
+  }
   ngOnInit(): void {
    this.getEvents()
  
@@ -100,7 +116,8 @@ ajouterEvent(){
 
   btnAdd()
 {
-  console.log("event add",this.Event);
+  //console.log("event add",this.Event);
+  this.Event.ID_doc=this.Doctor.id
   if (this.Event.status=="Urgent") {
     this.Event.color='red'
   } else if(this.Event.status=="À venir") {
@@ -141,9 +158,12 @@ ajouterEvent(){
   
 getEvents(){
   this.ServiceDoc.getEvents().subscribe(
-    (response) => {
-    
-     this.events=response
+    (response:any) => {
+   // console.log("allEvents",this.Doctor.id);
+
+    const filteredEvents = response.filter((rp:any) => rp.ID_doc === this.Doctor.id);
+     this.events=filteredEvents
+    // console.log("allEvents",filteredEvents);
      this.updateCalendrier()
      
      

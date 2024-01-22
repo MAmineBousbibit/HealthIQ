@@ -11,7 +11,7 @@ export class Doctor{
     prixConsultation:any;
     Operation:any;
     image:any;
-    specilite:any;
+    specialite:any;
     naissance:any;
     
 

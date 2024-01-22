@@ -15,22 +15,34 @@
                 <div class="form-group row my-2">
                   <label for="inputPassword" class="col-sm-2 col-form-label" >Nom Docteur</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" disabled  [ngModelOptions]="{ standalone: true }" [(ngModel)]="Ordonnance.nom_Doc">
+                    <input type="text" class="form-control" disabled  [ngModelOptions]="{ standalone: true }" [(ngModel)]="Doctor.last_name">
                   </div>
                   <label for="inputPassword" class="col-sm-2 col-form-label" >Prénom Docteur</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" disabled [ngModelOptions]="{ standalone: true }" [(ngModel)]="Ordonnance.Prenom_Doc">
+                    <input type="text" class="form-control" disabled [ngModelOptions]="{ standalone: true }" [(ngModel)]="Doctor.first_name">
                   </div>
                 </div>
                 <hr>
                 <div class="form-group row my-2">
-                    <label for="inputPassword" class="col-sm-2 col-form-label"  >Nom Patient</label>
+                  <!--  <label for="inputPassword" class="col-sm-2 col-form-label"  >Nom Patient</label>
                     <div class="col-sm-4">
                       <input type="text" class="form-control"  [ngModelOptions]="{ standalone: true }" [(ngModel)]="Ordonnance.Nom_patient">
                     </div>
                     <label for="inputPassword" class="col-sm-2 col-form-label">Prénom Patient</label>
                     <div class="col-sm-4">
                       <input type="text" class="form-control"  [ngModelOptions]="{ standalone: true }" [(ngModel)]="Ordonnance.Prenom_patient">
+                    </div>-->
+                    <div class="dropdown mt-2 show">
+                      <a class="btn  btn1  dropdown-toggle" href="#" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ selectedOption ? selectedOption.firstName + ' ' + selectedOption.lastName : 'Patients' }}
+                      </a>
+                    
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        
+                        <button *ngFor="let option of Patients"
+                        (click)="selectOption(option)" class="dropdown-item"
+                        type="button">{{ option.firstName }}{{ option.lastName }}</button>
+                      </div>
                     </div>
                   </div>
                  
