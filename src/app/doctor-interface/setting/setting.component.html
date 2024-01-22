@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row mb-0 pb-0">
+    <div class="row mb-0 pb-3  mt-5">
         <div class="col-3 text-center">
            
             <img class="rounded mt-5" *ngIf="DoctorData.image" [src]="'assets/img/profil/' + DoctorData.image" alt="Profile" class="img-thumbnail p-0" />
@@ -13,7 +13,7 @@
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i></p>
         </div>
-        <div class="col-5  ">
+        <div class="col-5   mt-3">
            
 
                 <div class="media-body mt-4">
@@ -26,8 +26,8 @@
                    
                     <p><span class="text-bolder bleu"> Age:</span> {{AgeDoc}}</p>
                 
-                    <p> <i class="fa-regular fa-clock"></i><span>  MON - SAT 10:00 AM - 8:00PM </span></p>
-                    <p> <i class="fa-regular fa-clock"></i><span>  {{DoctorData.debutTime}} {{DoctorData.finTime}} </span></p>
+                  
+                    <p> <i class="fa-regular fa-clock"></i><span>  {{formattedDate}} </span></p>
 
                     <p><i class="fas fa-map-marker-alt pt-3 psr-3 iconcolor"></i> {{DoctorData.adresse}} </p>
                     <p><i class="fa-solid fa-comment-dots"></i>  234 Feedback </p>

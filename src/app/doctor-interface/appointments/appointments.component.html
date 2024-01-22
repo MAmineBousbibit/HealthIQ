@@ -38,7 +38,7 @@
 
           </tr>
         </thead>
-        <tbody *ngFor="let event of AppoitmentTable | search: searchText">
+        <tbody *ngFor="let event of AppoitmentTable | search: searchText ; let i = index">
           <tr *ngIf="event.id_patient  " >
           
             <th scope="row">{{ i + 1 }}</th>

@@ -1,12 +1,16 @@
+import { Doctor } from "./doctor";
+import { User } from "./user";
+
 export class Ordonnance {
     description:any;
-    Nom_patient:any;
-    Prenom_patient:any;
+  
     nom_Doc:any;
     Prenom_Doc:any;
     Nom_medicament:any;
     ID_patient:any ;
-    ID_Doc:any;
+    Nom_patient:any;
+    Prenom_patient:any
+    ID_Doc=new Doctor();
     email_patient:any;
 
 }

@@ -48,6 +48,16 @@ font-weight: bolder;
     border: none;
     background-color: transparent;
     
+
+    
+}
+.btn1{
+    background-color: white;
+    width: 50%;
+    text-align: left;
+}
+.dropdown-menu{
+    width: 50%;
 }
 .btn:hover{
 font-size: larger;

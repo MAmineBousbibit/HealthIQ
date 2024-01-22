@@ -25,7 +25,9 @@ export class SettingComponent {
      console.log("user-auth :", data);
      this.DoctorData=data
      this.calculateAge(this.DoctorData.naissance)
+
      this.Doctor=data
+     this.ChangeDate(this.DoctorData.finTime,this.DoctorData.debutTime) 
      
    }
  )
@@ -52,33 +54,51 @@ export class SettingComponent {
     console.log(this.Doctor)
 
   }
-  calculateAge(dateOfBirth: Date): any {
+ 
+  calculateAge(dateOfBirth: any): void {
     const today: Date = new Date();
-    const birthDate: Date = new Date(dateOfBirth);
+  
+    // Convertir la date de naissance en format "MM-DD-YYYY" en "YYYY-MM-DD"
+    const formattedDateOfBirth: string = dateOfBirth.split('-').reverse().join('-');
+    
+    const birthDate: Date = new Date(formattedDateOfBirth);
   
     let age: number = today.getFullYear() - birthDate.getFullYear();
     const monthDiff: number = today.getMonth() - birthDate.getMonth();
   
-    // Si le mois de naissance est dans le futur par rapport au mois actuel,
-    // ou si c'est le même mois mais que le jour de naissance n'est pas encore passé,
-    // alors réduire l'âge d'une année
     if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
       age--;
     }
+  console.log("age",age);
   
-    this.AgeDoc=age
+   this.AgeDoc= age;
   }
+  
+ ChangeDate(fin:any,debut:any) {
+    
+    const startDate = new Date(debut);
+    const endDate = new Date(fin);
 
-  /*changeDate() {
-    const startDate = moment('2024-01-22T08:15');
-    const endDate = moment('2024-01-28T15:30');
+    const startDayName = this.getDayName(startDate).toUpperCase();
+    const endDayName = this.getDayName(endDate).toUpperCase();
 
-    const startDayName = startDate.format('ddd').toUpperCase();
-    const endDayName = endDate.format('ddd').toUpperCase();
-
-    const startTime = startDate.format('h:mm A');
-    const endTime = endDate.format('h:mm A');
+    const startTime = this.formatTime(startDate);
+    const endTime = this.formatTime(endDate);
 
     this.formattedDate = `${startDayName} - ${endDayName} ${startTime} - ${endTime}`;
-  }*/
+  }
+  private getDayName(date: Date): string {
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    return days[date.getDay()];
+  }
+
+  private formatTime(date: Date): string {
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+
+    return `${formattedHours}:${formattedMinutes} ${ampm}`;
+  }
 }

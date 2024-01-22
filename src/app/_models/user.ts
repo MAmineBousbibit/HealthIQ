@@ -1,8 +1,8 @@
 export class User {
     idUser: any;
-    CodeMedical: any;
-    Nom: any;
-    prenom: any;
+   // CodeMedical: any;
+   firstName: any;
+   lastName: any;
     email: any;
     password: any;
     phoneNumber: any;
@@ -24,29 +24,5 @@ export class User {
     NomMedicament:any
     Chirurgie:any
    condition :any
-    constructor() {
-        this.idUser = '';
-        this.CodeMedical ='';
-        this.Nom ='';
-        this.prenom ='';
-        this.email ='';
-        this.password ='';
-        this.phoneNumber ='';
-        this.adresse='';
-        this.dateNaissance='';
-        this.poid=''
-        this.ville=''
-        this.taille=''
-        this.sex='';
-        this.group_sang='';
-        this.maladieCheck='';
-        this.typeMaladie='';
-        this.typeAlergie='';
-        this.alergieCheck='';
-        this.MedicamentCheck='';
-        this.NomMedicament='';
-        this.Chirurgie='';
-        this.condition='';
-
-    }
+   
 }
