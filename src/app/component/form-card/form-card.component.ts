@@ -93,7 +93,7 @@ export class FormCardComponent implements OnInit {
         MedicamentCheck:[''],
         NomMedicament:[''],
         Chirurgie:[''],
-        
+
        // condition: ['', [Validators.required]]
       })
 
@@ -124,7 +124,7 @@ export class FormCardComponent implements OnInit {
   }
   skipStep(){
     this.ValueProgress = 100
-    this.ValueStep = 4 
+    this.ValueStep = 4
   }
   prevStep() {
     this.ValueProgress = this.ValueProgress - 25
@@ -245,10 +245,10 @@ toggleConditionSelection(event: any){
    console.log(this.SelectedUser)
     this.Services.Login(this.SelectedUser).subscribe(
       (token: any) => {
-    
+
         this.AuthService.loadProfile(token)
         console.log(token);
-        
+
       },
       (error) => {
         console.log(error);
@@ -259,7 +259,7 @@ toggleConditionSelection(event: any){
     this.PopConfirmation=true;
 
     if (!this.Condition) {
-      
+
       alert("Veuillez accepter nos conditions d'utilisation pour continuer.");
     }
     else{
@@ -275,12 +275,12 @@ toggleConditionSelection(event: any){
       }
     )
     }
-   
+
 
 
   }
   Forgotpwd() {
-    
+
     this.EmailForgot = { ...this.forgetForm.value }
     console.log(this.EmailForgot);
   }
@@ -288,8 +288,8 @@ toggleConditionSelection(event: any){
   //****Fonction qui convert les donnees de formControl a modal USER ***///
   convertToUser(formData: any): User {
     const user: User = new User();
-    user.Nom = formData.SignupForm.nom;
-    user.prenom = formData.SignupForm.prenom;
+    user.lastName = formData.SignupForm.nom;
+    user.firstName = formData.SignupForm.prenom;
     user.email = formData.SignupForm.email;
     user.password = formData.SignupForm.PasswordGroup.password;
     user.dateNaissance = formData.secondForm.dateNaissance

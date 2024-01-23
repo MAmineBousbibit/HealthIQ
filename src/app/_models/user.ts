@@ -1,8 +1,8 @@
 export class User {
-    idUser: any;
+    id: any;
     CodeMedical: any;
-    Nom: any;
-    prenom: any;
+    lastName: any;
+    firstName: any;
     email: any;
     password: any;
     phoneNumber: any;
@@ -25,10 +25,10 @@ export class User {
     Chirurgie:any
    condition :any
     constructor() {
-        this.idUser = '';
+        this.id = '';
         this.CodeMedical ='';
-        this.Nom ='';
-        this.prenom ='';
+        this.firstName ='';
+        this.lastName ='';
         this.email ='';
         this.password ='';
         this.phoneNumber ='';
