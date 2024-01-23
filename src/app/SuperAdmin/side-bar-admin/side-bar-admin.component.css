@@ -1,0 +1,82 @@
+/* Styles pour la sidebar */
+.sidebar {
+    background-color: #323e67 ;
+    width: 250px; /* Largeur de la sidebar */
+    height: 100%; /* Hauteur maximale (peut être ajustée) */
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: hidden; /* Ajouter une barre de défilement si nécessaire */
+    padding-top: 20px; /* Espacement du haut */
+    box-shadow:   4px 4px 12px #323e67;/* Ombre pour l'image */
+
+  }
+  .image{
+    margin-top: 25%;
+   
+   height: 25%;
+   max-height: 25%;
+  }
+  /* Styles pour le image*/
+  .image img {
+    width:30%; /* Taille de l'image du logo */
+    display: block;
+    margin-top: 15%;
+    box-shadow:   4px 4px 12px rgba(0, 0, 0, 0.3);/* Ombre pour l'image */
+    margin-left: 35%;
+  }
+  .logo-text {
+    text-align: center; /* Centrer le texte */
+    color: white; /* Couleur du texte */
+    font-weight: bold; /* Texte en gras */
+    margin-top: 10px; /* Espacement du haut */
+  }
+  .image img:hover{
+    width:32%;
+    box-shadow: 6px 4px 12px rgba(0, 0, 0, 0.3);/* Ombre pour l'image */
+  }
+  
+  /* Styles pour la liste des options */
+  .options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+  }
+  
+  
+  .options li {
+    display: flex; /* Utilisation de flexbox pour aligner les éléments horizontalement */
+    align-items: center; /* Alignement vertical au centre */
+    margin-bottom: 10px; 
+    justify-content:space-between;/* Espacement entre chaque option */
+  }
+  
+  .options li a {
+    text-decoration:solid;
+  font-weight: bolder;
+   
+    display: block;
+    padding: 5px 10px;
+  }
+
+  .icon{
+    color: rgb(93, 84, 84);
+   font-size: 150%;
+   margin-right: 8%;
+  }
+  
+  .options li :hover {
+   /* background-color: rgba(255, 255, 255, 0.223);*/
+    border-radius: 5%; 
+    font-size: larger;
+    color: rgb(243, 226, 195);/* Couleur de survol */
+  }
+.orange{
+  color:white
+}
+
+.logout {
+  margin-top: 65%;
+  margin-bottom: 0; /* Ajustez la valeur selon l'espace souhaité */
+}

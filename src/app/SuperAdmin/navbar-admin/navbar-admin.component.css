@@ -1,0 +1,30 @@
+.bg-nav{
+    background-color:#323e67 ;
+ 
+    z-index: 40;
+    position: fixed;
+    width: 100%;
+    
+}
+.navbar-brand{
+    margin-left: 6%;
+}
+.nav li a{
+   color: white;
+   margin-top: 8px;
+}
+img{
+    margin-right: 0px;
+}
+.icon{
+   font-size: large;
+   margin-top: 2px;
+    color : white;
+}
+.logo-nav{
+
+    width: 20%;
+    height: 20%;
+   
+    
+      }

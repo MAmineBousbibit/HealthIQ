@@ -1,7 +1,8 @@
+
+
+<app-navbar-admin></app-navbar-admin>
 <div>
-  <nav class="navbar bg-body-tertiary d-flex">
-
-
+<!--
     <div class="container-fluid">
       <button class="btn d-flex" (click)="toggleMenu()"><img src="/assets/img/hamburger.png" width="25" height="25"
                                                              alt="humburger" id="hamburger"></button>
@@ -60,7 +61,7 @@
         <img src="/assets/img/Notification.png" alt="Notifications" class="notification-icon" width="35" height="35">
       </div>
 
-      <!-- Display notifications in your dropdown -->
+     ****** Display notifications in your dropdown ******
       <div class="notification-dropdown" *ngIf="isNotificationDropdownOpen">
         <h4>Notifications</h4>
 
@@ -87,14 +88,15 @@
 
     </div>
 
+   *ngIf="isMenuOpen"-->
 
 
-  </nav>
 
 
 </div>
-<div id="menu-hum" *ngIf="isMenuOpen">
-  <ul class="nav-links">
+
+<div id="menu-hum">
+  <!--<ul class="nav-links">
     <li><a (click)="goToPageSuivante('dashboard-super-add')">HOME</a>
       <hr>
     </li>
@@ -107,6 +109,7 @@
     <li><a>GESTION DES RENDEZ-VOUS</a>
       <hr>
     </li>
-  </ul>
+  </ul>-->
+  <app-side-bar-admin></app-side-bar-admin>
 </div>
 
