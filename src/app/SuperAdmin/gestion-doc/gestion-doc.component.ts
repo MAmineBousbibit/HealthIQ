@@ -3,6 +3,7 @@ import { DoctorService } from 'src/app/_Services/doctor.service';
 import {  Route, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/_Services/user.service';
+import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-gestion-doc',
@@ -57,8 +58,14 @@ export class GestionDocComponent implements OnInit {
       }
     }
     addDoctor(){
-      console.log(this.NouveauDocteurForm.value);
-      this.doctorService.addDoctor(this.NouveauDocteurForm.value).subscribe((res)=>{
+      const plainPassword = this.NouveauDocteurForm.value.password;
+      const hashedPassword = bcrypt.hashSync(plainPassword, 10);
+      const doctorData = {
+        ...this.NouveauDocteurForm.value,
+        password: hashedPassword
+      };
+      console.log(doctorData);
+      this.doctorService.addDoctor(doctorData).subscribe((res)=>{
         console.log(res);
         this.getAllDoctors();
       })
