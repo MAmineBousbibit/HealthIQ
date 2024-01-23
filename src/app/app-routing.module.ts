@@ -16,6 +16,7 @@ import { OrdonnanceComponent } from './doctor-interface/ordonnance/ordonnance.co
 import { PatientsComponent } from './doctor-interface/patients/patients.component';
 import { SettingComponent } from './doctor-interface/setting/setting.component';
 import { AppointmentsComponent } from './doctor-interface/appointments/appointments.component';
+import { ChartAdminComponent } from './SuperAdmin/chart-admin/chart-admin.component';
 
 const routes: Routes = [
 
@@ -64,7 +65,19 @@ const routes: Routes = [
   {
     path: 'admin',
     component: DashboardSuperAddComponent, 
-    canActivate:[AuthGuard],// User doit être admin pour acces a ces Page ****/
+     children: [
+      { 
+        path: '', // Route vide pour rediriger vers 'Dashboard'
+        redirectTo: 'Dashboard',
+        pathMatch: 'full'
+      },
+      { 
+        path: 'Dashboard',
+        component: ChartAdminComponent,  
+       
+      }
+     ]
+  //  canActivate:[AuthGuard],// User doit être admin pour acces a ces Page ****/
 
   },
   {path: 'gestion-doc', component:GestionDocComponent},

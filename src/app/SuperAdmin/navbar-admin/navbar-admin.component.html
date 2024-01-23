@@ -1,0 +1,26 @@
+<nav class="navbar bg-nav ">
+   
+    <a class="navbar-brand" routerLink="/Doctor">
+      <img src="assets\img\Logo\Logo14.png" alt="logo"  class="logo-nav">
+      
+    </a>
+  
+    <ul class="nav mx-2 justify-content-end">
+      
+      
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="icon fa-solid fa-bell"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">DR.{{AdminData.firstName}} {{AdminData.lastName}}</a>
+        
+      </li>
+      <li class="nav-item g-0">
+        <img class="rounded mt-5" *ngIf="AdminData.image" [src]="'assets/img/profil/' + AdminData.image" alt="Profile"  height="50sspx" width="50px"  class="rounded-circle"/>
+
+        <img class="rounded mt-5" *ngIf="!AdminData.image" src="assets/img/profil/unkown_Profil.jpeg" alt="Image par défaut" height="50sspx" width="50px" class="rounded-circle"/>
+        
+      </li>
+    </ul>
+
+</nav>

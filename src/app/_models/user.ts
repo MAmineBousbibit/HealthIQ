@@ -24,5 +24,6 @@ export class User {
     NomMedicament:any
     Chirurgie:any
    condition :any
+   image:any
    
 }
