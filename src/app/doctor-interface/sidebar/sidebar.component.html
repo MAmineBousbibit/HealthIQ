@@ -1,7 +1,11 @@
 <div class="sidebar " >
-    <div class="image    ">
-      <img class="rounded mt-5 " src="assets/img/profil/doc1.jpeg" alt="Logo" />
-      <p class="logo-text"><span class="font-italic">Doctor </span> Anis Bolif</p>
+    <div class="image">
+
+      <img class="rounded mt-5" *ngIf="DoctorData.image" [src]="'assets/img/profil/' + DoctorData.image" alt="Profile" />
+
+      <img class="rounded mt-5" *ngIf="!DoctorData.image" src="assets/img/profil/unkown_Profil.jpeg" alt="Image par défaut" />
+      
+      <p class="logo-text"><span class="font-italic">Doctor </span> {{DoctorData.first_name}} {{DoctorData.last_name}}</p>
     </div>
     <ul class="options">
         <!--<p class=" mx-3 font-weight-bold text-secondary">Options</p>-->

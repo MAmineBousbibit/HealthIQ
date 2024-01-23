@@ -2,7 +2,9 @@ import { AfterViewInit, Component,ElementRef,OnInit,ViewChild } from '@angular/c
 import { CalendarOptions } from '@fullcalendar/core'; // useful for typechecking
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { BsModalRef,BsModalService ,ModalModule} from 'ngx-bootstrap/modal';
+import { AuthService } from 'src/app/_Services/auth.service';
 import { DoctorService } from 'src/app/_Services/doctor.service';
+import { Doctor } from 'src/app/_models/doctor';
 import { Events } from 'src/app/_models/events';
 
 @Component({
@@ -12,7 +14,22 @@ import { Events } from 'src/app/_models/events';
 })
 export class CalendrierComponent {
  // @ViewChild('eventModal') eventModal!: ElementRef;
-  constructor( private ServiceDoc:DoctorService) {}
+ Doctor=new Doctor()
+ formattedDate:any
+ UserID:any
+ Id="" /******************* */
+ //**6599449e3c0530726e1d654b */
+  constructor( private ServiceDoc:DoctorService, private AuthServices:AuthService) {
+    this.Id=AuthServices.getIDUser()
+ 
+    this.ServiceDoc.getOneDoctor(this.Id).subscribe(
+      (data:any)=>{
+        console.log("user-auth :", data);
+        this.Doctor=data
+      
+      }
+    )
+  }
   ngOnInit(): void {
    this.getEvents()
  
@@ -44,18 +61,19 @@ export class CalendrierComponent {
 
 
 
- const date = eventInfo.event.start;
+const date = eventInfo.event.start;
 
-const year = date.getFullYear();
+
 const month = String(date.getMonth() + 1).padStart(2, '0');
 const day = String(date.getDate()).padStart(2, '0'); 
+const year = date.getFullYear()
+this.formattedDate = `${year}-${month}-${day}`;
 
-const formattedDate = `${year}-${month}-${day}`;
 
 const inputDateElement = document.querySelector<HTMLInputElement>('.form-control[type="date"]');
 
 if (inputDateElement !== null) {
-  inputDateElement.value = formattedDate;
+  inputDateElement.value = this.formattedDate;
 } 
    //console.log(this.Event);
    const modal=document.getElementById('eventModal')
@@ -98,7 +116,8 @@ ajouterEvent(){
 
   btnAdd()
 {
-  console.log("event add",this.Event);
+  //console.log("event add",this.Event);
+  this.Event.ID_doc=this.Doctor.id
   if (this.Event.status=="Urgent") {
     this.Event.color='red'
   } else if(this.Event.status=="À venir") {
@@ -139,9 +158,12 @@ ajouterEvent(){
   
 getEvents(){
   this.ServiceDoc.getEvents().subscribe(
-    (response) => {
-    
-     this.events=response
+    (response:any) => {
+   // console.log("allEvents",this.Doctor.id);
+
+    const filteredEvents = response.filter((rp:any) => rp.ID_doc === this.Doctor.id);
+     this.events=filteredEvents
+    // console.log("allEvents",filteredEvents);
      this.updateCalendrier()
      
      

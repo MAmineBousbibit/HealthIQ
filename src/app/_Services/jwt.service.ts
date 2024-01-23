@@ -15,6 +15,8 @@ export class JwtService {
     localStorage.setItem('token',token)
     
   }
+
+
   
   /**********************Verifier Si User est  Login */
   public isLoggedIn():boolean{
@@ -30,17 +32,11 @@ export class JwtService {
   //****Suppresion de Token d'apres LocalStorage */
   public ClearToken():void{
   localStorage.removeItem('token');
-  this.router.navigate(['/']) //Redirection To Home 
+  this.router.navigate(['/Login']) //Redirection To Login 
   }
 
-  /*public setRoles(roles:[]){
-    localStorage.setItem("roles",JSON.stringify(roles));
-  
-  }
-   public getRoles() {
-   return JSON.parse(localStorage.getItem("roles")|| '{}');
-   }
+ 
    
-   */
+  
     
 }

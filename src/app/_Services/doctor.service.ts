@@ -19,15 +19,19 @@ export class DoctorService{
       { "No-Auth":"True"}  
     );
     constructor(private http:HttpClient) { }
-
-   getAllDoctors():Observable<any>{
+  getAllDoctors():Observable<any>{
     return this.http.get(this.getAll_api);
+  }
+  
+
+  getOneDoctor(id:any):Observable<any>{
+    return this.http.get(this.API_GestionDoc+'/List/' +id)
   }
   addDoctor(doctor:any):Observable<any>{
     return this.http.post(this.add_api,doctor);
   }
   deleteDoctor(id:string):Observable<any>{
-    console.log('test');
+    //console.log('test');
     const deleteUrl = `${this.delete_api}/${id}`;
     return this.http.delete<any>(deleteUrl);
   }

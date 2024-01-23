@@ -50,11 +50,14 @@
           <hr class="m-0 mt-1">
           
       </li>
-        <li class="" *ngFor="let Patient of PatientList">
-            <img src="assets/img/profil/profil1.jpg" class="round-image" alt="Image1"> <span class="mx-2 patientlist-text">{{ Patient.Id_patient.firstName }} {{ Patient.Id_patient.lastName }}</span> 
-            <span class="m-1 patientlist-text2 float-right">{{ Patient.date}}  {{ Patient.hour}}</span>
-            
-        </li>
+      <li class="" *ngFor="let Patient of PatientList">
+        <ng-container *ngIf="Patient.Id_patient">
+            <img src="assets/img/profil/profil1.jpg" class="round-image" alt="Image1"> 
+            <span class="mx-2 patientlist-text">{{ Patient.Id_patient.firstName }} {{ Patient.Id_patient.lastName }}</span> 
+            <span class="m-1 patientlist-text2 float-right">{{ Patient.date }} {{ Patient.hour }}</span>
+        </ng-container>
+    </li>
+    
       
        
        </ul>

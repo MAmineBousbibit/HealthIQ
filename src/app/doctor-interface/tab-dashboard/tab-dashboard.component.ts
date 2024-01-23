@@ -4,6 +4,8 @@ import { DoctorService } from 'src/app/_Services/doctor.service';
 import { FlaskAnalyseService } from 'src/app/_Services/flask-analyse.service';
 import { ToDo } from 'src/app/_models/to-do';
 import * as $ from 'jquery';
+import { AuthService } from 'src/app/_Services/auth.service';
+import { Doctor } from 'src/app/_models/doctor';
 @Component({
   selector: 'app-tab-dashboard',
   templateUrl: './tab-dashboard.component.html',
@@ -11,9 +13,24 @@ import * as $ from 'jquery';
 })
 export class TabDashboardComponent  {
   @ViewChild('myModal') myModal!: ElementRef;
-constructor(private FlaskService:FlaskAnalyseService, private DocService:DoctorService){
+  Doctor=new Doctor()
+ UserID:any
+ Id="" /******************* */
+constructor(private FlaskService:FlaskAnalyseService, private DocService:DoctorService,private AuthServices: AuthService){
+ /**************************** */
+  this.Id=AuthServices.getIDUser()
+ 
+  this.DocService.getOneDoctor(this.Id).subscribe(
+    (data:any)=>{
+      console.log("user-auth :", data);
+      this.Doctor=data
+      
+    }
+  )
+ /**************************** */
 
 }
+
 
 compteurDates: { [date: string]: number } = {};
 PatientList:any
@@ -110,10 +127,13 @@ this.chart = new Chart("MyChart", {
 
   }
   getDataEvent() {
-    const id_Doc = "1";
-    this.FlaskService.getEventsDoc(id_Doc).subscribe(
+   
+    const id=this.Id
+    const requestBody = { "id_Doc": id}; 
+    this.FlaskService.getEventsDoc(requestBody).subscribe(
       (response: any) => {
        this.DataEvents=response
+      console.log("data",this.DataEvents);
       
        this.NombreConsultation(response)
        this.GetPatient()
@@ -149,9 +169,12 @@ GetPatient(){
 getToDoList(){
   this.DocService.getToDoList().subscribe(
     (response: any) => {
-     //console.log("TodoList",response);
-
-     this.ListToDo=response;
+     console.log("TodoList",response);
+     const filteredEvents = response.filter((rp:any) => rp.id_Doc.id === this.Id);
+     this.ListToDo=filteredEvents
+     //this.ListToDo=response;
+     console.log("lastDo",filteredEvents);
+     
      
      },
      (error) => {
@@ -197,7 +220,9 @@ addToDo()
 {
   
 this.TODO.checked=false
-this.TODO.id_Doc.id="1"  /*****id de doc************************************ */
+//console.log("jsjs",this.Doctor.id );
+
+this.TODO.id_Doc.id=this.Doctor.id  
 
 this.DocService.AddToDo(this.TODO).subscribe(
   (resp:any)=>{
@@ -254,7 +279,7 @@ function isEventInCurrentDay(eve: any, currentDate: Date): boolean {
   return `${year}-${month}`;
 }
 ChartPatient(){
- console.log("hah",this.DataEvents) 
+// console.log("hah",this.DataEvents) 
 
  const last12MonthsEvents = this.DataEvents.filter((event: any) => {
   const eventDate = new Date(event.date);
@@ -274,7 +299,7 @@ const monthlyPatientCount =this.DataEvents.reduce((result:any, event:any) => {
 // Extract the last 12 months
 const last12Months = Object.keys(monthlyPatientCount).slice(-12);
 last12Months.forEach((monthAndYear) => {
-  console.log(`Month: ${monthAndYear}, Total Patients: ${monthlyPatientCount[monthAndYear]}`);
+ // console.log(`Month: ${monthAndYear}, Total Patients: ${monthlyPatientCount[monthAndYear]}`);
 });
   interface ChartData {
     labels: any;
