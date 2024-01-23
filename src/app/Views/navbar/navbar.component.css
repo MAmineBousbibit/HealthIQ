@@ -187,3 +187,13 @@ svg {
 
 margin-left: 40%;
   }
+
+.tabset{
+    width: 95%;
+    position: fixed;
+    top: 90px; /* Ajustez la valeur de top selon votre besoin */
+    right: 20px; /* Ajustez la valeur de right selon votre besoin */
+    z-index: 1000; /* Ajustez la valeur de z-index selon votre besoin pour garantir que le popup apparaît au-dessus des autres éléments */
+    overflow-y: auto; /* Enable vertical scrolling when content exceeds the max-height */
+    max-height: 500px; /* Adjust the maximum height according to your needs */
+  }
