@@ -11,12 +11,12 @@ import { Doctor } from 'src/app/_models/doctor';
 })
 export class SidebarComponent {
   UserID:any
-  Id="6593d95fe01ea7347c191052" /******************* */
+  Id="" /******************* */
   //**6599449e3c0530726e1d654b */
   DoctorData=new Doctor()
   constructor(private route:Router, private DocService:DoctorService,private AuthServices: AuthService){
  /**************************** */
- this.UserID=AuthServices.getIDUser()
+ this.Id=AuthServices.getIDUser()
  
  this.DocService.getOneDoctor(this.Id).subscribe(
    (data:any)=>{
@@ -29,5 +29,6 @@ export class SidebarComponent {
   }
   logout(){
     console.log("logout doc")
+    this.AuthServices.logout()
   }
 }

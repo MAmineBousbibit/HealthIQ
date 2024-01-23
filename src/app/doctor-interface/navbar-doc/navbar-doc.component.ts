@@ -10,13 +10,14 @@ import { Doctor } from 'src/app/_models/doctor';
 })
 export class NavbarDocComponent {
   UserID:any
-  Id="6593d95fe01ea7347c191052" /******************* */
+  Id:any
+ /* Id="6593d95fe01ea7347c191052" ****************** */
   //**6599449e3c0530726e1d654b */
   DoctorData=new Doctor()
   
   constructor( private DocService:DoctorService,private AuthServices: AuthService){
  /**************************** */
- this.UserID=AuthServices.getIDUser()
+ this.Id=AuthServices.getIDUser()
  
  this.DocService.getOneDoctor(this.Id).subscribe(
    (data:any)=>{
