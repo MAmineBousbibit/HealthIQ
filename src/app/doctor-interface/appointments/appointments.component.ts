@@ -13,11 +13,12 @@ import { Events } from 'src/app/_models/events';
 export class AppointmentsComponent {
   Doctor=new Doctor()
   UserID:any
-  Id="6593d95fe01ea7347c191052" /******************* */
+  Id:any
+  //Id="65ae8ebd2abf49216e6354e7" /******************* */
   //**6599449e3c0530726e1d654b */
   constructor(private ServiceDoc:DoctorService,private AuthServices:AuthService){
-    this.UserID=AuthServices.getIDUser()
- 
+    this.Id=AuthServices.getIDUser()
+ //this.Id=this
     this.ServiceDoc.getOneDoctor(this.Id).subscribe(
       (data:any)=>{
         console.log("user-auth :", data);

@@ -11,14 +11,13 @@ import { Doctor } from 'src/app/_models/doctor';
 export class SettingComponent {
   Doctor = new Doctor(); 
   UserID:any
-  Id="6593d95fe01ea7347c191052" /******************* */
-  //**6599449e3c0530726e1d654b */
+  Id="" 
   DoctorData=new Doctor()
   AgeDoc:any
   formattedDate:any
   constructor( private DocService:DoctorService,private AuthServices: AuthService){
  /**************************** */
- this.UserID=AuthServices.getIDUser()
+ this.Id=AuthServices.getIDUser()
  
  this.DocService.getOneDoctor(this.Id).subscribe(
    (data:any)=>{
@@ -41,8 +40,14 @@ export class SettingComponent {
     this.informations = !this.informations; 
 
   }
+  onImageChange(event:any){
+    this.Doctor.image=event
+  }
   editinformation(){
     console.log(this.Doctor)
+    //this.Doctor.enabled=true;
+   // this.Doctor.locked=false;
+
     this.DocService.updateDoctor(this.Id,this.Doctor).subscribe(
       (response:any)=>{
         console.log("updated doc",response);

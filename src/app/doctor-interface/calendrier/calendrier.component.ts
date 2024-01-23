@@ -17,10 +17,10 @@ export class CalendrierComponent {
  Doctor=new Doctor()
  formattedDate:any
  UserID:any
- Id="6593d95fe01ea7347c191052" /******************* */
+ Id="" /******************* */
  //**6599449e3c0530726e1d654b */
   constructor( private ServiceDoc:DoctorService, private AuthServices:AuthService) {
-    this.UserID=AuthServices.getIDUser()
+    this.Id=AuthServices.getIDUser()
  
     this.ServiceDoc.getOneDoctor(this.Id).subscribe(
       (data:any)=>{

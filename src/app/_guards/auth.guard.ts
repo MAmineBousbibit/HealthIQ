@@ -11,15 +11,15 @@ import { UserService } from '../_Services/user.service';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private jwtService: JwtService, private router: Router,private userService:UserService) {}
+  constructor(private jwtService: JwtService, private router: Router,private userService:UserService,private AuthService:AuthService) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     console.log("is LoggedIn ? ",this.jwtService.isLoggedIn());
     
-    if (this.jwtService.isLoggedIn()) {
-      //*this.router.navigate(['/Home']) ; Autoriser l'accès à la route
+    if (this.jwtService.isLoggedIn() && this.AuthService.role ==='ROLE_ADMIN'||this.jwtService.isLoggedIn() && this.AuthService.role ==='ROLE_DOCTOR' ) {
+    
       return  true
       
     } else {
@@ -28,6 +28,7 @@ export class AuthGuard implements CanActivate {
     }
 
   }
+  
   }
 
 

@@ -10,7 +10,7 @@ export class Ordonnance {
     ID_patient:any ;
     Nom_patient:any;
     Prenom_patient:any
-    ID_Doc=new Doctor();
+    ID_Doc:any;
     email_patient:any;
 
 }

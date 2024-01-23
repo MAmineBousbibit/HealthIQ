@@ -44,5 +44,8 @@ export class AuthService {
   getIDUser(){
   return this.userID
   }
-
+logout(){
+  this.JWTService.ClearToken()
+  
+}
 }

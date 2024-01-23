@@ -15,10 +15,10 @@ export class TabDashboardComponent  {
   @ViewChild('myModal') myModal!: ElementRef;
   Doctor=new Doctor()
  UserID:any
- Id="6593d95fe01ea7347c191052" /******************* */
+ Id="" /******************* */
 constructor(private FlaskService:FlaskAnalyseService, private DocService:DoctorService,private AuthServices: AuthService){
  /**************************** */
-  this.UserID=AuthServices.getIDUser()
+  this.Id=AuthServices.getIDUser()
  
   this.DocService.getOneDoctor(this.Id).subscribe(
     (data:any)=>{
@@ -128,7 +128,7 @@ this.chart = new Chart("MyChart", {
   }
   getDataEvent() {
    
-    const id="6593d95fe01ea7347c191052"
+    const id=this.Id
     const requestBody = { "id_Doc": id}; 
     this.FlaskService.getEventsDoc(requestBody).subscribe(
       (response: any) => {
@@ -251,8 +251,8 @@ PatientGraphe(){
  // Utilisez la fonction filter pour sélectionner les événements qui répondent aux critères
 const filteredEvents = this.DataEvents.filter((evet:any) =>
 
-evet.id_patient && 
-evet.id_patient.firstname !=="" &&
+evet.Id_patient && 
+evet.Id_patient.firstname !=="" &&
 isEventInCurrentDay(evet, currentDate),//verifier la date de aujourd'hui que event on a 
 
 

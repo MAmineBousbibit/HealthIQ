@@ -50,6 +50,7 @@ import { SearchPipeHomePipe } from './Views/navbar/search-pipe-home.pipe';
 
 @NgModule({
   declarations: [
+  
     AppComponent,
      
     HomePageSecondCreatComponent,

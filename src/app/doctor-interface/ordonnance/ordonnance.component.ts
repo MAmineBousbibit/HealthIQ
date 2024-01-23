@@ -15,11 +15,11 @@ export class OrdonnanceComponent {
   Doctor = new Doctor(); 
   Patients:any
   UserID:any
-  Id="6593d95fe01ea7347c191052" /******************* */
+  Id="" /******************* */
   //**6599449e3c0530726e1d654b */
   constructor(private ServiceDoc:DoctorService, private AuthServices:AuthService ,private _userService:UserService){
     this.getPatient()
-    this.UserID=AuthServices.getIDUser()
+    this.Id=AuthServices.getIDUser()
  
     this.ServiceDoc.getOneDoctor(this.Id).subscribe(
       (data:any)=>{
@@ -46,8 +46,10 @@ export class OrdonnanceComponent {
   }
   SendOrdo(){
    // console.log(this.Ordonnance);
-   this.Ordonnance.ID_Doc=this.Doctor
-   //this.Ordonnance.ID_Doc=this.Doctor
+   this.Ordonnance.ID_Doc=this.Doctor.id
+   //this.Ordonnance.ID_Doc.Prenom_Doc=this.Doctor.first_name
+   //this.Ordonnance.ID_Doc.nom_Doc=this.Doctor.last_name
+
      console.log("Ordoi",this.Ordonnance);
 
     this.ServiceDoc.AjouterOrdonnance(this.Ordonnance).subscribe(

@@ -7,10 +7,21 @@ import { AuthService } from 'src/app/_Services/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  constructor(private authService: AuthService) {}
-
-  isLoggedIn(): boolean {
-    return this.authService.isAuthenticated;
+  constructor(private authService: AuthService) {
+  this.isLoggedIn()
+  }
+  islogin = false;
+  User_ID:any
+  isLoggedIn() {
+     this.authService.isAuthenticated;
+    this.User_ID= this.authService.getIDUser()
+    console.log("idUser",this.User_ID);
+    
+   if(this.User_ID != undefined){
+    this.islogin=true
+   }
+    
+    
   }
 
   login() {
@@ -22,4 +33,12 @@ export class NavbarComponent {
   }
 
   searchText='';
+
+  // Replace with your logic for login status
+ // Replace with your logic for DoctorData
+  dropdownOpen = false;
+
+  toggleDropdown() {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
 }
