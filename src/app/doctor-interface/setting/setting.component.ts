@@ -45,6 +45,9 @@ export class SettingComponent {
   }
   editinformation(){
     console.log(this.Doctor)
+    //this.Doctor.enabled=true;
+   // this.Doctor.locked=false;
+
     this.DocService.updateDoctor(this.Id,this.Doctor).subscribe(
       (response:any)=>{
         console.log("updated doc",response);

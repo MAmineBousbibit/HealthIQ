@@ -46,8 +46,10 @@ export class OrdonnanceComponent {
   }
   SendOrdo(){
    // console.log(this.Ordonnance);
-   this.Ordonnance.ID_Doc=this.Doctor
-   //this.Ordonnance.ID_Doc=this.Doctor
+   this.Ordonnance.ID_Doc=this.Doctor.id
+   //this.Ordonnance.ID_Doc.Prenom_Doc=this.Doctor.first_name
+   //this.Ordonnance.ID_Doc.nom_Doc=this.Doctor.last_name
+
      console.log("Ordoi",this.Ordonnance);
 
     this.ServiceDoc.AjouterOrdonnance(this.Ordonnance).subscribe(

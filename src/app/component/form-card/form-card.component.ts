@@ -19,7 +19,7 @@ function PasswordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
   if (password?.value === confPassword?.value) {
     return null; // Si les valeurs correspondent, pas d'erreur
   }
-  console.log("haha")
+  //console.log("haha")
   return { 'match': true };
 }
 @Component({
@@ -36,7 +36,7 @@ export class FormCardComponent implements OnInit {
   constructor(private Services: UserService, private AuthService: AuthService, private router: Router, private formBuilder: FormBuilder) {
 
   }
-
+  boxEmail:boolean=false;
   SelectedUser: User = new User();
   showLoginForm: Boolean = true
   showSignUpForm: Boolean = false
@@ -242,12 +242,12 @@ toggleConditionSelection(event: any){
 }
   Login() {
     this.SelectedUser = { ...this.formLogin.value }// as User
-   console.log(this.SelectedUser)
+  // console.log(this.SelectedUser)
     this.Services.Login(this.SelectedUser).subscribe(
       (token: any) => {
     
         this.AuthService.loadProfile(token)
-        console.log(token);
+        //console.log(token);
         
       },
       (error) => {
@@ -267,10 +267,16 @@ toggleConditionSelection(event: any){
     //console.log(this.SelectedUser)
     this.Services.Register(this.SelectedUser).subscribe(
       (token: any) => {
-        this.AuthService.loadProfile(token)
-      },
+       // this.AuthService.loadProfile(token)
+       if(this.errorMessage ==='Email déjà utilisé' ){
+        this.boxEmail=false;
+      }
+      else{
+        this.boxEmail=false;
+      }
+    },
       (error) => {
-        console.log(error.error);
+      //  console.log(error.error);
         this.errorMessage = error.error
       }
     )
@@ -282,7 +288,7 @@ toggleConditionSelection(event: any){
   Forgotpwd() {
     
     this.EmailForgot = { ...this.forgetForm.value }
-    console.log(this.EmailForgot);
+  //  console.log(this.EmailForgot);
   }
 
   //****Fonction qui convert les donnees de formControl a modal USER ***///

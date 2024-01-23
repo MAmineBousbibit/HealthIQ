@@ -434,7 +434,7 @@
                                     <div>
                                         <button class="form-container__sign mt-2 "
                                             (click)="prevStep()">Previous</button>
-                                        <button class="form-container__sign mt-2 " [disabled]="!SignupGroup.valid">SignUp</button>
+                                        <button class="  form-container__sign mt-2 " data-toggle="modal" data-target="#exampleModal1"  [disabled]="!SignupGroup.valid">SignUp</button>
                                     </div>
                                     
                                 </form>
@@ -535,6 +535,30 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade " id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  col-8">
+        <div class="modal-content forgotmodal">
+            <div class="modal-header">
+                <h6  id="exampleModalLabel" class="mx-3">
+                    <div class="color-font2  h3  mx-5 px-5"><a > Validation Compte
+                        </a></div>
+                </h6>
+               
+            </div>
+            <div class="modal-body">
+              <p>Valider votre compte d'après le lien de validation qui est envoyer vers votre Gmail</p>
+
+              <a class="btn  mt-2 lienGmail" href="mailto:{{ this.SelectedUser.email }}@email.com"> Consulter ma boîte Email <i class="fa-solid fa-envelope"></i></a>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                
             </div>
         </div>

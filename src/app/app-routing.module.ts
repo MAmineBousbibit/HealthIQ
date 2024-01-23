@@ -26,6 +26,7 @@ const routes: Routes = [
   { 
     path: 'Doctor',
     component: DoctorInterfaceComponent,
+    canActivate:[AuthGuard],
     children: [
       { 
         path: '', // Route vide pour rediriger vers 'Dashboard'

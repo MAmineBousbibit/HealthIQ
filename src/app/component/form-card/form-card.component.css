@@ -784,3 +784,15 @@ html {
     .drop-color{
       background-color: #0cb8b6;
     }
+
+    .lienGmail{
+      color: white;
+      text-decoration: none;
+      background-color: #79b1b0 ;
+    }
+    .lienGmail i{
+      color: white ;
+    }
+    .lienGmail:hover{
+      box-shadow: 4px 4px 10px #111;
+    }
