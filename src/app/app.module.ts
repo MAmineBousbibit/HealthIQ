@@ -47,6 +47,7 @@ import { Chart } from 'chart.js';
 import { SearchPipeHomePipe } from './Views/navbar/search-pipe-home.pipe';
 import { NavbarAdminComponent } from './SuperAdmin/navbar-admin/navbar-admin.component';
 import { SideBarAdminComponent } from './SuperAdmin/side-bar-admin/side-bar-admin.component';
+import { ChartAdminComponent } from './SuperAdmin/chart-admin/chart-admin.component';
 //import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
@@ -88,7 +89,8 @@ import { SideBarAdminComponent } from './SuperAdmin/side-bar-admin/side-bar-admi
     SearchPipe,
     SearchPipeHomePipe,
     NavbarAdminComponent,
-    SideBarAdminComponent,   
+    SideBarAdminComponent,
+    ChartAdminComponent,   
   ],
   imports: [
     BrowserModule,
