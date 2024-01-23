@@ -1,0 +1,5 @@
+{
+    "git.decorations.enabled": true,
+    "git.autofetch": false,
+    "git.enabled": true
+}
