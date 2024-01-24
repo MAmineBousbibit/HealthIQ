@@ -6,44 +6,53 @@
       <div class="card py-3 py-md-3 cardPatient" *ngIf="user.Id_patient" >
         <!-- Display user information dynamically -->
         <div class="d-flex justify-content-between px-3 px-md-4">
-          <img   *ngIf="user.Id_patient.image" [src]="'assets/img/profil/profil1.jpg' + user.image" height="55px" width="55px" alt="profilUser" class="rounded-circle">
+          <img   *ngIf="user.Id_patient.image" [src]="'assets/img/profil/' +user.Id_patient.image" height="55px" width="55px" alt="profilUser" class="rounded-circle">
           <img   *ngIf="!user.Id_patient.image" src="assets\img\profil\unkown_Profil.jpeg"  height="55px" width="55px" alt=" unkownProfil" class="rounded-circle">
 
           
           <div>
 
             <h6 class="col-green">{{user.Id_patient.firstName }} {{ user.Id_patient.lastName }}</h6>
-            <p class="font">Patient Id: {{ user.Id_patient.id }}</p>
+            <p>
+              <span  *ngIf="user.Id_patient.enabled==false"> Inactif
+                <i class=" icon-red fa-solid fa-circle"></i>
+              </span>
+              <span  *ngIf="user.Id_patient.enabled==true"> Actif 
+                <i class=" icon-green fa-solid fa-circle"></i>
+              </span>
+            </p>
           </div>
           <div>
             <!-- You can bind other user properties dynamically here -->
-            <h6 class="font">10:00 - 10:30 AM</h6>
-            <p class="font">Friday, June 26</p>
+            <h6 class="font">Rendez-vous </h6>
+            <p class="font "> le : <span class="green">{{user.date }}</span> </p>
           </div>
         </div>
         <hr class="light-hr">
         <div class="d-flex flex-column justify-content-start w-100 px-3 px-md-4 fontcolor">
           <div><i class="fas fa-map-marker-alt pt-3 psr-3 iconcolor"></i>
-            <span *ngIf="user.adresse">{{user.Id_patient.adresse }}</span> 
-            <span *ngIf="!user.adresse">non existe</span> 
+            <span *ngIf="user.Id_patient.adresse">{{user.Id_patient.adresse }}</span> 
+            <span *ngIf="!user.Id_patient.adresse">non connu</span> 
 
           </div>
           <div ><i class="fas fa-phone pt-3 psr-3 iconcolor"></i>
-            <span  *ngIf="user.phoneNumber"> {{ user.Id_patient.phoneNumber }}</span>
-            <span  *ngIf="!user.phoneNumber" class="text-non"> non existe</span>
+            <span  *ngIf="user.Id_patient.phoneNumber"> {{ user.Id_patient.phoneNumber }}</span>
+            <span  *ngIf="!user.Id_patient.phoneNumber" class="text-non"> non connu</span>
           </div>
         </div>
         <hr class="light-hr">
         <div class="d-flex justify-content-between px-1 px-md-4">
           <div>
             <div class="d-flex">
-              <p class="px-1"><i class="fa-solid fa-droplet redcolor"></i>Blood Group: {{user.group_sang}}</p>
+              <p class="px-1"><i class="fa-solid fa-droplet redcolor"></i>Blood Group: 
+                <span  *ngIf="user.Id_patient.group_sang">  {{user.Id_patient.group_sang}}</span>
+                <span  *ngIf="!user.Id_patient.group_sang" class="text-non"> non connu</span></p>
               <div class="font-weight-bold"> </div>
             </div>
             <div class="d-flex">
               <p class="psr-2"> Reports: </p>
 
-              <div class="font-weight-bold"  (click)="generatePDF(user)"><i class="far fa-file-pdf redcolor mx-2"></i></div>
+              <div class="font-weight-bold"  (click)="generatePDF(user.Id_patient)"><i class="far fa-file-pdf redcolor mx-2"></i></div>
             </div>
           </div>
         </div>

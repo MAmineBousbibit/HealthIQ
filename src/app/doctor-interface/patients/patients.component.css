@@ -33,6 +33,19 @@ color :white;
 .font-weight-bold{
     font-weight: bold;
 }
+.green{
+    color:rgba(17, 92, 17, 0.79) ;
+    font-weight: bold;
+}
+.icon-red {
+    color: red;
+    font-size: small;
+
+}
+.icon-green {
+    color: green;
+    font-size: small;
+}
 .meet-btn{
     padding: 3%;
     border: none;

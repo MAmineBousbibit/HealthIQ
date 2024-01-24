@@ -25,8 +25,7 @@ export class PatientsComponent implements OnInit{
   UserID:any
   Id:any
   DataEvents:any
- /* Id="6593d95fe01ea7347c191052" ****************** */
-  //**6599449e3c0530726e1d654b */
+
   DoctorData=new Doctor()
   
 
@@ -49,17 +48,14 @@ generatePDF(user: User): void {
 
 
   onClickPatient():void{
-  /*  this._userService.findAll().subscribe((users)=>{
-      this._users=users;
-      console.log("users",this._users)
-    })*/
+
     const id=this.Id
     const requestBody = { "id_Doc": id}; 
     this.FlaskService.getEventsDoc(requestBody).subscribe(
       (response: any) => {
        //this.DataEvents=response
        this.DataEvents = response.filter((event:any) => event.ID_doc == this.Id);
-      console.log("data Event",this.DataEvents);
+     // console.log("data Event",this.DataEvents);
       
       
       },
