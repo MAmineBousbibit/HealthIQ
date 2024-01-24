@@ -4,6 +4,7 @@ import {  Route, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/_Services/user.service';
 import * as bcrypt from 'bcryptjs';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-gestion-doc',
@@ -13,7 +14,7 @@ import * as bcrypt from 'bcryptjs';
 export class GestionDocComponent implements OnInit {
   doctors:any =[];
   NouveauDocteurForm!: FormGroup;
-
+  @ViewChild('exampleModal') modal: any;
  
   constructor(private router:Router, private doctorService: DoctorService ,private doc:UserService,
     private formulaire: FormBuilder){ }
@@ -133,6 +134,9 @@ export class GestionDocComponent implements OnInit {
         doctor.editing = false;
         this.getAllDoctors();
       });
+    }
+    closeModal(){
+      this.modal.modal('hide');
     }
   
 
