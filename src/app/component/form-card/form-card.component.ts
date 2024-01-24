@@ -242,16 +242,17 @@ toggleConditionSelection(event: any){
 }
   Login() {
     this.SelectedUser = { ...this.formLogin.value }// as User
-   console.log(this.SelectedUser)
+  // console.log(this.SelectedUser)
     this.Services.Login(this.SelectedUser).subscribe(
       (token: any) => {
 
         this.AuthService.loadProfile(token)
-        console.log(token);
+       // console.log(token);
 
       },
       (error) => {
         console.log(error);
+       this.errorMessage='Email ou mot de passe incorrect'
       }
     )
   }
