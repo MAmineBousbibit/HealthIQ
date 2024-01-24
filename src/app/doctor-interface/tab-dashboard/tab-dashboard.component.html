@@ -52,7 +52,10 @@
       </li>
       <li class="" *ngFor="let Patient of PatientList">
         <ng-container *ngIf="Patient.Id_patient">
-            <img src="assets/img/profil/profil1.jpg" class="round-image" alt="Image1"> 
+            
+            <img   *ngIf="Patient.Id_patient.image" [src]="'assets/img/profil/' +Patient.Id_patient.image"  alt="profilUser" class="round-image">
+            <img   *ngIf="!Patient.Id_patient.image" src="assets\img\profil\unkown_Profil.jpeg"   alt=" unkownProfil" class="round-image">
+  
             <span class="mx-2 patientlist-text">{{ Patient.Id_patient.firstName }} {{ Patient.Id_patient.lastName }}</span> 
             <span class="m-1 patientlist-text2 float-right">{{ Patient.date }} {{ Patient.hour }}</span>
         </ng-container>
