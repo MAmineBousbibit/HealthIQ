@@ -1,28 +1,71 @@
-import { Component } from '@angular/core';
+import { Component , OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/_Services/auth.service';
+import { UserService } from 'src/app/_Services/user.service';
+import { User } from 'src/app/_models/user';
+import { Doctor } from 'src/app/_models/doctor';
+import { DoctorService } from 'src/app/_Services/doctor.service';
+import { HttpClient } from '@angular/common/http';
+import { Events } from 'src/app/_models/events';
+
 @Component({
   selector: 'app-tabset-patient',
   templateUrl: './tabset-patient.component.html',
   styleUrls: ['./tabset-patient.component.css']
 })
-export class TabsetPatientComponent {
-  specialites: String[] = ["Speciality 1", "Speciality 2", "Speciality 3", "Speciality 4"]
-  doctors: String[] = ["doctor 1", "doctor 2", "doctor 3", "doctor 4"]
+export class TabsetPatientComponent implements OnInit{
+  specialites: string[] = ["Médecine Familiale", "Soins Urgents", "Gynécologie", "Pédiatrie" , "Soins Dentaires" , "Physiothérapie"]
+  selectedSpecialite: string = '';  // Variable pour stocker la spécialité sélectionnée
   title = 'Bytes';
+  doctorsList: any[] = [];  // Variable pour stocker la liste des docteurs filtrés
   activeTab:string = 'Personal Details';
-  appointmentForm: FormGroup;
+  UserData=new User()
+  ID:any
+  appointmentForm!  : FormGroup;
    onTabClick(tab: string){
      this.activeTab = tab;
    }
 
-   selectOption(option: String) {
-    //console.log('Option sélectionnée sanguin groupe : ', option);
-    this.appointmentForm.get('thirdForm.group_sang')?.setValue(option)
+   selectOption(option: string) {
+    // console.log('Option sélectionnée sanguin groupe : ', option);
+    this.appointmentForm.get('speciality')?.setValue(option)
 
+    this.doctorService.getDoctorsBySpecialite(option).subscribe(
+      (doctors: any[]) => {
+        this.doctorsList = doctors.map(doctor => ({ nom: doctor.first_name, prenom: doctor.last_name }));
+
+        
+      // Afficher la liste des docteurs dans la console
+      console.log('Liste des docteurs:', this.doctorsList);
+      },
+      (error : any) => {
+        console.error('Error fetching doctors by speciality', error);
+      }
+    );
   }
+
+  selectDoctor(doctor: any) {
+    // Votre logique de sélection du médecin ici
+    console.log('Selected doctor:', doctor);
+  }
+
   
-   constructor(private formBuilder: FormBuilder) {
+   constructor(private formBuilder: FormBuilder, private doctorService: DoctorService , private AuthService:AuthService ,private UserSevice:UserService ,  private http: HttpClient) {
     this.activeTab = 'Personal Details';
+
+    
+        this.ID=this.AuthService.getIDUser()
+    //console.log("Admin Id ", this.ID);
+    this.UserSevice.getOneUser( this.ID).subscribe(
+     (rep:any)=>{
+       this.UserData=rep
+      // console.log("admindaata",this.UserData);
+     }
+    )  
+    
+  }
+
+  ngOnInit(){
     this.appointmentForm = this.formBuilder.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -41,10 +84,9 @@ export class TabsetPatientComponent {
       const formValues = this.appointmentForm.value;
       const selectedSpeciality = formValues.speciality;
       const selectedDoctor = formValues.doctor;
-      // Handle form submission here
-      console.log(formValues);
-      console.log("Selected Speciality: ", selectedSpeciality);
-      console.log("Selected Doctor: ", selectedDoctor);
+      console.log("testestest",this.appointmentForm.value);
+     
+      
     }
   }
   

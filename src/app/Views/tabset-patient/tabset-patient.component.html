@@ -15,47 +15,49 @@
     <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
       <h4 style="margin-bottom: 15px;margin-top: 15px;">Appointment Form :</h4>
       <div class="form-group">
-        <label for="firstname">Firstname</label>
-        <input type="text" formControlName="firstname" class="form-control" id="firstname">
+        <label for="firstname">Firstname :</label>
+        <input type="text" formControlName="firstname" class="form-control" id="firstname" value="{{UserData.firstName}}" readonly>
       </div>
       <div class="form-group">
         <label for="lastname">Lastname</label>
-        <input type="text" formControlName="lastname" class="form-control" id="lastname">
+        <input type="text" formControlName="lastname" class="form-control" id="lastname" value="{{UserData.lastName}}" readonly>
       </div>
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" formControlName="email" class="form-control" id="email">
+        <input type="email" formControlName="email" class="form-control" id="email" value="{{UserData.email}}" readonly>
       </div>
       <div class="form-group">
         <label for="phone">Phone</label>
-        <input type="tel" formControlName="phone" class="form-control" id="phone">
-      </div>
-      <div class="form-group">
-      <div class="dropdown mt-2 show">
-        <label for="phone">Spécialités</label>
-        <a class="btn drop-color dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          choose your speciality
-        </a>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <button *ngFor="let option of specialites"
-          (click)="selectOption(option)" class="dropdown-item"
-          type="button">{{ option }}</button>
-        </div>
-      </div>
+        <input type="tel" formControlName="phone" class="form-control" id="phone" value="{{UserData.phoneNumber}}" readonly>
       </div>
       <div class="form-group">
         <div class="dropdown mt-2 show">
-          <label for="phone"> Doctors</label>
+          <label for="speciality">Spécialités</label>
           <a class="btn drop-color dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            choose your doctor
+            Choose your speciality
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <button *ngFor="let option of doctors"
-            (click)="selectOption(option)" class="dropdown-item"
-            type="button">{{ option }}</button>
+            <button *ngFor="let option of specialites" (click)="selectOption(option)" class="dropdown-item" type="button">{{ option }}</button>
           </div>
         </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="doctor">Doctors</label>
+        <div class="dropdown mt-2 show">
+          <a class="btn drop-color dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Choose your doctor
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <button *ngFor="let doctor of doctorsList" (click)="selectDoctor(doctor)" class="dropdown-item" type="button">
+              {{ doctor.nom }} {{ doctor.prenom }}
+            </button>
+          </div>
         </div>
+      </div>
+      
+      <!-- Other form fields go here -->
+      
       <div class="form-group">
         <label for="date">Date</label>
         <input type="date" formControlName="date" class="form-control" id="date">
@@ -95,31 +97,24 @@
     </div>
     <form>
       <div class="form-group">
-        <label for="firstname">First Name</label>
-        <input type="text" formControlName="firstname" class="form-control" id="firstname">
+        <label for="firstname">First Name </label>
+        <input type="text" formControlName="firstname" class="form-control" id="firstname" value="{{UserData.firstName}}" readonly>
       </div>
       <div class="form-group">
         <label for="lastname">Last Name</label>
-        <input type="text" formControlName="lastname" class="form-control" id="lastname">
+        <input type="text" formControlName="lastname" class="form-control" id="lastname" value="{{UserData.lastName}}" readonly>
       </div>
       <div class="form-group">
         <label for="birthdate">Date of Birth</label>
-        <input type="date" formControlName="birthdate" class="form-control" id="birthdate">
+        <input type="date" formControlName="birthdate" class="form-control" id="birthdate" value="{{UserData.dateNaissance}}" readonly >
       </div>
       <div class="form-group">
         <label for="city">City</label>
-        <input type="text" formControlName="city" class="form-control" id="city">
+        <input type="text" formControlName="city" class="form-control" id="city" value="{{UserData.ville}}" readonly>
       </div>
       <div class="form-group">
         <label for="phone">Phone</label>
-        <input type="tel" formControlName="phone" class="form-control" id="phone">
-      </div>
-      <div class="form-group">
-        <label for="gender">Gender</label>
-        <select formControlName="gender" class="form-control" id="gender">
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
+        <input type="tel" formControlName="phone" class="form-control" id="phone" value="{{UserData.phoneNumber}}" readonly>
       </div>
       </form>
     <h4 style="margin-bottom: 20px;margin-top: 15px;">Password Reset :</h4>
@@ -149,8 +144,7 @@
         <th>Speciality</th>
         <th>Doctor</th>
         <th>Status</th>
-        <th>Prescription</th>
-        <th>Remarks</th>
+        <th>ordonnance</th>
       </tr>
     </thead>
     <tbody>
@@ -160,15 +154,6 @@
         <td>Dr. Smith</td>
         <td>completed</td>
         <td><a href="prescription_1.pdf" target="_blank">prescription_1.pdf</a></td>
-        <td>Patient is recovering well.</td>
-      </tr>
-      <tr>
-        <td>2022-02-15</td>
-        <td>Dermatology</td>
-        <td>Dr. Johnson</td>
-        <td>pending</td>
-        <td><a href="prescription_2.pdf" target="_blank">prescription_2.pdf</a></td>
-        <td>Follow up required.</td>
       </tr>
       <!-- Ajoutez d'autres lignes statiques si nécessaire -->
     </tbody>
