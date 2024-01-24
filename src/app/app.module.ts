@@ -45,6 +45,9 @@ import { SearchPipe } from './doctor-interface/appointments/search.pipe';
 import { NgChartsModule } from 'ng2-charts';
 import { Chart } from 'chart.js';
 import { SearchPipeHomePipe } from './Views/navbar/search-pipe-home.pipe';
+import { NavbarAdminComponent } from './SuperAdmin/navbar-admin/navbar-admin.component';
+import { SideBarAdminComponent } from './SuperAdmin/side-bar-admin/side-bar-admin.component';
+import { ChartAdminComponent } from './SuperAdmin/chart-admin/chart-admin.component';
 //import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
@@ -84,7 +87,10 @@ import { SearchPipeHomePipe } from './Views/navbar/search-pipe-home.pipe';
     AppointmentsComponent,
     TabsetPatientComponent,
     SearchPipe,
-    SearchPipeHomePipe,   
+    SearchPipeHomePipe,
+    NavbarAdminComponent,
+    SideBarAdminComponent,
+    ChartAdminComponent,   
   ],
   imports: [
     BrowserModule,

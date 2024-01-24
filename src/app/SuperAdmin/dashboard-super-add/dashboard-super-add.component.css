@@ -76,7 +76,13 @@
 .notification-dropdown.open { /* Open state styles */
   display: block;
 }
+.content{
+  width:85%;
+  margin-left: 15%;
+  z-index: 105;
+  background-color: #6772954a;
 
+}
 
 
 

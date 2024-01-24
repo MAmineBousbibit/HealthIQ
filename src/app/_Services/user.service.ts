@@ -52,7 +52,9 @@ export class UserService {
   public findAll():Observable<Array<User>>{
     return this._httpclient.get<Array<User>>(`${this._apiUrl}/all`);
   }
-
+public getOneUser(id:any){
+  return this._httpclient.get(`${this._apiUrl}/userOne/`+id);
+}
 
   get Path_SERVER(): string {
     return this._Path_SERVER;
