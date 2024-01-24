@@ -47,3 +47,8 @@ color :white;
     border:solid rgb(20, 66, 88);
    
 }
+.text-non{
+    color: rgb(52, 50, 50);
+    font-weight: lighter;
+     font-style: italic;
+}
