@@ -2,6 +2,8 @@ import { Injectable, NgZone } from '@angular/core';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { User } from '../_models/user';
+import {Ordonnance} from "../_models/ordonnance";
+import {content} from "html2canvas/dist/types/css/property-descriptors/content";
 
 @Injectable({
   providedIn: 'root',
@@ -9,93 +11,170 @@ import { User } from '../_models/user';
 export class PdfGeneratorService {
   constructor(private zone: NgZone) {}
 
-  generatePDF(user: User): void {
+  generateRapportPDF(user: User): void {
     const doc = new jsPDF();
 
     // Create a div to wrap the HTML content you want to capture
     const content = document.createElement('div');content.innerHTML = `
-  <div class="container">
-    <h2 class="text-center mb-4">Patient Medical Report</h2>
-
-    <div class="row">
-      <div class="col-md-6">
+    <div class="header">
         <div>
-          <strong>${user.lastName} ${user.firstName}</strong>
+            <img style="width: 9em;" src="../../assets/img/Logo/Logo14.png">
         </div>
-        <div>${user.email}</div>
-        <div>${user.phoneNumber}</div>
-        <div>${user.adresse}</div>
-      </div>
-
-      <div class="col-md-12">
-        <h4>Physical Information</h4>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Weight</th>
-              <th>Height</th>
-              <th>Sex</th>
-              <th>Active in Sports</th>
-              <th>Type of Sport</th>
-              <th>Number of Times in Sports</th>
-              <th>Blood Group</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="gray-row">
-              <td>${user.poid}</td>
-              <td>${user.taille}</td>
-              <td>${user.sex}</td>
-              <td>${user.sportActif}</td>
-              <td>${user.typeSport}</td>
-              <td>${user.nb_foisSport}</td>
-              <td>${user.group_sang}</td>
-            </tr>
-            <!-- Add other rows as needed -->
-          </tbody>
-        </table>
-      </div>
+        <div class="title">
+            <div style="color: #2B7F75; font-size: 2.1em;">
+            Medical Report For
+            </div>
+            <div style="max-width: 500px;font-weight: bold;font-family: 'Inter Black',  sans-serif;">
+                ${user.firstName} ${user.lastName}
+            </div>
+        </div>
+        <div>
+            <img style="width: 10em;" src="../../assets/img/Logo/Logo%20minestere%20de%20la%20sante.png">
+        </div>
     </div>
 
-    <div class="row mt-4">
-      <div class="col-md-12">
-        <h4>Medical History</h4>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Has any existing medical condition</th>
-              <th>Type of Medical Condition</th>
-              <th>Has any allergies</th>
-              <th>Type of Allergy</th>
-              <th>Medications</th>
-              <th>Prescribed Medication</th>
-              <th>Underwent Surgery</th>
-              <th>Conditions after Surgery</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="gray-row">
-              <td>${user.maladieCheck}</td>
-              <td>${user.typeMaladie}</td>
-              <td>${user.alergieCheck}</td>
-              <td>${user.typeAlergie}</td>
-              <td>${user.MedicamentCheck}</td>
-              <td>${user.NomMedicament}</td>
-              <td>${user.Chirurgie}</td>
-              <td>${user.condition}</td>
-            </tr>
-            <!-- Add other rows as needed -->
-          </tbody>
-        </table>
-      </div>
+    <div>
+        <div class="component-title" >
+            Personal Informations
+        </div>
+        <div>
+            <table class="info-table">
+                <tr>
+                    <td class="table-title">
+                        Name
+                    </td>
+                    <td class="table-data">
+                        ${user.firstName}
+                    </td>
+                    <td class="table-title">
+                        Phone
+                    </td>
+                    <td class="table-data">
+                        ${user.phoneNumber}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="table-title">
+                        Email
+                    </td>
+                    <td class="table-data">
+                        ${user.email}
+
+                    </td>
+                    <td class="table-title">
+                        Adress
+                    </td>
+                    <td class="table-data">
+                       ${user.adresse}
+
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
-  </div>
+    <div>
+        <div class="component-title">
+            Physical Informations
+        </div>
+        <div>
+            <table class="info-table">
+                <tr>
+                    <td class="table-title"> Weight</td>
+                    <td class="table-title"> Height</td>
+                    <td class="table-title"> Sex</td>
+                    <td class="table-title"> Active in sports</td>
+                    <td class="table-title"> Type of sport</td>
+                    <td class="table-title"> Number of times in sport</td>
+                    <td class="table-title"> Blood group</td>
+                </tr>
+                <tr>
+                    <td class="table-data"> ${user.poid}</td>
+                    <td class="table-data"> ${user.taille}</td>
+                    <td class="table-data"> ${user.sex}</td>
+                    <td class="table-data"> ${user.typeSport}</td>
+                    <td class="table-data"> ${user.typeSport}</td>
+                    <td class="table-data"> ${user.nb_foisSport}</td>
+                    <td class="table-data">${user.group_sang}</td>
+                </tr>
+            </table>
+        </div>
+        </div>
+
+        <div>
+            <div class="component-title">
+                Medical history
+            </div>
+            <div>
+                <table class="info-table">
+                    <tr>
+                        <td class="table-title"> Has an existing medical condition</td>
+                        <td class="table-title"> Type of medical condition</td>
+                        <td class="table-title"> Has any allergies</td>
+                        <td class="table-title"> Type of allergy</td>
+                        <td class="table-title"> Medications</td>
+                        <td class="table-title"> Prescribed medications</td>
+                    </tr>
+                    <tr>
+                        <td class="table-data"> oui </td>
+                        <td class="table-data"> diabète </td>
+                        <td class="table-data"> non </td>
+                        <td class="table-data">null</td>
+                        <td class="table-data"> oui</td>
+                        <td class="table-data"> liraglutide ,insuline dégludec</td>
+                    </tr>
+                </table>
+            </div>
+            </div>
 
   <style>
-    /* Add the CSS styles for the table rows here */
-    .gray-row {
-      background-color: #f2f2f2; /* Gray background color for alternate rows */
-    }
+   body{
+    font-family:'Inter', sans-serif;;
+    padding: 2em;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4em;
+}
+
+.title{
+    text-align: center;
+    font-family: 'Inter SemiBold', sans-serif;
+    font-size: 1.1em;
+    margin-top: 3em;
+}
+
+.component-title{
+    font-family: 'Inter SemiBold', sans-serif;
+    font-size: 0.9em;
+    margin-bottom: 1em;
+    font-weight: bold;
+
+}
+
+.info-table{
+    border: 0.1em solid #5B6268;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 3em;
+}
+
+.table-title, .table-data{
+    border: 0.1em solid #5B6268;
+    padding: 0.5em;
+    font-size: 0.9em;
+}
+
+.table-data{
+    font-family: 'Inter Medium', sans-serif;
+}
+
+.table-title{
+    font-family: 'Inter SemiBold', sans-serif;
+    color: #5B6268;
+}
   </style>
 `;
 
@@ -111,94 +190,183 @@ export class PdfGeneratorService {
           // Convert the canvas image to data URL
           const imgData = canvas.toDataURL('image/jpeg');
 
-          // Add the image to the PDF
-          doc.addImage(imgData, 'JPEG', 20, 40, 150, 75); // Adjust the position and size as needed
+          const margin = 10;
+          const bottomMargin = 25;
+          const textWidth = content.offsetWidth;
+          const pdfWidth = textWidth + 2 * margin;
 
+
+          doc.addImage(
+            imgData,
+            'JPEG',
+            margin, // left margin
+            margin, // top margin
+            doc.internal.pageSize.width - 2 * margin, // width
+            doc.internal.pageSize.height - 2 * margin - bottomMargin // height
+          );
           // Save the PDF with a unique filename
           doc.save(`Patient_Report_${user.lastName}${user.firstName}.pdf`);
         });
       }, 0); // Use a minimal delay
     });
   }
+
+
+
+  generateOrdonncePDF(ordonnace : Ordonnance): void {
+
+    const doc = new jsPDF();
+
+    // Create a div to wrap the HTML content you want to capture
+    const content = document.createElement('div'); content.innerHTML = `
+
+<body>
+    <div class="header">
+        <div>
+            <div style="color: #2B7F75;">
+                Dr.${ordonnace.nom_Doc} ${ordonnace.Prenom_Doc}
+            </div>
+            <div>
+                Cabinet
+            </div>
+            <div>
+                Gynecologue
+            </div>
+        </div>
+        <div>
+            <img style="width: 5em;" src="../../assets/img/Logo/Logo%20minestere%20de%20la%20sante.png">
+        </div>
+        <div>
+            <div>
+                Adresse: ${ordonnace.adresse_patient}
+            </div>
+            <div>
+                Tel: ${ordonnace.phoneNumber_patient}
+            </div>
+            <div>
+                ${ordonnace.email_patient}
+            </div>
+        </div>
+    </div>
+
+    <div class="title"><u>Ordonnance médicale</u></div>
+
+    <div style="text-align: center; font-family: 'Inter SemiBold', sans-serif; font-size: 0.9em; margin-bottom: 1em;"> Fait à: Evry, Le 22/01/2024</div>
+    <div style="text-align: center; font-family: 'Inter SemiBold', sans-serif; font-size: 0.9em; margin-bottom: 3em;"> Nom et prenom: ${ordonnace.Nom_patient} ${ordonnace.Prenom_patient}</div>
+
+        <div style="display: flex; justify-content: center;">
+            <table class="info-table">
+                <tr>
+                    <td class="table-title"> Médicaments</td>
+                    <td class="table-title"> Nombre de fois/Jour</td>
+                </tr>
+                <tr>
+                    <td class="table-data"> Doliprane</td>
+                    <td class="table-data"> 3</td>
+                </tr>
+                <tr>
+                    <td class="table-data"> Rhinomicine</td>
+                    <td class="table-data"> 2</td>
+                </tr>
+            </table>
+        </div>
+
+
+
+</body>
+<style>
+body{
+    font-family:'Inter', sans-serif;;
+    padding: 2em;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4em;
+    font-family: 'Inter SemiBold', sans-serif;
+    font-size: 0.9em;
+}
+
+.title{
+    text-align: center;
+    font-family: 'Inter SemiBold', sans-serif;
+    font-size: 1.1em;
+    margin-top: 3em;
+    color: #2B7F75;
+    margin-bottom: 2em;
 }
 
 
+.component-title{
+    font-family: 'Inter SemiBold', sans-serif;
+    font-size: 0.9em;
+    margin-bottom: 1em;
+}
+
+.info-table{
+    border: 0.1em solid #5B6268;
+    width: 80%;
+    border-collapse: collapse;
+    margin-bottom: 3em;
+}
+
+.table-title, .table-data{
+    padding: 0.5em;
+    font-size: 0.9em;
+}
+
+.table-data{
+    border-right: 0.1em solid #5B6268;;
+    font-family: 'Inter Medium', sans-serif;
+}
+
+.table-title{
+    font-family: 'Inter SemiBold', sans-serif;
+    border: 0.1em solid #5B6268;
+    color: #5B6268;
+}
+</style>
+
+`;
+
+    document.body.appendChild(content);
 
 
-// import { Injectable } from '@angular/core';
-// import { jsPDF } from 'jspdf';
-// import { User } from '../_models/user';
-//
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class PdfGeneratorService {
-//   generatePDF(user: User): void {
-//     const doc = new jsPDF();
-//
-//     // Set font and text color
-//     doc.setFont('times');
-//     doc.setTextColor(0, 0, 0);
-//
-//     // Add a title to the PDF
-//     doc.setFontSize(16);
-//     doc.text('Patient Medical Report', 20, 20);
-//
-//     // Track Y position manually
-//     let yPosition = 30;
-//
-//     // Add personal information section
-//     yPosition = this.addSection(doc, yPosition, 'Personal Information', [
-//       `Code Medical: ${user.CodeMedical}`,
-//       `Nom: ${user.Nom}`,
-//       `Prenom: ${user.prenom}`,
-//       `Email: ${user.email}`,
-//       `Phone Number: ${user.phoneNumber}`,
-//       `Date of Birth: ${user.dateNaissance}`,
-//       `Address: ${user.adresse}, ${user.ville}`,
-//     ]);
-//
-//     // Add physical information section
-//     yPosition = this.addSection(doc, yPosition, 'Physical Information', [
-//       `Weight: ${user.poid}`,
-//       `Height: ${user.taille}`,
-//       `Sex: ${user.sex}`,
-//       `Active in Sports: ${user.sportActif}`,
-//       `Type of Sport: ${user.typeSport}`,
-//       `Number of Times in Sports: ${user.nb_foisSport}`,
-//       `Blood Group: ${user.group_sang}`,
-//     ]);
-//
-//     // Add medical history section
-//     yPosition = this.addSection(doc, yPosition, 'Medical History', [
-//       `Has any existing medical condition: ${user.maladieCheck}`,
-//       user.maladieCheck === 'Yes' ? `Type of Medical Condition: ${user.typeMaladie}` : '',
-//       `Has any allergies: ${user.alergieCheck}`,
-//       user.alergieCheck === 'Yes' ? `Type of Allergy: ${user.typeAlergie}` : '',
-//       `Medications: ${user.MedicamentCheck}`,
-//       user.MedicamentCheck === 'Yes' ? `Prescribed Medication: ${user.NomMedicament}` : '',
-//       `Underwent Surgery: ${user.Chirurgie}`,
-//       user.Chirurgie === 'Yes' ? `Conditions after Surgery: ${user.condition}` : '',
-//     ]);
-//
-//     // Save the PDF with a unique filename
-//     doc.save(`Patient_Report_${user.Nom}.pdf`);
-//   }
-//
-//   private addSection(doc: jsPDF, yPosition: number, title: string, lines: string[]): number {
-//     doc.setFontSize(14);
-//     doc.text(title, 20, yPosition);
-//
-//     doc.setFontSize(12);
-//     lines.forEach((line, index) => {
-//       doc.text(line, 20, yPosition + (index + 1) * 10);
-//
-//     });
-//
-//     // Return the updated Y position
-//     return yPosition + lines.length * 10 + 20; // Adjust for spacing
-//   }
-// }
+    // Run the html2canvas operation outside of Angular zone
+    this.zone.runOutsideAngular(() => {
+      // Use ngAfterViewInit to ensure that the view is fully initialized
+      setTimeout(() => {
+        // Use html2canvas to capture the content as an image
+        html2canvas(content).then((canvas) => {
+          // Convert the canvas image to data URL
+          const imgData = canvas.toDataURL('image/jpeg');
+
+          const margin = 10;
+          const bottomMargin = 25;
+          const textWidth = content.offsetWidth;
+          const pdfWidth = textWidth + 2 * margin;
+
+
+          doc.addImage(
+            imgData,
+            'JPEG',
+            margin, // left margin
+            margin, // top margin
+            doc.internal.pageSize.width - 2 * margin, // width
+            doc.internal.pageSize.height - 2 * margin - bottomMargin // height
+          );
+          // Save the PDF with a unique filename
+          doc.save(`Patient_Report_${ordonnace.Nom_patient}${ordonnace.Prenom_patient}.pdf`);
+        });
+      }, 0); // Use a minimal delay
+    });
+  }
+
+}
+
+
 
 
 

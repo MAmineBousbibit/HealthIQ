@@ -23,7 +23,7 @@ export class PatientsComponent implements OnInit{
   constructor(private _userService:UserService, private pdfGeneratorService: PdfGeneratorService) {}
 
 generatePDF(user: User): void {
-  this.pdfGeneratorService.generatePDF(user);
+  this.pdfGeneratorService.generateRapportPDF(user);
 }
 
 
