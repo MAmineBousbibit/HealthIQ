@@ -1,4 +1,114 @@
-<div class="container mt-5">
-<p>chart-admin works! salaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+<div class="container">
+    <div class="row px-3 mx-2">
+   
+        <div class="col-lg-3 col-sm-6 widget widget1">
+          <div class="info-box7 l-bg-card1 order-info-box7">
+            <div class="info-box7-block">
+              <h5 class="m-b-15 icon1"> Nombre total des Patients </h5>
+              <h2 class="text-end"><i class="icon1 fas fa-user-injured float-start"></i><span>{{NbrTotalPatient}}</span></h2>
+              <p class="m-b-0 icon1">25% Plus élevé que le mois dernier</p>
+            </div>
+          </div>
+        </div>
+    
+        <div class="col-lg-3 col-sm-6 widget widget2">
+          <div class="info-box7 l-bg-card2 order-info-box7">
+            <div class="info-box7-block">
+              <h5 class="m-b-15">Rendez-vous aujourd'hui </h5>
+              <h2 class="text-end"><i class="far fa-calendar-check float-start"></i><span>{{nbTotalAppoitment}}</span></h2>
+              <p class="m-b-0">45% Plus élevé que le mois dernier</p>
+            </div>
+          </div>
+        </div>
+       
+        <div class="col-lg-3 col-sm-6 widget widget4">
+          <div class="info-box7 l-bg-card3 order-info-box7">
+            <div class="info-box7-block">
+              <h5 class="m-b-15">Operations  aujourd'hui </h5>
+              <h2 class="text-end"><i class="fas fa-cut float-start"></i><span>28</span></h2>
+              <p class="m-b-0">37% Higher Then Last Month</p>
+            </div>
+          </div>
+        </div>
+     
+    </div>
+  <!--end of widget-->
+</div>
+<div class="row px-3 mx-2">
+    <div class="col-md-4 mt-5">
+        <canvas  id="graph" height="300"></canvas>
+    </div>
+    <div class="col-md-4 mt-5">
+        <canvas  id="graph2" height="300"></canvas>
+
+    </div> 
+    <div class="col-md-4 mt-2">
+        <div class="col-5 mt-1 gr">
+            <canvas  id="first"  height="50"></canvas>
+        </div>
+        <div class="col-5 mt-2 gr">
+            <canvas  id="second" height="50"></canvas>
+        </div>
+        <div class="col-5 mt-2 gr">
+            <canvas  id="third" height="50"></canvas>
+        </div>
+       
+
+    </div>
+    
+</div>
+<div class="row px-3 mx-2 mt-2">
+    <div class="col-6" >
+        <ul class="list-group lis rounded">
+            <li class="" >
+              <span class=" patientlist-text1">Liste des patients</span>
+              <hr class="m-0 mt-1">
+              
+          </li>
+          <!--*ngFor="let Patient of firstFourPatient"
+            *ngIf="Patient.Id_patient"
+            {{ Patient.Id_patient.firstName }} {{ Patient.Id_patient.lastName }}
+            {{ Patient.date }} {{ Patient.hour }}
+        -->
+          <li class="" *ngFor="let Patient of firstFourPatient">
+            <ng-container >
+                <img *ngIf="Patient.image" [src]="'assets/img/profil/' + Patient.image" alt="Profile" class="round-image">
+              <img *ngIf="!Patient.image" src="assets/img/profil/unkown_Profil.jpeg" alt="Profile" class="round-image">
+                <span class="mx-2 patientlist-text">{{Patient.firstName}} {{Patient.lastName}}</span> 
+                <span class="m-1 patientlist-text2 float-end"> <span class="light-txt">Télephone : </span>  {{Patient.phoneNumber}}</span>
+            </ng-container>
+        </li>
+        
+          
+           
+           </ul>
+    </div>
+    <div class="col-6" >
+        <ul class="list-group lis rounded">
+            <li class="" >
+              <span class=" patientlist-text1">Liste des Docteurs</span>
+              <hr class="m-0 mt-1">
+              
+          </li>
+          <!--*ngFor="let Patient of PatientList"
+            *ngIf="Patient.Id_patient"
+            {{ Patient.Id_patient.firstName }} {{ Patient.Id_patient.lastName }}
+            {{ Patient.date }} {{ Patient.hour }}
+        -->
+        <li class="" *ngFor="let Doc of firstFourDoctors">
+            <ng-container> <!-- Adjusted property name -->
+              <img *ngIf="Doc.image" [src]="'assets/img/profil/' + Doc.image" alt="Profile" class="round-image">
+              <img *ngIf="!Doc.image" src="assets/img/profil/unkown_Profil.jpeg" alt="Profile" class="round-image">
+          
+              <span class="mx-2 patientlist-text">{{ Doc.first_name }} {{ Doc.last_name }}</span> <!-- Adjusted property names -->
+              <span class="m-1 patientlist-text2 float-end"> <span class="light-txt">Spécilité : </span> {{ Doc.specialite }}</span>
+            </ng-container>
+          </li>
+          
+        
+          
+           
+           </ul>
+    </div>
 </div>
 
