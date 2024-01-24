@@ -265,7 +265,7 @@ toggleConditionSelection(event: any){
     }
     else{
        this.SelectedUser = this.convertToUser(this.SignupGroup.value)
-    //console.log(this.SelectedUser)
+    console.log(this.SelectedUser)
     this.Services.Register(this.SelectedUser).subscribe(
       (token: any) => {
         this.AuthService.loadProfile(token)

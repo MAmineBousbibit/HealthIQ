@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -98,7 +99,7 @@ import { ChartAdminComponent } from './SuperAdmin/chart-admin/chart-admin.compon
     FormsModule,
     FullCalendarModule,
     ModalModule.forRoot(),
-    
+    MatTabsModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
