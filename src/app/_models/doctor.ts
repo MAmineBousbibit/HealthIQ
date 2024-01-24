@@ -13,6 +13,7 @@ export class Doctor{
     image:any;
     specialite:any;
     naissance:any;
+    speciality:any;
    // enabled:boolean=true;
    // locked:boolean=false;
     
