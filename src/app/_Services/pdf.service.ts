@@ -186,7 +186,7 @@ export class PdfGeneratorService {
       // Use ngAfterViewInit to ensure that the view is fully initialized
       setTimeout(() => {
         // Use html2canvas to capture the content as an image
-        html2canvas(content).then((canvas) => {
+        html2canvas(content).then((canvas:any) => {
           // Convert the canvas image to data URL
           const imgData = canvas.toDataURL('image/jpeg');
 
@@ -339,7 +339,7 @@ body{
       // Use ngAfterViewInit to ensure that the view is fully initialized
       setTimeout(() => {
         // Use html2canvas to capture the content as an image
-        html2canvas(content).then((canvas) => {
+        html2canvas(content).then((canvas:any) => {
           // Convert the canvas image to data URL
           const imgData = canvas.toDataURL('image/jpeg');
 

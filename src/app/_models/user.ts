@@ -24,31 +24,8 @@ export class User {
     private _NomMedicament:any
     private _Chirurgie:any
    private _condition :any
-    constructor() {
-        this._id = '';
-        this._CodeMedical ='';
-        this._firstName ='';
-        this._lastName ='';
-        this._email ='';
-        this._password ='';
-        this._phoneNumber ='';
-        this._adresse='';
-        this._dateNaissance='';
-        this._poid=''
-        this._ville=''
-        this._taille=''
-        this._sex='';
-        this._group_sang='';
-        this._maladieCheck='';
-        this._typeMaladie='';
-        this._typeAlergie='';
-        this._alergieCheck='';
-        this._MedicamentCheck='';
-        this._NomMedicament='';
-        this._Chirurgie='';
-        this._condition='';
-
-    }
+   private _image:any
+  
 
   get id(): any {
     return this._id;
@@ -249,4 +226,11 @@ export class User {
   set condition(value: any) {
     this._condition = value;
   }
+  get image():any{
+    return this._condition;
+  }
+  set image(val:any){
+    this._image=val
+  }
+
 }
