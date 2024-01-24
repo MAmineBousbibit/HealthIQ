@@ -16,4 +16,13 @@ export class FlaskAnalyseService {
  getEventsDoc(id_Doc:any){
   return this._httpclient.post(this.API_Flask+'getallEvents',id_Doc, { headers: this.requestHeader });
  }
+ getAllUsers(){
+  return this._httpclient.get(this.API_Flask+'getallusers', { headers: this.requestHeader });
+ }
+ getAllDoc(){
+  return this._httpclient.get(this.API_Flask+'getalldoc', { headers: this.requestHeader });
+ }
+ getAllEvents(){
+  return this._httpclient.get(this.API_Flask+'getallEvent', { headers: this.requestHeader });
+ }
 }
