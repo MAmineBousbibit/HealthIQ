@@ -19,19 +19,19 @@ export class GestionDocComponent implements OnInit {
     private formulaire: FormBuilder){ }
     ngOnInit(){
       this.NouveauDocteurForm = this.formulaire.group({
-        first_name: [null, [Validators.required]],
-        last_name: [null, [Validators.required]],
-        email: [null, [Validators.required, Validators.email]],
-        debutTime: [null, [Validators.required]],
-        finTime: [null, [Validators.required]],
-        password: [null, [Validators.required]],
-        age: [null, [Validators.required]],
-        prixConsultation: [null, [Validators.required]],
-        Operation: [null, [Validators.required]],
-        image: [null, [Validators.required]],
-        specialite: [null, [Validators.required]],
-        naissance: [null, [Validators.required]],
-        adresse: [null, [Validators.required]]
+        first_name: ['', [Validators.required]],
+        last_name: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
+        debutTime: ['', [Validators.required]],
+        finTime: ['', [Validators.required]],
+        password: ['', [Validators.required]],
+        age: ['', [Validators.required]],
+        prixConsultation: ['', [Validators.required]],
+        Operation: ['', [Validators.required]],
+        image: ['', [Validators.required]],
+        specialite: ['', [Validators.required]],
+        naissance: ['', [Validators.required]],
+        adresse: ['', [Validators.required]]
       })
       this.getAllDoctors();
     }
@@ -58,6 +58,21 @@ export class GestionDocComponent implements OnInit {
       }
     }
     addDoctor(){
+      const firstName = this.NouveauDocteurForm.get('first_name');
+      const lastName = this.NouveauDocteurForm.get('last_name');
+      const emailForm = this.NouveauDocteurForm.get('email');
+      const passwordForm = this.NouveauDocteurForm.get('password');
+      const debutTimeForm = this.NouveauDocteurForm.get('debutTime');
+      const finTimeFrom = this.NouveauDocteurForm.get('finTime');
+      const prixConsultationForm = this.NouveauDocteurForm.get('prixConsultation');
+      const naissanceForm = this.NouveauDocteurForm.get('naissance');
+      if(firstName?.invalid || lastName?.invalid || 
+        emailForm?.invalid || passwordForm?.invalid || 
+        debutTimeForm?.invalid || finTimeFrom?.invalid ||
+        prixConsultationForm?.invalid || naissanceForm?.invalid){
+        console.log('Formulaire invalid', this.NouveauDocteurForm);
+        alert('Veuillez remplir tous les champs requis.');
+    } else {
       const plainPassword = this.NouveauDocteurForm.value.password;
       const hashedPassword = bcrypt.hashSync(plainPassword, 10);
       const doctorData = {
@@ -68,8 +83,10 @@ export class GestionDocComponent implements OnInit {
       this.doctorService.addDoctor(doctorData).subscribe((res)=>{
         console.log(res);
         this.getAllDoctors();
-      })
-    }
+      });
+       }
+      }
+    
     toggleEditing(doctor: any) {
       doctor.editing = !doctor.editing;
       if (doctor.editing) {
