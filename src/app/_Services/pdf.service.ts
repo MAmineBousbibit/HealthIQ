@@ -214,126 +214,52 @@ export class PdfGeneratorService {
 
 
 
-  generateOrdonncePDF(ordonnace : Ordonnance): void {
-
+  generateOrdonncePDF(ordonnace: Ordonnance): void {
     const doc = new jsPDF();
 
     // Create a div to wrap the HTML content you want to capture
-    const content = document.createElement('div'); content.innerHTML = `
-
-<body>
-    <div class="header">
-        <div>
-            <div style="color: #2B7F75;">
-                Dr.${ordonnace.nom_Doc} ${ordonnace.Prenom_Doc}
-            </div>
-            <div>
-                Cabinet
-            </div>
-            <div>
-                Gynecologue
-            </div>
+    const content = document.createElement('div');
+    content.innerHTML = `
+      <div style="font-family: 'Inter', sans-serif; padding: 2em;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4em; font-family: 'Inter SemiBold', sans-serif; font-size: 0.9em;">
+          <div>
+            <div style="color: #2B7F75;">Dr.${ordonnace.nom_Doc} ${ordonnace.Prenom_Doc}</div>
+            <div>Cabinet</div>
+            <div>Gynecologue</div>
+          </div>
+          <div>
+            <img style="width: 10em;" src="../../assets/img/Logo/Logo14.png">
+          </div>
+          <div>
+            <div>Adresse: ${ordonnace.adresse_patient}</div>
+            <div>Tel: ${ordonnace.phoneNumber_patient}</div>
+            <div>${ordonnace.email_patient}</div>
+          </div>
         </div>
-        <div>
-            <img style="width: 5em;" src="../../assets/img/Logo/Logo%20minestere%20de%20la%20sante.png">
-        </div>
-        <div>
-            <div>
-                Adresse: ${ordonnace.adresse_patient}
-            </div>
-            <div>
-                Tel: ${ordonnace.phoneNumber_patient}
-            </div>
-            <div>
-                ${ordonnace.email_patient}
-            </div>
-        </div>
-    </div>
 
-    <div class="title"><u>Ordonnance médicale</u></div>
-
-    <div style="text-align: center; font-family: 'Inter SemiBold', sans-serif; font-size: 0.9em; margin-bottom: 1em;"> Fait à: Evry, Le 22/01/2024</div>
-    <div style="text-align: center; font-family: 'Inter SemiBold', sans-serif; font-size: 0.9em; margin-bottom: 3em;"> Nom et prenom: ${ordonnace.Nom_patient} ${ordonnace.Prenom_patient}</div>
+        <div style="text-align: center; font-family: 'Inter SemiBold', sans-serif; font-size: 0.9em; margin-bottom: 1em;"> Fait à: Evry, Le 22/01/2024</div>
+        <div style="text-align: center; font-family: 'Inter SemiBold', sans-serif; font-size: 0.9em; margin-bottom: 3em;"> Nom et prenom: ${ordonnace.Nom_patient} ${ordonnace.Prenom_patient}</div>
 
         <div style="display: flex; justify-content: center;">
-            <table class="info-table">
-                <tr>
-                    <td class="table-title"> Médicaments</td>
-                    <td class="table-title"> Nombre de fois/Jour</td>
-                </tr>
-                <tr>
-                    <td class="table-data"> Doliprane</td>
-                    <td class="table-data"> 3</td>
-                </tr>
-                <tr>
-                    <td class="table-data"> Rhinomicine</td>
-                    <td class="table-data"> 2</td>
-                </tr>
-            </table>
+          <table style="border: 0.1em solid #5B6268; width: 80%; border-collapse: collapse; margin-bottom: 3em;">
+            <tr>
+              <td style="padding: 0.5em; font-size: 0.9em; border: 0.1em solid #5B6268; color: #5B6268;">Médicaments</td>
+              <td style="padding: 0.5em; font-size: 0.9em; border: 0.1em solid #5B6268; color: #5B6268;">Nombre de fois/Jour</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.5em; font-size: 0.9em; border-right: 0.1em solid #5B6268;">Doliprane</td>
+              <td style="padding: 0.5em; font-size: 0.9em;">3</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.5em; font-size: 0.9em; border-right: 0.1em solid #5B6268;">Rhinomicine</td>
+              <td style="padding: 0.5em; font-size: 0.9em;">2</td>
+            </tr>
+          </table>
         </div>
-
-
-
-</body>
-<style>
-body{
-    font-family:'Inter', sans-serif;;
-    padding: 2em;
-}
-
-.header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 4em;
-    font-family: 'Inter SemiBold', sans-serif;
-    font-size: 0.9em;
-}
-
-.title{
-    text-align: center;
-    font-family: 'Inter SemiBold', sans-serif;
-    font-size: 1.1em;
-    margin-top: 3em;
-    color: #2B7F75;
-    margin-bottom: 2em;
-}
-
-
-.component-title{
-    font-family: 'Inter SemiBold', sans-serif;
-    font-size: 0.9em;
-    margin-bottom: 1em;
-}
-
-.info-table{
-    border: 0.1em solid #5B6268;
-    width: 80%;
-    border-collapse: collapse;
-    margin-bottom: 3em;
-}
-
-.table-title, .table-data{
-    padding: 0.5em;
-    font-size: 0.9em;
-}
-
-.table-data{
-    border-right: 0.1em solid #5B6268;;
-    font-family: 'Inter Medium', sans-serif;
-}
-
-.table-title{
-    font-family: 'Inter SemiBold', sans-serif;
-    border: 0.1em solid #5B6268;
-    color: #5B6268;
-}
-</style>
-
-`;
+      </div>
+    `;
 
     document.body.appendChild(content);
-
 
     // Run the html2canvas operation outside of Angular zone
     this.zone.runOutsideAngular(() => {
@@ -348,7 +274,6 @@ body{
           const bottomMargin = 25;
           const textWidth = content.offsetWidth;
           const pdfWidth = textWidth + 2 * margin;
-
 
           doc.addImage(
             imgData,

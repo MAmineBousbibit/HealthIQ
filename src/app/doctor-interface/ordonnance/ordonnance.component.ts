@@ -31,8 +31,8 @@ export class OrdonnanceComponent {
     )
   }
 
-  Ordonnance=new Ordonnance();
-  PDFform(){}
+  ordonnance=new Ordonnance();
+
   getAllPatient(){
 
   }
@@ -42,22 +42,22 @@ export class OrdonnanceComponent {
   }
   selectOption(option: any) {
     this.selectedOption = option;
-    this.Ordonnance.ID_patient=option.id
-    this.Ordonnance.Nom_patient=option.lastName
+    this.ordonnance.ID_patient=option.id
+    this.ordonnance.Nom_patient=option.lastName
 
-    this.Ordonnance.Prenom_patient=option.firstName
+    this.ordonnance.Prenom_patient=option.firstName
 
 
   }
   SendOrdo(){
    // console.log(this.Ordonnance);
-   this.Ordonnance.ID_Doc=this.Doctor.id
+   this.ordonnance.ID_Doc=this.Doctor.id
    //this.Ordonnance.ID_Doc.Prenom_Doc=this.Doctor.first_name
    //this.Ordonnance.ID_Doc.nom_Doc=this.Doctor.last_name
 
-     console.log("Ordoi",this.Ordonnance);
+     console.log("Ordoi",this.ordonnance);
 
-    this.ServiceDoc.AjouterOrdonnance(this.Ordonnance).subscribe(
+    this.ServiceDoc.AjouterOrdonnance(this.ordonnance).subscribe(
       (response) => {
         //console.log("data",response)
         alert("L'ordonnance a été envoyer à votre patient avec succès!");
