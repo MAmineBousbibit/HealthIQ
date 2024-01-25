@@ -162,21 +162,8 @@ this.chart = new Chart("MyChart", {
 }
  
 GetPatient(){
-  const id=this.Id
-    const requestBody = { "id_Doc": id}; 
-    this.FlaskService.getEventsDoc(requestBody).subscribe(
-      (response: any) => {
-       //this.DataEvents=response
-       this.DataEvents = response.filter((event:any) => event.ID_doc == this.Id);
-     // console.log("data Event",this.DataEvents);
-     this.PatientList=this.DataEvents.slice(0, 7);
-      
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
- // this.PatientList=this.DataEvents.slice(0, 7);
+ 
+  this.PatientList=this.DataEvents.slice(0, 7);
   //console.log("patient",this.PatientList);
 }
 getToDoList(){

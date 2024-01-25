@@ -7,7 +7,7 @@ export class Events {
         hour:any="10:00";
         color:any;
         ID_doc=new Doctor();
-        ID_patient:any;
+        Id_patient:any;
         description:any;
         status:any
     }

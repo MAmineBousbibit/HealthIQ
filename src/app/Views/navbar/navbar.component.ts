@@ -50,5 +50,7 @@ export class NavbarComponent {
   }
  }
 
- 
+ logout(){
+  this.AuthService.logout()
+ }
 }

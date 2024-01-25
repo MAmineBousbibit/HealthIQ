@@ -1,3 +1,4 @@
+
 .tabs-container{
     background: #eee;
     list-style-type: none;
@@ -15,9 +16,40 @@
     padding: 10px;
     float: left;
     text-align: center;
+    color: white;
+    font-weight: bold;
+    background-color: #98d4caf1;
     }
-    
-    
+   .dropdown{
+    width: 100%;
+    background-color:  #98d4caba;;
+   }
+   .dropdown-menu{
+    width: 50%;
+   
+   }
+    label{
+      /*color: #98d4caf1;*/
+      color: #62dac6f9;
+
+    }
+    .col-red{
+      color: red;
+      font-size: large;
+
+    }
+    .red{
+      color: red;
+    }
+    .green{
+      color: green;
+    }
+    .orange{
+      color: orange;
+    }
+    .col-red:hover{
+      font-size: larger;
+    }
     .tab-link::after {
         position: absolute;
         left: 4px;
@@ -111,3 +143,55 @@
       .radio-group label {
         margin-right: 20px; /* Espace entre les boutons radio, ajustez selon vos besoins */
       }   
+
+      .custom-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        background-color: #040505d8;
+      }
+      
+      .custom-table th, .custom-table td {
+        
+        padding: 8px;
+        text-align: left;
+      }
+      
+      .custom-table th {
+        background-color: #98d4caf1; /* Dark blue color for header */
+        color: white;
+      }
+      .dropdown-item{
+        background-color: #18a790;
+      }
+     
+      
+      
+
+      .btn1{
+        background-color: #44d6be; 
+        color: white;
+        width: 50%;
+        margin-left: 25%;
+       
+      }
+      .btn1:hover,.btn2:hover{
+        box-shadow:  1px 1px 6px  #304642f1;;
+      }
+      .btn2{
+      
+        background-color: #44d6be; 
+        color: white;
+        width: 15%;
+        
+      }
+      
+     .titre{
+      font-weight: bold;
+      color: #18a790;
+
+     }
+     hr{
+      border: solid;
+      color: #18a790;
+     }

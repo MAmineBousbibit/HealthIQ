@@ -43,7 +43,7 @@ toggleChatBox1(){
 handleAskGPT(){
 let url="https://api.openai.com/v1/chat/completions"
 
-let httpHeaders=new HttpHeaders().set('Authorization', `Bearer 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`)
+let httpHeaders=new HttpHeaders().set('Authorization', `Bearer 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`)
 
 this.messages.push({
   role:"user",content:this.queryFormGroup.value.query
