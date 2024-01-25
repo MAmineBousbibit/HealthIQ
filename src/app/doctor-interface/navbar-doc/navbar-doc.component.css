@@ -51,10 +51,7 @@ img{
   transition: background-color 0.3s; /* Add a smooth transition effect */
 }
 
-.notification-icon:hover {
-  background-color: #808080; /* Dark color for the circle on hover */
-  border-radius: 50%; /* Make the background circular */
-}
+
 
 
 
@@ -174,9 +171,9 @@ h4 {
 
 .read-more-link {
   font-size: 14px;
-  color: #007bff; /* Adjust link color as needed */
+  color: #007bff !important; /* Adjust link color as needed */
   text-decoration: none;
-  margin-top: auto; /* Push the link to the bottom */
+  margin-top: auto !important; /* Push the link to the bottom */
   text-align: center; /* Center the content horizontally */
   width: 100%; /* Make it take the full width of the container */
   padding: 10px 0; /* Add padding for better spacing */
@@ -255,4 +252,12 @@ h4 {
   display: inline-flex;
   align-items: center;
   justify-content: flex-end;
+}
+.nav-notification {
+  display: flex;
+  align-items: center;
+}
+
+.notification-icon {
+  margin-right: 20px;
 }
