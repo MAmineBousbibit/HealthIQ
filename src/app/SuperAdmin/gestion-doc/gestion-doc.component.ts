@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/_Services/user.service';
 import * as bcrypt from 'bcryptjs';
 import { ViewChild } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-gestion-doc',
@@ -16,8 +17,9 @@ export class GestionDocComponent implements OnInit {
   NouveauDocteurForm!: FormGroup;
   @ViewChild('exampleModal') modal: any;
  
-  constructor(private router:Router, private doctorService: DoctorService ,private doc:UserService,
-    private formulaire: FormBuilder){ }
+  constructor(private router:Router, private doctorService: DoctorService ,
+    private doc:UserService,private formulaire: FormBuilder,
+    private location:Location){ }
     ngOnInit(){
       this.NouveauDocteurForm = this.formulaire.group({
         first_name: ['', [Validators.required]],
@@ -138,6 +140,10 @@ export class GestionDocComponent implements OnInit {
     closeModal(){
       this.modal.modal('hide');
     }
+    goBack(): void {
+      this.router.navigate(['/admin']);
+    }
+    
   
 
 }
