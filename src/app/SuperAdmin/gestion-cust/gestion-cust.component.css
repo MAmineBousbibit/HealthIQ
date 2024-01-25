@@ -1,6 +1,5 @@
 .main-container{
     display: flex;
-    height: 100vh;
     background-color: #eff5f4;
 }
 .partie-gauche{
@@ -38,6 +37,16 @@
     margin-left: 10px;
     margin-right: 5px;
 }
+.retour{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px 12px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+.retour:hover{
+    background-color: #e0e0e0;
+}  
 .info{
     background-color:#F5F5F5	;
     border-radius: 5px;
@@ -65,4 +74,43 @@
     right: 5px;
     cursor: pointer;
 }
-
+.name-container {
+    display: flex;
+    align-items: center;
+}
+.age{
+    display: flex;
+    align-items: center;
+}
+.agecomplet{
+    margin-left: 50px;
+    margin-right: 10px;
+}
+.emailmdp{
+    display: flex;
+    align-items: center;
+}
+.MDP{
+    margin-left: 50px;
+    margin-right: 10px;
+}
+.emailmdp .emailLabel{
+    margin-right: 10px;
+}
+.nom{
+    margin-left: 50px;
+    margin-right: 10px;
+}
+.prenomLabel{
+    margin-right: 10px;
+}
+.adresseLabel{
+    margin-right: 10px;
+}
+.naisLabel{
+    margin-right: 10px;
+}
+[required] {
+    border: 2px dotted 
+ orange;
+ }
