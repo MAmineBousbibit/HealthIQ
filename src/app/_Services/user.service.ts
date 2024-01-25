@@ -19,6 +19,8 @@ export class UserService {
   private _apiUrl = 'http://localhost:8080/api/v1/user';
 
   private _getAll_api = 'http://localhost:8080/doctor/list';
+  private getAll_Api = 'http://localhost:8080/utilisateur/list';
+
 
   private _requestHeader=new HttpHeaders(
     { "No-Auth":"True"}
@@ -39,6 +41,9 @@ export class UserService {
   }
   getAllDoctors():Observable<any>{
     return this._httpclient.get(this._getAll_api);
+  }
+  getAllUtilisateur():Observable<any>{
+    return this._httpclient.get(this.getAll_Api);
   }
   /**Fonction de Login  ******/
   public Login(USER:any){

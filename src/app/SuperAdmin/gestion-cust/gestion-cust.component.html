@@ -1,22 +1,29 @@
 <div class="main-container">
-    <div class="partie-gauche">
+    <!--<div class="partie-gauche">
             <ul id="docteurs">
                 <li>
-                    <a href="#doc1" (click)="setActiveDiv('Doc1', $event)">
-                     <img src="/assets/img/customer.png" width="50px" height="50px" >
+                    <a>
+                     <img src="/assets/img/docteur.png" width="50px" height="50px" >
                     </a>
                  <hr>
                 </li>
                 <li>
-                    <a href="#doc2" (click)="setActiveDiv('Doc2', $event)">
-                     <img src="/assets/img/customer.png" width="50px" height="50px" >
+                    <a>
+                     <img src="/assets/img/docteur.png" width="50px" height="50px" >
                     </a>
                  <hr>
                 </li>
             </ul>
-    </div>
+    </div>-->
     <div class="partie-droite">
-        <div class="navbar-container">
+      <div>
+        <button class="retour" (click)="goBack()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"/>
+          </svg>
+        </button>
+      </div>
+       <!-- <div class="navbar-container">
             <nav class="navbar">
                 <form class="d-flex" role="search" id="searchbar">
                     <input class="form-control" type="search" placeholder="Search" aria-label="Search">
@@ -27,41 +34,207 @@
                     </button>
                   </form>
             </nav>
-        </div>
+        </div>-->
     <div class="column">
+        <button class="btn" type="button" style="margin-left: 20px ;" name="add"  data-toggle="modal" data-target="#exampleModal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z"/>
+                <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
+              </svg>
+        </button>
+
+
+      
+       
         <ul>
-            <li id="Doc1" class="info d-flex" *ngIf="activeDiv ==='Doc1'" >
-                <img class="image" src="/assets/img/customer.png" width="50px" height="50px" >
-                <div class="details">
-                <p class="donnes">
-                Nom: <br>
-                Prenom: <br>
-                Date de naissance:<br>
-                Heures de travail: <br>
-                </p>
+          <li class="info d-flex" *ngFor="let utilisateur of utilisateurs">
+            <img class="image" src="/assets/img/docteur.png" width="50px" height="50px">
+        
+            <div class="details">
+              <div class="donnes">
+                <div class="name-container">
+                  <span class="prenomLabel"><strong> Prenom:</strong></span>
+                  <span *ngIf="!utilisateur.editing">{{ utilisateur.first_name }}</span>
+                  <input *ngIf="utilisateur.editing" type="text" [(ngModel)]="utilisateur.updatedFirstName">
+        
+                  <span class="nom"><strong> Nom: </strong></span>
+                  <span *ngIf="!utilisateur.editing">{{ utilisateur.last_name }}</span>
+                  <input *ngIf="utilisateur.editing" type="text" [(ngModel)]="utilisateur.updatedLastName">
+                </div>
+
+                <span class="adresseLabel"><strong>Adresse:</strong></span>
+                <span *ngIf="!utilisateur.editing">{{ utilisateur.adresse}}</span>
+                <input *ngIf="utilisateur.editing" type="text" [(ngModel)]="utilisateur.updatedAdresse">
+
+                <div class="age">
+                <span class="naisLabel"><strong>Date de Naissance:</strong></span>
+                <span *ngIf="!utilisateur.editing">{{ utilisateur.naissance}}</span>
+                <input *ngIf="utilisateur.editing" type="date" [(ngModel)]="utilisateur.updatedNaissance">
+        
+                <span class="agecomplet"><strong>Age:</strong></span>
+                <span *ngIf="!utilisateur.editing">{{ utilisateur.age}}</span>
+                <input *ngIf="utilisateur.editing" type="text" [(ngModel)]="utilisateur.updatedAge">
+                </div>
+
+                <div class="emailmdp">
+                <span class="emailLabel"><strong>Email:</strong></span>
+                <span *ngIf="!utilisateur.editing">{{ utilisateur.email }}</span>
+                <input *ngIf="utilisateur.editing" type="email" [(ngModel)]="utilisateur.updatedEmail">
+        
+                <span class="MDP"><strong>Mot De Passe:</strong></span>
+                <span *ngIf="!utilisateur.editing">{{ utilisateur.password}}</span>
+                <input *ngIf="utilisateur.editing" type="text" [(ngModel)]="utilisateur.updatedPassword">
+                </div>
+                <!--<div class="hdt"><strong>Heure de Travail</strong></div>
+                <div class="working-hours">
+                  <span class="dbLabel"><strong>Debut:</strong></span>
+                  <span *ngIf="!doctor.editing">{{ doctor.debutTime}}</span>
+                  <input *ngIf="doctor.editing" type="time" [(ngModel)]="doctor.updatedDebutTime">
+        
+                  <span class="fLabel"><strong>Fin:</strong></span>
+                  <span *ngIf="!doctor.editing" class="fin-time">{{ doctor.finTime}}</span>
+                  <input *ngIf="doctor.editing" type="time" [(ngModel)]="doctor.updatedFinTime">
+                </div>-->
+                <!--<div class="prixCons">
+                <span class="prixLabel"><strong>Prix De Consultation:</strong></span>
+                <span *ngIf="!utilisateur.editing">{{ utilisateur.prixConsultation}}</span>
+                <input *ngIf="utilisateur.editing" type="text" [(ngModel)]="utilisateur.updatedPrixConsultation">
+                </div>-->
+                <!--<div class="opSpe">
+                <span class="opLabel"><strong>Operation:</strong></span>
+                <span *ngIf="!doctor.editing">{{ doctor.Operation}}</span>
+                <input *ngIf="doctor.editing" type="text" [(ngModel)]="doctor.updatedOperation">
+        
+                 Commenté car la gestion de l'image peut varier -->
+                <!--<span>Image:</span>
+                <span *ngIf="!doctor.editing">{{ doctor.image}}</span>
+                <input *ngIf="doctor.editing" type="text" [(ngModel)]="doctor.updatedImage">
+                
+        
+                <span class="speLabel"><strong>Specialite:</strong></span>
+                <span *ngIf="!doctor.editing">{{ doctor.specialite}}</span>
+                <input *ngIf="doctor.editing" type="text" [(ngModel)]="doctor.updatedSpecialite">
+              </div>
+            -->
+              <br>
+                  <button class="btn" type="button" *ngIf="utilisateur.editing" (click)="updateUtilisateur(utilisateur)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save" viewBox="0 0 16 16">
+                    <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1z"/>
+                   </svg>
+                  </button>
+                </div>
                 <p class="modification">
-                    <img src="/assets/img/editer.png" width="20px" height="20px" >
-                    <img src="/assets/img/supprimer.png" width="20px" height="20px" >
+                    <img src="/assets/img/editer.png" width="20px" height="20px" (click)="toggleEditing(utilisateur)" >
+                    <img src="/assets/img/supprimer.png" width="20px" height="20px" (click)="deleteUtilisateur(utilisateur.id)">
                 </p>
             </div>
-            </li>
-            <li id="Doc2" class="info d-flex" *ngIf="activeDiv ==='Doc2'">
-                <img class="image" src="/assets/img/customer.png" width="50px" height="50px" >
-                <div class="details">
-                <p class="donnes">
-                Nom: <br>
-                Prenom: <br>
-                Date de naissance:<br>
-                Heures de travail: <br>
-                </p>
-                <p class="modification">
-                    <img src="/assets/img/editer.png" width="20px" height="20px" >
-                    <img src="/assets/img/supprimer.png" width="20px" height="20px" >
-                </p>
-            </div>
-            </li>
+          </li>
         </ul>
     </div>
     </div>
 </div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" style="height: 950px;">
+        <div class="modal-header">
+
+        
+        <div class="modal-body">
+            <form [formGroup]="NouveauUtilisateurForm">
+                <div class="space-y-12">
+            
+              
+                  <div class="border-b border-gray-900/10 pb-12">
+                    <h1 class="text-base font-semibold leading-7 text-gray-900">Informations de l'Utilisateur</h1>
+              
+                    <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                      <div class="sm:col-span-3">
+                        <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Prenom<span style="color: red;">*</span></label>
+                        <div class="mt-2">
+                          <input type="text" name="first-name" id="first-name" required formControlName="first_name" autocomplete="given-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required="required">
+                        </div>
+                        <div *ngIf="NouveauUtilisateurForm.controls['first_name'].invalid">
+                        </div>                        
+                      </div>
+              
+                      <div class="sm:col-span-3">
+                        <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Nom<span style="color: red;">*</span></label>
+                        <div class="mt-2">
+                          <input type="text" name="last-name" id="last-name"  formControlName="last_name" autocomplete="family-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                        <div *ngIf="NouveauUtilisateurForm.controls['last_name'].invalid"></div>
+                      </div>
+
+                      <div class="sm:col-span-3">
+                        <label for="adresse" class="block text-sm font-medium leading-6 text-gray-900">Adresse</label>
+                        <div class="mt-2">
+                          <input type="text" name="adresse" id="adresse"  formControlName="adresse" autocomplete="family-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </div>
+              
+                      <div class="sm:col-span-4">
+                        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email<span style="color: red;">*</span></label>
+                        <div class="mt-2">
+                          <input id="email" name="email" type="email"  formControlName="email" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                        <div *ngIf="NouveauUtilisateurForm.controls['email'].invalid"></div>
+                      </div>
+
+                      <div class="sm:col-span-4">
+                        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Mot De Passe<span style="color: red;">*</span></label>
+                        <div class="mt-2">
+                          <input id="mdp" name="mdp" type="text"  formControlName="password" autocomplete="mdp" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                        <div *ngIf="NouveauUtilisateurForm.controls['password'].invalid"></div>
+                      </div>
+
+                      <div class="sm:col-span-3">
+                        <label for="work-start" class="block text-sm font-medium leading-6 text-gray-900">Début de travail<span style="color: red;">*</span></label>
+                        <div class="mt-2">
+                            <input type="time" name="work-start" id="work-start"  formControlName="debutTime" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                        <div *ngIf="NouveauUtilisateurForm.controls['debutTime'].invalid"></div>
+                    </div>
+
+                    
+
+                  <div class="sm:col-span-4">
+                    <label for="age" class="block text-sm font-medium leading-6 text-gray-900">Age</label>
+                    <div class="mt-2">
+                      <input id="age" name="age" type="text"  formControlName="age" autocomplete="age" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
+                  </div>
+
+                  <div class="sm:col-span-4">
+                    <label for="Naissance" class="block text-sm font-medium leading-6 text-gray-900">Date De Naissance<span style="color: red;">*</span></label>
+                    <div class="mt-2">
+                      <input id="date" name="date" type="date"  formControlName="naissance" autocomplete="date" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
+                    <div *ngIf="NouveauUtilisateurForm.controls['naissance'].invalid"></div>
+
+                  </div>
+
+                  </div> 
+                </div>
+                </div>
+                
+              </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" (click)="closeModal()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+              <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+            </svg>
+          </button>
+          <button type="submit" class="btn btn-outline-info" (click)="addUtilisateur()" routerLink="/gestion-cust">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save" viewBox="0 0 16 16">
+              <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  
