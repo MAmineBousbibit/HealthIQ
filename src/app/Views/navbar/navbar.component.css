@@ -24,12 +24,34 @@ margin-left: 195%;
    top: 21%;
   }
   .btn:hover{
-    background-color: #0aafa4b3;
+    background-color: #2cafa7b3;
   }
   .btn svg{
     font-size: larger;
   }
-
+  .btn1{
+    font-size: 400px;
+    background-color: transparent;
+    border:none ;
+  }
+  .btn1:hover{
+    font-size: 800px;
+    text-shadow: 2px 2px 2px #2cafa7b3 ;
+  }
+  
+  .btn-1 {
+    color:#0AAFA5;
+    transition: box-shadow 0.3s ease; 
+    border: none;
+    background-color: transparent;
+    /* Adding a smooth transition for the shadow effect */
+  }
+  
+  svg:hover {
+    color:black;
+  
+     /* Adding a subtle shadow on hover */
+  }
   
   /* this is a recreation of twitter search in css */
 .form {
@@ -84,7 +106,7 @@ label {
 }
 /* svg -- size */
 svg {
-  width: 17px;
+ 
   display: block;
 }
 /* styling of close button */
@@ -186,4 +208,14 @@ svg {
   .icon{
 
 margin-left: 40%;
+  }
+
+.tabset{
+    width: 95%;
+    position: fixed;
+    top: 90px; /* Ajustez la valeur de top selon votre besoin */
+    right: 20px; /* Ajustez la valeur de right selon votre besoin */
+    z-index: 1000; /* Ajustez la valeur de z-index selon votre besoin pour garantir que le popup apparaît au-dessus des autres éléments */
+    overflow-y: auto; /* Enable vertical scrolling when content exceeds the max-height */
+    max-height: 500px; /* Adjust the maximum height according to your needs */
   }

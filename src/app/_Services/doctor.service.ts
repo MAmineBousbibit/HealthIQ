@@ -15,6 +15,7 @@ export class DoctorService{
     private update_api = 'http://localhost:8080/doctor/update';
     private API_GestionDoc='http://localhost:8080/doctor'
     private ApiHost='http://localhost:8080/'
+    private doctorsBySpecialite_api='http://localhost:8080/doctor/bySpecialite'
     requestHeader=new HttpHeaders(
       { "No-Auth":"True"}  
     );
@@ -23,6 +24,10 @@ export class DoctorService{
     return this.http.get(this.getAll_api);
   }
   
+  getDoctorsBySpecialite(specialite: string): Observable<any> {
+    const url = `${this.doctorsBySpecialite_api}/${encodeURIComponent(specialite)}`;
+    return this.http.get(url);
+  }
 
   getOneDoctor(id:any):Observable<any>{
     return this.http.get(this.API_GestionDoc+'/List/' +id)

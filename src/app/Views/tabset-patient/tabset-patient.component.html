@@ -1,1 +1,297 @@
-<p>tabset-patient works!</p>
+<div class="container mt-4">
+  <div class="row ">
+    <div class="col-12 ">
+      <div class="card card-default shadow rounded tab1">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <!-- <button class="btn btn-default">IH Tabs</button> -->
+              <ul class="tabs-container">
+                <li (click)="onTabClick('Personal Details')" [class.active]="activeTab == 'Personal Details'"
+                  class="tab-link">Ajouter Rendez-vous</li>
+                <li (click)="onTabClick('Account Details')" [class.active]="activeTab == 'Account Details'"
+                  class="tab-link">Mon Compte</li>
+                <li (click)="onTabClick('Other Details')" [class.active]="activeTab == 'Other Details'"
+                  class="tab-link">Mes Rendez-vous</li>
+              </ul>
+              <!--************** Tab1 -->
+              <div *ngIf="activeTab == 'Personal Details'" class="w-100 ">
+                <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+
+
+                  <div class="row  mt-2">
+                    <div class="col-md-6 col-6 ">
+                      <div class="form-group col-">
+                        <label>Prénom </label>
+                        <input type="text" class="form-control" disabled [ngModelOptions]="{ standalone: true }"
+                          [(ngModel)]="User.firstName">
+                      </div>
+                      <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" disabled [ngModelOptions]="{ standalone: true }"
+                          [(ngModel)]="User.email">
+                      </div>
+
+                      <div class="form-group">
+                        <div class="mt-2 show ">
+                          <label for="speciality">Spécialités</label>
+                          <a class="btn dropdown  dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Choisie la specialité
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <button *ngFor="let option of specialites" (click)="selectOption(option)"
+                              class="dropdown-item" type="button">{{ option }}</button>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-md-6 col-6 ">
+                      <div class="form-group">
+                        <label>Nom</label>
+                        <input type="text" class="form-control" disabled [ngModelOptions]="{ standalone: true }"
+                          [(ngModel)]="User.lastName">
+                      </div>
+                      <div class="form-group">
+                        <label for="phone">Télephone</label>
+                        <input type="tel" class="form-control" disabled [ngModelOptions]="{ standalone: true }"
+                          [(ngModel)]="User.phoneNumber">
+                      </div>
+                      <div class="form-group">
+                        <label for="doctor">Docteurs</label>
+                        <div class="dropdown mt-2 show">
+                          <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Choisir docteur
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <button *ngFor="let doctor of doctorsList" (click)="selectDoctor(doctor)"
+                              class="dropdown-item" type="button">
+                              {{ doctor.nom }} {{ doctor.prenom }}
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row ">
+
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" formControlName="date" class="form-control" id="date">
+                      </div>
+                      <div class="form-group">
+                        <label>Status : </label>
+                        <div class="radio-group">
+                          <label style="color: red;">
+                            <input type="radio" formControlName="status" value="Urgent" name="status"> Urgent
+                          </label>
+                          <label style="color: green;">
+                            <input type="radio" formControlName="status" value="À venir" name="status"> À venir
+                          </label>
+                          <label style="color: orange;">
+                            <input type="radio" formControlName="status" value="Annulé" name="status"> Annulé
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="time">Heur</label>
+                        <input type="time" formControlName="time" class="form-control" id="time">
+                      </div>
+                      <div class="form-group">
+                        <label for="message">Description</label>
+                        <textarea formControlName="description" class="form-control" id="message"
+                          placeholder="Ajoutez quelque chose..."></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Other form fields go here -->
+
+
+
+
+
+                  <button type="submit" class="btn btn1 rounded ">Ajouter</button>
+                </form>
+              </div>
+
+
+              <!--************** Tab2 -->
+              <div *ngIf="activeTab == 'Account Details'" class="w-100 mt-2">
+
+              
+                <div class=" row ">
+                  <div class="form-group">
+                    <div class="col-3 text-center p-5" [ngModelOptions]="{ standalone: true }" [(ngModel)]="User.image">
+
+                      <img class="rounded mt-5" *ngIf="User.image" [src]="'assets/img/profil/' + User.image"
+                        alt="Profile" class="img-thumbnail " />
+
+                      <img class="rounded mt-5" *ngIf="!User.image" src="assets/img/profil/unkown_Profil.jpeg"
+                        alt="Image par défaut" class="img-thumbnail p-0" />
+
+
+                    </div>
+                    <label for="photo">Charger Photo</label>
+                    <input type="file" formControlName="photo" class="form-control" id="photo">
+                  </div>
+
+
+                </div>
+
+                <form>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="firstname">Prénom </label>
+                        <input type="text" class="form-control"  disabled [ngModelOptions]="{ standalone: true }"
+                          [(ngModel)]="User.firstName">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="birthdate">Date de Naissance</label>
+                        <input type="date" class="form-control" [ngModelOptions]="{ standalone: true }"
+                          [(ngModel)]="User.dateNaissance">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="phone">Télephone</label>
+                        <input type="tel" class="form-control" [ngModelOptions]="{ standalone: true }"
+                          [(ngModel)]="User.phoneNumber">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="phone">Adresse</label>
+                        <input type="tel" class="form-control" [ngModelOptions]="{ standalone: true }"
+                          [(ngModel)]="User.adresse">
+                      </div>
+                      <div class="dropdown mt-2 show">
+                        <a class="btn drop-color dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Groupe Sanguin
+                        </a>
+                      
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                          
+                          <button *ngFor="let option of groupesSanguins"
+                          (click)=" SElectOption(option)" class="dropdown-item"
+                          type="button">{{ option }}</button>
+                        </div>
+                      </div>
+                     
+                    </div>
+
+
+
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="lastname">Nom</label>
+                        <input type="text" class="form-control" disabled [ngModelOptions]="{ standalone: true }"
+                          [(ngModel)]="User.lastName">
+                      </div>
+                       <div class="form-group">
+                      <label for="city">Ville</label>
+                      <input type="text" class="form-control" [ngModelOptions]="{ standalone: true }"
+                        [(ngModel)]="User.ville">
+                    </div>
+                    <div class="dropdown my-2 show" >
+                      <a class="btn drop-color dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Type d'alergie
+                      </a>
+                    
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        
+                        <button *ngFor="let option of alergieOption"
+                       class="dropdown-item"
+                        type="button">{{ option }}</button>
+                      </div>
+                    </div>
+                    
+                  
+                
+                 
+               
+             
+                    </div>
+                   
+                   
+                  </div>
+                </form>
+                <hr>
+
+                <h4 style="margin-bottom: 20px;margin-top: 15px; " class="titre">Changer Mot de passe </h4>
+                <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+                  <div class="row">
+                    <div class="col-6">
+<div class="form-group">
+                    <label for="actualpassword">Mot de pass actuel</label>
+                    <input type="password" formControlName="actualpassword" class="form-control" id="actualpassword">
+                  </div>
+ 
+                  <div class="form-group">
+                    <label for="newpassword">Nouveau Password</label>
+                    <input type="password" formControlName="newpassword" class="form-control" id="newpassword">
+                  </div>
+<div class="form-group">
+
+                    <label for="Confirmpassword">Confirmer Mot de pass</label>
+                    <input type="password" formControlName="Confirmpassword" class="form-control" id="Confirmpassword">
+                  </div>
+                    </div>
+
+                  </div>
+                 
+                  
+                  <button type="submit" class="btn btn2">Changer</button>
+                </form>
+              </div>
+
+              <!--************** Tab3 -->
+              <div *ngIf="activeTab == 'Other Details'" class="w-100">
+                <h4 style="margin-bottom: 15px;margin-top: 15px;" class="titre"> Mes Consultations </h4>
+                <div class="form-group">
+                  <table class="table  custom-table">
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Docteur</th>
+                        <th>Status</th>
+                        <th>Description</th>
+                        <th>ordonnance</th>
+                        <th> </th>
+                      </tr>
+                    </thead>
+                    <tbody *ngFor="let Tab of my_Event">
+                      <tr>
+                        <td>{{ Tab.date }}</td>
+                        <td> Dr.{{ getDoctorNameById(Tab.ID_doc) }}</td>
+                        <!-- Assuming Tab has a 'speciality' property -->
+
+                        <td><span *ngIf="Tab.status =='Urgent'" class="red">{{Tab.status}}</span>
+                          <span *ngIf="Tab.status =='À venir'" class="green">{{Tab.status}}</span>
+                          <span *ngIf="Tab.status =='Annulé'" class="orange">{{Tab.status}}</span>
+                        </td>
+                        <td>{{Tab.description}}</td>
+                        <td><a (click)="Ordonnance(Tab)"> <i class=" col-red fa-solid fa-file-pdf"></i></a></td>
+                        <td><i class=" col-red fa-solid fa-trash"></i></td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
