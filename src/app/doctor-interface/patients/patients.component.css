@@ -33,6 +33,19 @@ color :white;
 .font-weight-bold{
     font-weight: bold;
 }
+.green{
+    color:rgba(17, 92, 17, 0.79) ;
+    font-weight: bold;
+}
+.icon-red {
+    color: red;
+    font-size: small;
+
+}
+.icon-green {
+    color: green;
+    font-size: small;
+}
 .meet-btn{
     padding: 3%;
     border: none;
@@ -46,4 +59,9 @@ color :white;
     box-shadow:   4px 4px 12px #777171/* Ombre pour l'image */;
     border:solid rgb(20, 66, 88);
    
+}
+.text-non{
+    color: rgb(52, 50, 50);
+    font-weight: lighter;
+     font-style: italic;
 }

@@ -16,6 +16,7 @@ export class PdfGeneratorService {
 
     // Create a div to wrap the HTML content you want to capture
     const content = document.createElement('div');content.innerHTML = `
+    <div class="p-5 ">
     <div class="header">
         <div>
             <img style="width: 9em;" src="../../assets/img/Logo/Logo14.png">
@@ -105,7 +106,7 @@ export class PdfGeneratorService {
                 Medical history
             </div>
             <div>
-                <table class="info-table">
+                <table class="info-table ">
                     <tr>
                         <td class="table-title"> Has an existing medical condition</td>
                         <td class="table-title"> Type of medical condition</td>
@@ -125,10 +126,10 @@ export class PdfGeneratorService {
                 </table>
             </div>
             </div>
-
+            </div>
   <style>
    body{
-    font-family:'Inter', sans-serif;;
+
     padding: 2em;
 }
 
@@ -141,16 +142,16 @@ export class PdfGeneratorService {
 
 .title{
     text-align: center;
-    font-family: 'Inter SemiBold', sans-serif;
+
     font-size: 1.1em;
     margin-top: 3em;
 }
 
 .component-title{
-    font-family: 'Inter SemiBold', sans-serif;
-    font-size: 0.9em;
+   
+   
     margin-bottom: 1em;
-    font-weight: bold;
+    font-weight: bolder;
 
 }
 
@@ -164,15 +165,15 @@ export class PdfGeneratorService {
 .table-title, .table-data{
     border: 0.1em solid #5B6268;
     padding: 0.5em;
-    font-size: 0.9em;
+  
 }
 
 .table-data{
-    font-family: 'Inter Medium', sans-serif;
+  color : green
 }
 
 .table-title{
-    font-family: 'Inter SemiBold', sans-serif;
+  
     color: #5B6268;
 }
   </style>
@@ -186,7 +187,7 @@ export class PdfGeneratorService {
       // Use ngAfterViewInit to ensure that the view is fully initialized
       setTimeout(() => {
         // Use html2canvas to capture the content as an image
-        html2canvas(content).then((canvas) => {
+        html2canvas(content).then((canvas:any) => {
           // Convert the canvas image to data URL
           const imgData = canvas.toDataURL('image/jpeg');
 
@@ -265,7 +266,7 @@ export class PdfGeneratorService {
       // Use ngAfterViewInit to ensure that the view is fully initialized
       setTimeout(() => {
         // Use html2canvas to capture the content as an image
-        html2canvas(content).then((canvas) => {
+        html2canvas(content).then((canvas:any) => {
           // Convert the canvas image to data URL
           const imgData = canvas.toDataURL('image/jpeg');
 

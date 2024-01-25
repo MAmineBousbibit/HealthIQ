@@ -1,3 +1,88 @@
 .container{
-    z-index: 1000;
+    margin-top: 7%;
+}
+.widget{
+    border-radius: 4%;
+    margin-left: 2%;
+    padding: 20px;
+    box-shadow:   4px 4px 12px #323e67;/* Ombre pour l'image */
+  width: 31%;
+    color: white;
+}
+
+.widget1{
+    margin-left: 1%;
+    background: linear-gradient(90deg, rgba(73, 88, 140, 0.647) 0%, rgba(73, 88, 140, 0.647) 50%, rgba(62, 164, 161, 0.653) 100%);
+}
+.widget2{
+    
+    background: linear-gradient(90deg, rgba(73, 88, 140, 0.647) 0%, rgba(73, 88, 140, 0.647) 50%, rgba(162, 111, 72, 0.647) 100%);
+}
+.widget3{
+    
+    background: linear-gradient(90deg, rgba(73, 88, 140, 0.647) 0%, rgba(73, 88, 140, 0.647) 50%, rgba(154, 61, 138, 0.647) 100%);
+}
+.widget4{
+    
+    background: linear-gradient(90deg, rgba(73, 88, 140, 0.647) 0%, rgba(73, 88, 140, 0.647) 50%, rgba(156, 88, 145, 0.304) 100%);
+}
+.gr{
+    margin-left: 25%;
+}
+.round-image {
+    width: 10%; /* Taille de l'image */
+    height: 10%;
+    border-radius: 55%; /* Pour créer une forme ronde */
+    margin-right: 5px; /* Espace entre l'image et le texte */
+}
+.lis{
+    margin-top: 4%;
+    margin-right: 0%;
+    border: none;
+    box-shadow:   4px 4px 12px #323e6744;/* Ombre pour l'image */
+    
+
+
+    
+}
+
+.lis ul{
+    list-style: none;
+    align-items: none;
+}
+.lis li{
+    padding-top: 3%;
+    padding-left: 3%;
+    padding-bottom: 1%;
+    padding-right: 3%;
+   color: rgb(99, 97, 97);
+   background-color: rgba(73, 87, 140, 0.533);
+   list-style: none;
+   align-items: none;
+   overflow: auto;
+
+}
+.patientlist-text{
+    color: white;
+    font-weight: bold;
+}
+.patientlist-text2{
+  
+    color: rgba(154, 61, 139, 0.852);
+}
+.light-txt{
+    color: rgb(54, 51, 51);
+    font-weight: lighter;
+   
+}
+.patientlist-text1{
+    font-weight: bold;
+    font-size: larger;
+    color:#323e67 ;
+    text-align: center;
+    margin-left: 25%;
+
+}
+hr{
+    color: white;
 }
