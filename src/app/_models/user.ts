@@ -1,54 +1,64 @@
 export class User {
-    private _id: any;
-    private _CodeMedical: any;
-    private _lastName: any;
-    private _firstName: any;
-    private _email: any;
-    private _password: any;
-    private _phoneNumber: any;
-    private _dateNaissance:any;
-    private _adresse:any
-    private _ville:any;
-    private _poid:any
-    private _taille:any
-    private _sex:any
-    private _sportActif:any
-    private _typeSport:any
-    private _nb_foisSport:any
-    private _group_sang:any
-    private _maladieCheck:any
-    private _typeMaladie:any
-    private _alergieCheck:any;
-    private _typeAlergie:any
-    private _MedicamentCheck:any
-    private _NomMedicament:any
-    private _Chirurgie:any
-   private _condition :any
-    constructor() {
-        this._id = '';
-        this._CodeMedical ='';
-        this._firstName ='';
-        this._lastName ='';
-        this._email ='';
-        this._password ='';
-        this._phoneNumber ='';
-        this._adresse='';
-        this._dateNaissance='';
-        this._poid=''
-        this._ville=''
-        this._taille=''
-        this._sex='';
-        this._group_sang='';
-        this._maladieCheck='';
-        this._typeMaladie='';
-        this._typeAlergie='';
-        this._alergieCheck='';
-        this._MedicamentCheck='';
-        this._NomMedicament='';
-        this._Chirurgie='';
-        this._condition='';
+  get image(): any {
+    return this._image;
+  }
 
-    }
+  set image(value: any) {
+    this._image = value;
+  }
+  private _id: any;
+  private _CodeMedical: any;
+  private _lastName: any;
+  private _firstName: any;
+  private _email: any;
+  private _password: any;
+  private _phoneNumber: any;
+  private _dateNaissance: any;
+  private _adresse: any
+  private _ville: any;
+  private _poid: any
+  private _taille: any
+  private _sex: any
+  private _sportActif: any
+  private _typeSport: any
+  private _nb_foisSport: any
+  private _group_sang: any
+  private _maladieCheck: any
+  private _typeMaladie: any
+  private _alergieCheck: any;
+  private _typeAlergie: any
+  private _MedicamentCheck: any
+  private _NomMedicament: any
+  private _Chirurgie: any
+  private _condition: any
+
+  private _image: any
+
+  constructor() {
+    this._id = '';
+    this._CodeMedical = '';
+    this._firstName = '';
+    this._lastName = '';
+    this._email = '';
+    this._password = '';
+    this._phoneNumber = '';
+    this._adresse = '';
+    this._dateNaissance = '';
+    this._poid = ''
+    this._ville = ''
+    this._taille = ''
+    this._sex = '';
+    this._group_sang = '';
+    this._maladieCheck = '';
+    this._typeMaladie = '';
+    this._typeAlergie = '';
+    this._alergieCheck = '';
+    this._MedicamentCheck = '';
+    this._NomMedicament = '';
+    this._Chirurgie = '';
+    this._condition = '';
+
+  }
 
   get id(): any {
     return this._id;

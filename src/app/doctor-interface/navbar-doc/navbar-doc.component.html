@@ -1,26 +1,49 @@
 <nav class="navbar bg-nav ">
-   
+
       <a class="navbar-brand" routerLink="/Doctor">
         <img src="assets\img\Logo\Logo14.png" alt="logo"  class="logo-nav">
-        
+
       </a>
-    
+
       <ul class="nav mx-2 justify-content-end">
-        
-        
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="icon fa-solid fa-bell"></i></a>
+
+
+        <li class="nav-item" (click)="onClickNotificationButton()">
+          <a ><i class="icon fa-solid fa-bell" ></i></a>
+          <div class="notification-dropdown" *ngIf="isNotificationDropdownOpen">
+            <h4>Notifications</h4>
+
+            <div *ngFor="let notification of notifications" class="notification-item">
+              <div class="person-image-container">
+                <img src="/" alt="Person Image">
+              </div>
+
+              <div class="notification-content " data-toggle="tooltip" data-placement="left"
+                   title="{{notification.content}}" >
+                <strong>{{ notification.namesender }}</strong> <br> {{ notification.content }}
+              </div>
+
+              <div class="delete-icon-container">
+                <button class="delete-button" (click)="onDeleteNotification(notification.id)">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </div>
+
+            <a href="#" class="read-more-link">Read more</a>
+          </div>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="#">DR.{{DoctorData.first_name}} {{DoctorData.last_name}}</a>
-          
+
         </li>
         <li class="nav-item g-0">
           <img class="rounded mt-5" *ngIf="DoctorData.image" [src]="'assets/img/profil/' + DoctorData.image" alt="Profile"  height="50sspx" width="50px"  class="rounded-circle"/>
 
           <img class="rounded mt-5" *ngIf="!DoctorData.image" src="assets/img/profil/unkown_Profil.jpeg" alt="Image par défaut" height="50sspx" width="50px" class="rounded-circle"/>
-          
+
         </li>
       </ul>
- 
+
   </nav>

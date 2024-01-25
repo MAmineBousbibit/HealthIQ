@@ -45,17 +45,28 @@ export class ContactComponent {
 
   saveNotification(): void {
     // Assuming you have a NotificationService injected in your component
-    this.notificationService.saveNotification(this.notification).subscribe(response => {
-      console.log('Notification saved successfully:', response);
+    this.notificationService.saveNotification(this.notification).subscribe(
+      (response) => {
+        console.log('Notification saved successfully:', response);
 
-      // Reset the form after saving
-      this.notification = {
-        namesender: '',
-        emailsender: '',
-        phone: '',
-        content: '',
-      };
-    });
+        // Reset the form after saving
+        this.notification = {
+          namesender: '',
+          emailsender: '',
+          phone: '',
+          content: '',
+        };
+
+        // Show success alert
+        alert("THANK YOU for your feedback!");
+      },
+      (error) => {
+        console.log(error);
+
+        // Show error alert
+        alert("Sorry try again!");
+      }
+    );
   }
 
 }
