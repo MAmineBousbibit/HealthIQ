@@ -49,6 +49,7 @@ import { SearchPipeHomePipe } from './Views/navbar/search-pipe-home.pipe';
 import { NavbarAdminComponent } from './SuperAdmin/navbar-admin/navbar-admin.component';
 import { SideBarAdminComponent } from './SuperAdmin/side-bar-admin/side-bar-admin.component';
 import { ChartAdminComponent } from './SuperAdmin/chart-admin/chart-admin.component';
+import { GestionCustComponent } from './SuperAdmin/gestion-cust/gestion-cust.component';
 //import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
@@ -74,6 +75,7 @@ import { ChartAdminComponent } from './SuperAdmin/chart-admin/chart-admin.compon
     FormCardComponent,
     BlogsDetailComponent,
     GestionDocComponent,
+    GestionCustComponent,
     PageHomeComponent,
     DashboardSuperAddComponent,
     ChatboxComponent,
